@@ -82,8 +82,12 @@ const Navbar = () => {
           data-testid="nav-logo"
         >
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center">
-              <div className="w-5 h-5 rounded-full bg-[#0D1117]" />
+            <div className="relative flex items-center justify-center w-8 h-8 rounded-full bg-transparent overflow-hidden">
+              <div className="absolute inset-1 bg-white rounded-full scale-95 transform -translate-y-0.5"></div>
+              <div className="absolute bottom-0 left-0 right-0 h-4 bg-[#0D1117] rounded-t-full transform translate-y-1"></div>
+              <div className="absolute bottom-1 right-1.5 w-3 h-2 bg-white rotate-12 rounded-full skew-x-12"></div>
+              <div className="absolute bottom-1 left-2 w-2 h-1.5 bg-white -rotate-12 rounded-full"></div>
+              <div className="absolute bottom-0 w-5 h-1 bg-[#0D1117] blur-[0.5px] rounded-full"></div>
             </div>
             <span className="text-white font-bold text-lg tracking-wider">SENTINELEHR</span>
           </div>
@@ -95,9 +99,9 @@ const Navbar = () => {
           <button onClick={() => scrollTo("demo")} className="hover:text-white transition-colors" data-testid="nav-resources">Resources</button>
         </div>
         <div className="flex items-center gap-3">
-          <Button variant="ghost" className="hidden sm:inline-flex text-slate-300 hover:text-white text-sm" data-testid="btn-get-started">
+          <a href="#demo" className="text-slate-300 hover:text-white transition-colors cursor-pointer text-sm font-medium hidden sm:inline-block" data-testid="btn-get-started">
             Get Started
-          </Button>
+          </a>
           <Button
             onClick={() => scrollTo("demo")}
             className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm"
@@ -931,8 +935,12 @@ const Footer = () => {
           <div className="md:col-span-1">
             <div className="mb-5">
               <div className="flex items-center gap-2">
-                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center">
-                  <div className="w-6 h-6 rounded-full bg-[#0D1117]" />
+                <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-transparent overflow-hidden">
+                  <div className="absolute inset-1.5 bg-white rounded-full scale-95 transform -translate-y-0.5"></div>
+                  <div className="absolute bottom-0 left-0 right-0 h-5 bg-[#0D1117] rounded-t-full transform translate-y-1"></div>
+                  <div className="absolute bottom-1.5 right-2 w-4 h-2.5 bg-white rotate-12 rounded-full skew-x-12"></div>
+                  <div className="absolute bottom-1.5 left-2.5 w-2.5 h-2 bg-white -rotate-12 rounded-full"></div>
+                  <div className="absolute bottom-0 w-6 h-1.5 bg-[#0D1117] blur-[0.5px] rounded-full"></div>
                 </div>
                 <span className="text-white font-bold text-xl tracking-wider">SENTINELEHR</span>
               </div>
