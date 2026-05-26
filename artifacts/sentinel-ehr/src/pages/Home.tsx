@@ -15,11 +15,9 @@ import {
   Building2,
   MessageSquare,
   Code2,
-  Lock,
-  Eye,
-  Zap,
   CheckCircle2,
   ArrowRight,
+  ScanSearch,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -111,29 +109,6 @@ const Hero = () => {
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
-  const trustPoints = [
-    {
-      icon: Lock,
-      label: "Zero PHI Storage",
-      desc: "We analyze access behavior, never patient records. PHI never leaves your network.",
-    },
-    {
-      icon: Eye,
-      label: "Read-Only Integration",
-      desc: "Connects to Epic Clarity in read-only mode. No write permissions, no risk.",
-    },
-    {
-      icon: ShieldCheck,
-      label: "HIPAA §164.312(b)",
-      desc: "Built to satisfy Audit Controls requirements out of the box.",
-    },
-    {
-      icon: Zap,
-      label: "86% Alert Precision",
-      desc: "Isolation Forest ML cuts noise so your team focuses on real threats.",
-    },
-  ];
-
   return (
     <section id="platform" className="relative pt-20 pb-28 overflow-hidden bg-white">
       {/* Subtle background grid */}
@@ -215,35 +190,59 @@ const Hero = () => {
           </div>
         </FadeIn>
 
-        {/* Right — Trust architecture card */}
-        <FadeIn delay={0.18} className="relative">
-          <div className="relative rounded-2xl border border-border bg-white shadow-xl overflow-hidden">
-            {/* Header stripe */}
-            <div className="bg-primary px-6 py-4 flex items-center gap-3">
-              <Shield className="w-5 h-5 text-white" />
-              <span className="text-white font-semibold text-sm tracking-wide">SentinelEHR — Trust Architecture</span>
-            </div>
+        {/* Right — professional healthcare photo with floating badges */}
+        <FadeIn delay={0.18} className="relative hidden lg:block">
+          {/* Photo frame */}
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-border aspect-[4/5]">
+            <img
+              src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80&fit=crop&crop=top"
+              alt="Healthcare compliance professional at a hospital"
+              className="w-full h-full object-cover object-center"
+              data-testid="hero-image"
+            />
+            {/* Subtle dark gradient at bottom for badge contrast */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+          </div>
 
-            <div className="p-6 grid grid-cols-1 gap-0 divide-y divide-border">
-              {trustPoints.map(({ icon: Icon, label, desc }, i) => (
-                <div key={i} className="flex items-start gap-4 py-5 first:pt-3 last:pb-3" data-testid={`trust-point-${i}`}>
-                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/8 border border-primary/20 flex items-center justify-center">
-                    <Icon className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-sm text-foreground mb-0.5">{label}</div>
-                    <div className="text-sm text-muted-foreground leading-relaxed">{desc}</div>
-                  </div>
-                </div>
-              ))}
+          {/* Floating badge — top left */}
+          <div
+            className="absolute -left-5 top-8 bg-white rounded-xl shadow-lg border border-border px-4 py-3 flex items-center gap-3 min-w-[180px]"
+            data-testid="floating-badge-hipaa"
+          >
+            <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <ShieldCheck className="w-5 h-5 text-primary" />
             </div>
+            <div>
+              <div className="text-xs font-bold text-foreground">HIPAA §164.312(b)</div>
+              <div className="text-xs text-muted-foreground">Audit Controls</div>
+            </div>
+          </div>
 
-            {/* Epic integration note */}
-            <div className="border-t border-border bg-muted/60 px-6 py-4 flex items-center gap-3">
-              <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
-              <span className="text-xs text-muted-foreground font-medium">
-                Connects read-only to Epic Clarity — ACCESS_LOG, CLARITY_EMP, ZC_ACS_ACTION
-              </span>
+          {/* Floating badge — bottom left */}
+          <div
+            className="absolute -left-5 bottom-12 bg-white rounded-xl shadow-lg border border-border px-4 py-3 flex items-center gap-3 min-w-[180px]"
+            data-testid="floating-badge-phi"
+          >
+            <div className="w-9 h-9 rounded-lg bg-green-50 border border-green-100 flex items-center justify-center flex-shrink-0">
+              <CheckCircle2 className="w-5 h-5 text-green-600" />
+            </div>
+            <div>
+              <div className="text-xs font-bold text-foreground">Zero PHI Stored</div>
+              <div className="text-xs text-muted-foreground">Read-only access</div>
+            </div>
+          </div>
+
+          {/* Floating badge — top right */}
+          <div
+            className="absolute -right-5 top-24 bg-white rounded-xl shadow-lg border border-border px-4 py-3 flex items-center gap-3 min-w-[160px]"
+            data-testid="floating-badge-precision"
+          >
+            <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <BarChart2 className="w-5 h-5 text-primary" />
+            </div>
+            <div>
+              <div className="text-xs font-bold text-foreground">86% Precision</div>
+              <div className="text-xs text-muted-foreground">Alert accuracy</div>
             </div>
           </div>
 
@@ -326,7 +325,7 @@ const Product = () => {
       ],
     },
     {
-      icon: Eye,
+      icon: ScanSearch,
       title: "Prioritized Alert Queue",
       subtitle: "Signal, not noise",
       points: [
