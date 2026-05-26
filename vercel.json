@@ -1,6 +1,6 @@
 {
-  "buildCommand": "pnpm --filter @workspace/sentinel-ehr build",
-  "outputDirectory": "artifacts/sentinel-ehr/dist/public",
-  "installCommand": "pnpm install --frozen-lockfile",
-  "framework": null
+  "framework": "vite",
+  "buildCommand": "cd ../.. && pnpm --filter @workspace/sentinel-ehr build",
+  "outputDirectory": "dist/public",
+  "installCommand": "pnpm install --frozen-lockfile"
 }
