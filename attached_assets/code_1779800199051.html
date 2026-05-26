@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SentinelEHR | Healthcare Insider Risk Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+        .hero-glow {
+            background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.15) 0%, transparent 60%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#303032",
+                        "primary-fixed": "#dae2fd",
+                        "on-background": "#e4e2e4",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-container": "#00374d",
+                        "outline-variant": "#45464d",
+                        "error-container": "#93000a",
+                        "outline": "#909097",
+                        "surface-container-lowest": "#0e0e10",
+                        "tertiary-fixed": "#fcdeb5",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "error": "#ffb4ab",
+                        "on-surface-variant": "#c6c6cd",
+                        "on-secondary": "#00354a",
+                        "secondary-container": "#00a6e0",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "inverse-surface": "#e4e2e4",
+                        "surface-container": "#1f1f21",
+                        "primary-fixed-dim": "#bec6e0",
+                        "border-slate": "#334155",
+                        "electric-blue": "#38BDF8",
+                        "surface-tint": "#bec6e0",
+                        "surface-navy": "#1E293B",
+                        "surface-container-highest": "#353436",
+                        "secondary-fixed-dim": "#7bd0ff",
+                        "background": "#131315",
+                        "security-red": "#EF4444",
+                        "surface-container-low": "#1b1b1d",
+                        "on-primary-container": "#798098",
+                        "on-tertiary-container": "#957d5a",
+                        "surface-variant": "#353436",
+                        "surface": "#131315",
+                        "on-secondary-fixed": "#001e2c",
+                        "tertiary": "#dec29a",
+                        "on-tertiary": "#3e2d11",
+                        "warning-amber": "#F59E0B",
+                        "secondary": "#7bd0ff",
+                        "surface-dim": "#131315",
+                        "tertiary-container": "#231500",
+                        "surface-container-high": "#2a2a2b",
+                        "on-primary": "#283044",
+                        "secondary-fixed": "#c4e7ff",
+                        "primary-container": "#0f172a",
+                        "on-primary-fixed": "#131b2e",
+                        "surface-bright": "#39393b",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed": "#271901",
+                        "primary": "#bec6e0",
+                        "on-secondary-fixed-variant": "#004c69",
+                        "inverse-primary": "#565e74",
+                        "on-surface": "#e4e2e4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1440px",
+                        "unit": "4px",
+                        "margin-edge": "32px",
+                        "gutter-md": "24px"
+                    },
+                    "fontFamily": {
+                        "title-md": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "title-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background selection:bg-electric-blue/30 overflow-x-hidden">
+<!-- Navigation -->
+<header class="docked full-width top-0 sticky z-50 bg-background/80 dark:bg-background/80 backdrop-blur-md border-b border-border-slate dark:border-border-slate">
+<nav class="flex justify-between items-center w-full px-8 py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-3">
+<img alt="SentinelEHR Logo" class="h-10 w-10 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uicwr0I6Vl8cm9wz0tHVem6aVE561qmEisdVDNtIdt6IYRy1H_bFQq49wniqFo4_T_iKNwaYzoQTkjNNB44UkXepfhI4Cb7PerRuuKMdAaIeU0tUJ3sPNfogGOTUXBYzym_anyCe-SXnugqx1RP1oVrS2zHfmNFHpg5P4WoALpMsgprT04jtSePNICu-QfMzJ9vJQPPyb-Z0xpEXCMXwgoTxGcEldAW6JxRJajAaTtJY8DzDcrWsXVPesI"/>
+<span class="text-headline-lg font-headline-lg tracking-tight text-on-surface dark:text-on-surface">SentinelEHR</span>
+</div>
+<div class="hidden md:flex gap-8">
+<a class="text-secondary dark:text-secondary border-b-2 border-secondary pb-1 text-label-sm font-label-sm" href="#platform">Platform</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-secondary transition-colors text-label-sm font-label-sm" href="#intelligence">Intelligence</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-secondary transition-colors text-label-sm font-label-sm" href="#compliance">Compliance</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-secondary transition-colors text-label-sm font-label-sm" href="#resources">Resources</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-5 py-2 text-label-sm font-label-sm text-secondary hover:bg-surface-container-high/50 rounded transition-all">Login</button>
+<button class="px-6 py-2 bg-secondary text-on-secondary text-label-sm font-label-sm font-bold rounded hover:opacity-80 transition-all">Request a Demo</button>
+</div>
+</nav>
+</header>
+<main>
+<!-- Section 1: Hero -->
+<section class="relative min-h-[921px] flex items-center pt-20 hero-glow overflow-hidden" id="platform">
+<div class="max-w-container-max mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="space-y-8 relative z-10">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-electric-blue/30 bg-electric-blue/10 text-electric-blue text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[14px]">verified_user</span>
+                        HIPAA §164.312(b) Compliant
+                    </div>
+<h1 class="text-display-lg font-display-lg leading-tight">Healthcare Insider Risk Intelligence</h1>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-lg">Real-time behavioral monitoring for Epic EHR. Detect unauthorized access before it becomes a breach. Built for the modern security operations center.</p>
+<div class="flex flex-wrap gap-4">
+<button class="px-8 py-4 bg-secondary text-on-secondary font-bold rounded text-title-md hover:bg-opacity-90 transition-all shadow-lg shadow-secondary/20">Request a Demo</button>
+<button class="px-8 py-4 border border-border-slate text-on-surface font-bold rounded text-title-md hover:bg-surface-navy transition-all">Explore Platform</button>
+</div>
+<div class="grid grid-cols-3 gap-8 pt-8 border-t border-border-slate">
+<div>
+<div class="text-headline-lg font-headline-lg text-secondary">325K</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Events Monitored</div>
+</div>
+<div>
+<div class="text-headline-lg font-headline-lg text-secondary">0</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">PHI Stored</div>
+</div>
+<div>
+<div class="text-headline-lg font-headline-lg text-secondary">86%</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Alert Precision</div>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="absolute inset-0 bg-gradient-to-br from-electric-blue/20 to-transparent blur-3xl rounded-full"></div>
+<div class="relative glass-card rounded-xl p-4 border-electric-blue/20">
+<img alt="SentinelEHR Interface Preview" class="rounded-lg shadow-2xl opacity-90 border border-border-slate" data-alt="A sophisticated dark mode dashboard interface for cybersecurity operations showing complex data visualizations, network activity maps, and security alert logs. The design features a deep navy color palette with glowing electric blue accents and neon indicators representing high-tech intelligence gathering. The lighting is low-key, emphasizing the technical and precise nature of the platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8yzwMeIxw1HyH7Z3qm4xxDHaCBjt6RxuGvrGvOHGzMTPCdxrcbL_kl7gpVAltHTgXPeeSIVbfECeGT2AHR6bmFyG8VzKrqJufWivnePe7FL5xwyS4lBrwLr35CMoJsa4aWk_b22RDl1Nkd-dB48B9CbM3gp2WTfZDclgiIDaDb9stMCIUiiNR40KUBZ8FKl-ZmA16DCvu3E-W4oeHx3MiJtWqoplsf4xiedrLZrbH4-ob08DlbG2ogDks1nb9bCY0z_TBVzm9_UI"/>
+<div class="absolute -bottom-6 -left-6 glass-card p-6 rounded-xl border-border-slate shadow-2xl">
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-full bg-security-red/20 flex items-center justify-center text-security-red">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">Critical Alert</div>
+<div class="text-title-md font-title-md">Bulk Export Detected</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Problem -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-container-max mx-auto px-8">
+<div class="text-center mb-16">
+<h2 class="text-headline-lg font-headline-lg text-on-surface mb-4">Your compliance team is drowning in alerts</h2>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-2xl mx-auto">Legacy monitoring systems generate noise, not insight. SentinelEHR cuts through the volume to protect what matters most.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="glass-card p-8 rounded-xl border-border-slate group hover:border-secondary transition-all">
+<div class="h-12 w-12 rounded bg-surface-navy flex items-center justify-center mb-6 text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">notifications_paused</span>
+</div>
+<h3 class="text-title-md font-title-md mb-3">Alert Fatigue</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Thousands of alerts per day. Most are noise. Real threats hide inside the queue, waiting for the one minute you look away.</p>
+</div>
+<div class="glass-card p-8 rounded-xl border-border-slate group hover:border-secondary transition-all">
+<div class="h-12 w-12 rounded bg-surface-navy flex items-center justify-center mb-6 text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">history</span>
+</div>
+<h3 class="text-title-md font-title-md mb-3">Slow Investigations</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">The average insider breach goes undetected for months. Manual log review takes days per incident, losing critical time.</p>
+</div>
+<div class="glass-card p-8 rounded-xl border-border-slate group hover:border-secondary transition-all">
+<div class="h-12 w-12 rounded bg-surface-navy flex items-center justify-center mb-6 text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">security_update_warning</span>
+</div>
+<h3 class="text-title-md font-title-md mb-3">Sensitive Record Risk</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">HIV records, behavioral health notes, VIP patients — these require protection beyond standard monitoring protocols.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Product (Bento Grid) -->
+<section class="py-24" id="intelligence">
+<div class="max-w-container-max mx-auto px-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+<div class="max-w-2xl">
+<h2 class="text-headline-lg font-headline-lg text-on-surface mb-4">SentinelEHR surfaces what matters</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Advanced intelligence and automation to manage healthcare insider risk with surgical precision.</p>
+</div>
+<div class="flex gap-4">
+<button class="p-2 rounded-full border border-border-slate hover:bg-surface-navy text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<button class="p-2 rounded-full border border-border-slate hover:bg-surface-navy text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="bento-grid">
+<div class="col-span-12 lg:col-span-8 glass-card rounded-xl p-8 overflow-hidden relative min-h-[400px]">
+<div class="relative z-10">
+<h3 class="text-headline-lg font-headline-lg mb-2">Behavioral AI Engine</h3>
+<p class="text-on-surface-variant mb-6 max-w-md">Our Isolation Forest ML model scores every event for anomalous patterns across shifts, locations, and departments.</p>
+<div class="flex gap-3">
+<span class="px-3 py-1 rounded bg-secondary/10 border border-secondary/20 text-secondary text-label-sm font-label-sm">8 Detection Rules</span>
+<span class="px-3 py-1 rounded bg-secondary/10 border border-secondary/20 text-secondary text-label-sm font-label-sm">ML Anomaly Scoring</span>
+</div>
+</div>
+<img alt="AI Visualization" class="absolute top-0 right-0 w-1/2 h-full object-cover opacity-20 mask-linear-to-l" data-alt="A complex network architecture visualization with glowing nodes and interconnected data pathways against a dark background. The scene represent advanced artificial intelligence and behavioral modeling within a secure server environment. The lighting features sharp electric blue lines and soft ambient glows in deep navy tones, projecting a sense of massive computational power and security." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCs1RqmJECns2KijYC_7-8Qz9ShZoPHijDIQHapZ-ied_vW7sDzGLyKi4wR9sPZ9Ru0wDlCYBKZnBTm3luentB9ldzs_6FlI6G_bhdJxa9ChDyrnrYszi6dQMRVuro9rDmhmtAipL-kBWZKoitvGXrrFanOAmiJjOnhcXWrDrdUnCgsHc5z3oV2Oq7ehk1BJWLEJN-X23KyebSily8yecj7pC47jE6F79d-jvLY2F4PiM7XUIqUJKigtAHQZVz0e2fsQ5KFKxp_m0E"/>
+</div>
+<div class="col-span-12 lg:col-span-4 bg-primary-container rounded-xl p-8 border border-border-slate">
+<span class="material-symbols-outlined text-secondary text-4xl mb-6">priority_high</span>
+<h3 class="text-title-md font-title-md mb-2">Prioritized Alerts</h3>
+<p class="text-body-md font-body-md text-on-primary-container">Stop chasing ghost alerts. Our system ranks incidents by severity and risk probability, focusing your eyes on the 1% that matter.</p>
+</div>
+<div class="col-span-12 md:col-span-6 lg:col-span-4 glass-card rounded-xl p-8 border-border-slate">
+<h3 class="text-title-md font-title-md mb-4">Case Management</h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-6">A unified workflow for documenting, escalating, and resolving potential breaches from discovery to HR reporting.</p>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-3 bg-surface-navy rounded border border-border-slate">
+<span class="text-label-sm font-label-sm">Active Investigations</span>
+<span class="text-secondary font-bold">200</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-navy rounded border border-border-slate">
+<span class="text-label-sm font-label-sm">Resolution Rate</span>
+<span class="text-secondary font-bold">94%</span>
+</div>
+</div>
+</div>
+<div class="col-span-12 md:col-span-6 lg:col-span-8 glass-card rounded-xl border-border-slate p-0 overflow-hidden flex flex-col md:flex-row">
+<div class="p-8 flex-1">
+<h3 class="text-title-md font-title-md mb-2">Epic-Native Architecture</h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-4">Built against real Epic Clarity table structures. No custom ETL required. Pure read-only integration.</p>
+<ul class="space-y-2">
+<li class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                    ACCESS_LOG Integration
+                                </li>
+<li class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                    CLARITY_EMP Mapping
+                                </li>
+<li class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                    ZC_ACS_ACTION Support
+                                </li>
+</ul>
+</div>
+<div class="bg-surface-navy/50 p-4 border-l border-border-slate flex items-center justify-center">
+<span class="text-headline-lg font-headline-lg text-secondary/30 select-none">Epic</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: How It Works -->
+<section class="py-24 bg-surface-container-lowest">
+<div class="max-w-container-max mx-auto px-8">
+<div class="text-center mb-16">
+<h2 class="text-headline-lg font-headline-lg text-on-surface mb-4">Three steps to total visibility</h2>
+</div>
+<div class="relative">
+<div class="hidden lg:block absolute top-1/2 left-0 w-full h-px bg-border-slate -translate-y-1/2 z-0"></div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-12 relative z-10">
+<div class="text-center">
+<div class="h-20 w-20 rounded-full bg-background border-4 border-surface-navy flex items-center justify-center mx-auto mb-6 text-secondary shadow-xl">
+<span class="material-symbols-outlined text-3xl">hub</span>
+</div>
+<h3 class="text-title-md font-title-md mb-3">1. Connect</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Read-only access to Epic Clarity. No PHI ever leaves your hospital's secure environment.</p>
+</div>
+<div class="text-center">
+<div class="h-20 w-20 rounded-full bg-background border-4 border-surface-navy flex items-center justify-center mx-auto mb-6 text-secondary shadow-xl">
+<span class="material-symbols-outlined text-3xl">query_stats</span>
+</div>
+<h3 class="text-title-md font-title-md mb-3">2. Analyze</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Behavioral AI detects anomalies across 8 rule types plus complex ML scoring models.</p>
+</div>
+<div class="text-center">
+<div class="h-20 w-20 rounded-full bg-background border-4 border-surface-navy flex items-center justify-center mx-auto mb-6 text-secondary shadow-xl">
+<span class="material-symbols-outlined text-3xl">assignment_turned_in</span>
+</div>
+<h3 class="text-title-md font-title-md mb-3">3. Act</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Compliance officers review prioritized alerts and manage investigations in one unified place.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 5: Why SentinelEHR -->
+<section class="py-24 bg-background" id="compliance">
+<div class="max-w-container-max mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div class="order-2 lg:order-1">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+<div class="space-y-4">
+<div class="h-10 w-10 text-secondary">
+<span class="material-symbols-outlined text-4xl">shield_with_heart</span>
+</div>
+<h4 class="text-title-md font-title-md">Zero PHI Stored</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant">We analyze behavioral patterns, not patient records. Your data stays yours, guaranteed by our architecture.</p>
+</div>
+<div class="space-y-4">
+<div class="h-10 w-10 text-secondary">
+<span class="material-symbols-outlined text-4xl">domain</span>
+</div>
+<h4 class="text-title-md font-title-md">Built for Community</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Designed for compliance teams of 1-3 people, not complex enterprise SOC teams.</p>
+</div>
+<div class="space-y-4">
+<div class="h-10 w-10 text-secondary">
+<span class="material-symbols-outlined text-4xl">comment_bank</span>
+</div>
+<h4 class="text-title-md font-title-md">Explainable Alerts</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Every flag includes a plain-English explanation. No black-box scores that require a data scientist to decode.</p>
+</div>
+<div class="space-y-4">
+<div class="h-10 w-10 text-secondary">
+<span class="material-symbols-outlined text-4xl">integration_instructions</span>
+</div>
+<h4 class="text-title-md font-title-md">Epic-Native</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Built against real Epic Clarity table structures. Drop-in compatible with standard Epic environments.</p>
+</div>
+</div>
+</div>
+<div class="order-1 lg:order-2 space-y-8">
+<h2 class="text-headline-lg font-headline-lg">Privacy-first security for mission-driven healthcare</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">We understand that community health centers and hospitals operate with limited resources but face massive regulatory pressure. SentinelEHR provides enterprise-grade detection at community hospital scale.</p>
+<div class="p-6 bg-surface-navy rounded-xl border-l-4 border-secondary">
+<p class="italic text-on-surface-variant mb-4">"Our zero-PHI architecture is the strongest differentiator for procurement departments. We don't just secure your data—we avoid taking it in the first place."</p>
+<div class="text-label-sm font-label-sm text-secondary font-bold">SentinelEHR Architecture Team</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 6: Demo Request Form -->
+<section class="py-24 bg-surface-container-low border-t border-border-slate" id="resources">
+<div class="max-w-[800px] mx-auto px-8">
+<div class="text-center mb-12">
+<h2 class="text-headline-lg font-headline-lg mb-4">Request a Live Demonstration</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">See how SentinelEHR can transform your compliance workflow in 30 minutes.</p>
+</div>
+<form class="glass-card p-10 rounded-2xl border-border-slate space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Full Name</label>
+<input class="w-full bg-surface-navy border border-border-slate rounded-lg p-4 text-on-surface focus:border-electric-blue focus:ring-1 focus:ring-electric-blue outline-none transition-all" placeholder="John Doe" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Organization</label>
+<input class="w-full bg-surface-navy border border-border-slate rounded-lg p-4 text-on-surface focus:border-electric-blue focus:ring-1 focus:ring-electric-blue outline-none transition-all" placeholder="Health System Name" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Business Email</label>
+<input class="w-full bg-surface-navy border border-border-slate rounded-lg p-4 text-on-surface focus:border-electric-blue focus:ring-1 focus:ring-electric-blue outline-none transition-all" placeholder="john@hospital.org" type="email"/>
+</div>
+<div class="space-y-2">
+<label class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Your Role</label>
+<select class="w-full bg-surface-navy border border-border-slate rounded-lg p-4 text-on-surface focus:border-electric-blue focus:ring-1 focus:ring-electric-blue outline-none transition-all appearance-none">
+<option>Compliance Officer</option>
+<option>IT Director</option>
+<option>CISO</option>
+<option>Other</option>
+</select>
+</div>
+</div>
+<button class="w-full py-5 bg-secondary text-on-secondary font-bold text-title-md rounded-lg hover:opacity-90 transition-all shadow-xl shadow-secondary/10" type="submit">Schedule Demo</button>
+<p class="text-center text-label-sm font-label-sm text-on-surface-variant">We respect your inbox. No marketing spam, ever.</p>
+</form>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-border-slate">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-8 py-12 max-w-container-max mx-auto">
+<div class="col-span-1 lg:col-span-1 space-y-4">
+<div class="flex items-center gap-2">
+<img alt="SentinelEHR Small Logo" class="h-6 w-6 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uicwr0I6Vl8cm9wz0tHVem6aVE561qmEisdVDNtIdt6IYRy1H_bFQq49wniqFo4_T_iKNwaYzoQTkjNNB44UkXepfhI4Cb7PerRuuKMdAaIeU0tUJ3sPNfogGOTUXBYzym_anyCe-SXnugqx1RP1oVrS2zHfmNFHpg5P4WoALpMsgprT04jtSePNICu-QfMzJ9vJQPPyb-Z0xpEXCMXwgoTxGcEldAW6JxRJajAaTtJY8DzDcrWsXVPesI"/>
+<span class="text-title-md font-title-md text-on-surface">SentinelEHR</span>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant leading-relaxed">Insider risk intelligence platform built exclusively for community health systems using Epic EHR.</p>
+</div>
+<div class="space-y-4">
+<h5 class="text-label-sm font-label-sm text-on-surface uppercase tracking-widest">Platform</h5>
+<ul class="space-y-2">
+<li><a class="text-label-sm font-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Detection Engine</a></li>
+<li><a class="text-label-sm font-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Case Management</a></li>
+<li><a class="text-label-sm font-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Epic Integration</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h5 class="text-label-sm font-label-sm text-on-surface uppercase tracking-widest">Trust &amp; Legal</h5>
+<ul class="space-y-2">
+<li><a class="text-label-sm font-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="text-label-sm font-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Terms of Service</a></li>
+<li><a class="text-label-sm font-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Security Architecture</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h5 class="text-label-sm font-label-sm text-on-surface uppercase tracking-widest">Connect</h5>
+<ul class="space-y-2">
+<li><a class="text-label-sm font-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Contact Sales</a></li>
+<li><a class="text-label-sm font-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">GitHub Repository</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-border-slate py-8 px-8 max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-label-sm font-label-sm text-on-surface-variant">© 2024 SentinelEHR Intelligence. All rights reserved.</p>
+<div class="text-label-sm font-label-sm text-on-surface-variant italic">Currently in Design Partner Phase</div>
+</div>
+</footer>
+<script>
+        // Subtle atmospheric scroll reveal
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100');
+                        entry.target.classList.remove('translate-y-10', 'opacity-0');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.add('transition-all', 'duration-1000', 'translate-y-10', 'opacity-0');
+                observer.observe(section);
+            });
+        });
+    </script>
+</body></html>
