@@ -1,5 +1,9 @@
 {
   "version": 2,
+  "cleanUrls": true,
+  "buildCommand": "pnpm --filter @workspace/sentinel-ehr build",
+  "outputDirectory": "public",
+  "installCommand": "pnpm install --frozen-lockfile",
   "rewrites": [
     {
       "source": "/(privacy|terms)",
