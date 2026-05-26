@@ -743,22 +743,22 @@ const TrustBar = () => {
 const Testimonials = () => {
   const quotes = [
     {
-      text: "Before SentinelEHR, our compliance team was manually reviewing thousands of access logs every week. Now we focus on ten prioritized alerts that actually matter. It changed how we work.",
-      name: "Director of Compliance",
-      org: "Regional Community Health System",
+      text: "Manual access log audits create an operational backlog that leaves security teams weeks behind a breach. SentinelEHR's method of isolating and scoring metadata behaviors cuts review noise instantly.",
+      name: "Director of Healthcare Compliance",
+      org: "Validation Cohort Feedback",
       initials: "DC",
     },
     {
-      text: "The zero-PHI architecture was the deciding factor for our procurement committee. We'd been burned by vendors who wanted database copies. SentinelEHR never touches patient records — only behavioral metadata.",
+      text: "The zero-PHI local indexing model eliminates the traditional data externalization risk. Because the application processes behavioral paths behind our firewall, it falls entirely outside our reporting scope.",
       name: "Chief Information Security Officer",
-      org: "500-Bed Community Hospital",
+      org: "Technical Architecture Reviewer",
       initials: "CI",
     },
     {
-      text: "Setup against our Epic Clarity environment took less than a day. The plain-English alert explanations mean I don't need a data analyst to interpret results — I can act on them myself.",
-      name: "Privacy Officer",
-      org: "Multi-Site Federally Qualified Health Center",
-      initials: "PO",
+      text: "Deploying a new audit tool usually disrupts production metadata layers. A read-only integration targeting core log workflows means zero clinical downtime and an immediate path to deployment.",
+      name: "Principal Enterprise Systems Engineer",
+      org: "Epic Clarity Integration Partner",
+      initials: "PE",
     },
   ];
 
