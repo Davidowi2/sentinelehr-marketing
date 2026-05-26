@@ -535,22 +535,39 @@ const formSchema = z.object({
 
 const DemoForm = () => {
   const { toast } = useToast();
-  const [submitted, setSubmitted] = React.useState(false);
+  const [submitting, setSubmitting] = React.useState(false);
+  const [submitStatus, setSubmitStatus] = React.useState<'idle' | 'success' | 'error'>('idle');
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: { name: "", organization: "", email: "", role: "" },
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    const subject = encodeURIComponent("Demo Request — SentinelEHR");
-    const body = encodeURIComponent(
-      `Name: ${values.name}\nOrganization: ${values.organization}\nEmail: ${values.email}\nRole: ${values.role}\n\nI would like to request a live demonstration of SentinelEHR.`
-    );
-    window.location.href = `mailto:demo@sentinelehr.com?subject=${subject}&body=${body}`;
-    setSubmitted(true);
-    toast({ title: "Request prepared", description: "Opening your email client..." });
-    form.reset();
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    setSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('https://formspree.io/f/xykvbwwj', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        form.reset();
+        toast({ title: "Demo request sent", description: "We'll get back to you within one business day." });
+      } else {
+        setSubmitStatus('error');
+        toast({ title: "Submission failed", description: "Please try again or contact us directly.", variant: "destructive" });
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+      toast({ title: "Submission failed", description: "Please try again or contact us directly.", variant: "destructive" });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -581,104 +598,109 @@ const DemoForm = () => {
 
           {/* Right — form */}
           <FadeIn delay={0.18}>
-            {submitted ? (
-              <Card className="bg-white border-border shadow-lg">
-                <CardContent className="p-10 text-center">
-                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                    <CheckCircle2 className="w-8 h-8 text-primary" />
+            <Card className="bg-white border-border shadow-lg">
+              <CardContent className="p-8">
+                {submitStatus === 'success' && (
+                  <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+                    <p className="text-green-800 text-sm font-medium">✓ Demo request sent successfully! We'll contact you within one business day.</p>
                   </div>
-                  <h3 className="text-xl font-bold mb-2 text-foreground">Email draft ready</h3>
-                  <p className="text-muted-foreground text-sm">Your email client should have opened. We'll respond within one business day.</p>
-                  <Button variant="outline" className="mt-6" onClick={() => setSubmitted(false)}>Submit another request</Button>
-                </CardContent>
-              </Card>
-            ) : (
-              <Card className="bg-white border-border shadow-lg">
-                <CardContent className="p-8">
-                  <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-                      <div className="grid sm:grid-cols-2 gap-5">
-                        <FormField
-                          control={form.control}
-                          name="name"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Full Name</FormLabel>
+                )}
+                {submitStatus === 'error' && (
+                  <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <p className="text-red-800 text-sm font-medium">✗ Submission failed. Please try again or contact us directly.</p>
+                  </div>
+                )}
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+                    <div className="grid sm:grid-cols-2 gap-5">
+                      <FormField
+                        control={form.control}
+                        name="name"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Full Name</FormLabel>
+                            <FormControl>
+                              <Input placeholder="Jane Doe" className="bg-muted border-border" data-testid="input-name" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="organization"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Organization</FormLabel>
+                            <FormControl>
+                              <Input placeholder="Community General Hospital" className="bg-muted border-border" data-testid="input-org" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                    <div className="grid sm:grid-cols-2 gap-5">
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Business Email</FormLabel>
+                            <FormControl>
+                              <Input placeholder="jane@hospital.org" type="email" className="bg-muted border-border" data-testid="input-email" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="role"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Your Role</FormLabel>
+                            <Select onValueChange={field.onChange} defaultValue={field.value}>
                               <FormControl>
-                                <Input placeholder="Jane Doe" className="bg-muted border-border" data-testid="input-name" {...field} />
+                                <SelectTrigger className="bg-muted border-border" data-testid="select-role">
+                                  <SelectValue placeholder="Select a role" />
+                                </SelectTrigger>
                               </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                        <FormField
-                          control={form.control}
-                          name="organization"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Organization</FormLabel>
-                              <FormControl>
-                                <Input placeholder="Community General Hospital" className="bg-muted border-border" data-testid="input-org" {...field} />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      </div>
-                      <div className="grid sm:grid-cols-2 gap-5">
-                        <FormField
-                          control={form.control}
-                          name="email"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Business Email</FormLabel>
-                              <FormControl>
-                                <Input placeholder="jane@hospital.org" type="email" className="bg-muted border-border" data-testid="input-email" {...field} />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                        <FormField
-                          control={form.control}
-                          name="role"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Your Role</FormLabel>
-                              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                <FormControl>
-                                  <SelectTrigger className="bg-muted border-border" data-testid="select-role">
-                                    <SelectValue placeholder="Select a role" />
-                                  </SelectTrigger>
-                                </FormControl>
-                                <SelectContent>
-                                  <SelectItem value="Compliance Officer">Compliance Officer</SelectItem>
-                                  <SelectItem value="Privacy Officer">Privacy Officer</SelectItem>
-                                  <SelectItem value="IT Director">IT Director</SelectItem>
-                                  <SelectItem value="CISO">CISO</SelectItem>
-                                  <SelectItem value="Other">Other</SelectItem>
-                                </SelectContent>
-                              </Select>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      </div>
-                      <Button
-                        type="submit"
-                        className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-5 font-bold"
-                        data-testid="btn-submit-demo"
-                      >
-                        Schedule Demo
-                      </Button>
-                    </form>
-                  </Form>
-                  <p className="text-xs text-center text-muted-foreground mt-5">
-                    We respect your inbox. No marketing spam, ever.
-                  </p>
-                </CardContent>
-              </Card>
-            )}
+                              <SelectContent>
+                                <SelectItem value="Compliance Officer">Compliance Officer</SelectItem>
+                                <SelectItem value="Privacy Officer">Privacy Officer</SelectItem>
+                                <SelectItem value="IT Director">IT Director</SelectItem>
+                                <SelectItem value="CISO">CISO</SelectItem>
+                                <SelectItem value="Other">Other</SelectItem>
+                              </SelectContent>
+                            </Select>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                    <Button
+                      type="submit"
+                      className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-5 font-bold"
+                      data-testid="btn-submit-demo"
+                      disabled={submitting}
+                    >
+                      {submitting ? (
+                        <>
+                          <span className="mr-2">Sending...</span>
+                          <span className="animate-spin">⏳</span>
+                        </>
+                      ) : (
+                        "Schedule Demo"
+                      )}
+                    </Button>
+                  </form>
+                </Form>
+                <p className="text-xs text-center text-muted-foreground mt-5">
+                  We respect your inbox. No marketing spam, ever.
+                </p>
+              </CardContent>
+            </Card>
           </FadeIn>
         </div>
       </div>
