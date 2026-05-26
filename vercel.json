@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/privacy",
+      "destination": "/artifacts/sentinel-ehr/public/index.html"
+    },
+    {
+      "source": "/terms",
+      "destination": "/artifacts/sentinel-ehr/public/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/artifacts/sentinel-ehr/public/index.html"
+    }
+  ]
+}
