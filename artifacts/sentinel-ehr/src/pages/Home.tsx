@@ -74,33 +74,33 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-border bg-white/90 backdrop-blur-md">
+    <nav className="sticky top-0 z-50 w-full border-b border-border bg-[#0D1117]/95 backdrop-blur-md">
       <div className="container mx-auto px-4 md:px-8 h-16 flex items-center justify-between max-w-6xl">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex items-center"
+          className="flex items-center gap-2"
           data-testid="nav-logo"
         >
-          <img
-            src={logoSrc}
-            alt="SentinelEHR"
-            className="h-14 w-auto object-contain"
-            style={{ filter: "invert(1)" }}
-          />
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center">
+              <div className="w-5 h-5 rounded-full bg-[#0D1117]" />
+            </div>
+            <span className="text-white font-bold text-lg tracking-wider">SENTINELEHR</span>
+          </div>
         </button>
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
-          <button onClick={() => scrollTo("platform")} className="hover:text-primary transition-colors" data-testid="nav-platform">Platform</button>
-          <button onClick={() => scrollTo("intelligence")} className="hover:text-primary transition-colors" data-testid="nav-intelligence">Intelligence</button>
-          <button onClick={() => scrollTo("compliance")} className="hover:text-primary transition-colors" data-testid="nav-compliance">Compliance</button>
-          <button onClick={() => scrollTo("demo")} className="hover:text-primary transition-colors" data-testid="nav-resources">Resources</button>
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+          <button onClick={() => scrollTo("platform")} className="hover:text-white transition-colors" data-testid="nav-platform">Platform</button>
+          <button onClick={() => scrollTo("intelligence")} className="hover:text-white transition-colors" data-testid="nav-intelligence">Intelligence</button>
+          <button onClick={() => scrollTo("compliance")} className="hover:text-white transition-colors" data-testid="nav-compliance">Compliance</button>
+          <button onClick={() => scrollTo("demo")} className="hover:text-white transition-colors" data-testid="nav-resources">Resources</button>
         </div>
         <div className="flex items-center gap-3">
-          <Button variant="ghost" className="hidden sm:inline-flex text-muted-foreground hover:text-foreground text-sm" data-testid="btn-login">
-            Login
+          <Button variant="ghost" className="hidden sm:inline-flex text-slate-300 hover:text-white text-sm" data-testid="btn-get-started">
+            Get Started
           </Button>
           <Button
             onClick={() => scrollTo("demo")}
-            className="bg-primary text-primary-foreground hover:bg-primary/90 text-sm"
+            className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm"
             data-testid="btn-request-demo-nav"
           >
             Request Demo
@@ -930,10 +930,15 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="md:col-span-1">
             <div className="mb-5">
-              <img src={logoSrc} alt="SentinelEHR" className="h-16 w-auto" />
+              <div className="flex items-center gap-2">
+                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center">
+                  <div className="w-6 h-6 rounded-full bg-[#0D1117]" />
+                </div>
+                <span className="text-white font-bold text-xl tracking-wider">SENTINELEHR</span>
+              </div>
             </div>
             <p className="text-sm text-slate-400 leading-relaxed mb-5">
-              Insider risk intelligence for community health systems using Epic EHR.
+              Insider risk intelligence for community health systems using Epic EHR. Designed for Your Organization.
             </p>
             <div className="text-xs text-slate-500 leading-relaxed">
               Currently in Design Partner Phase
@@ -972,8 +977,39 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Community Health Case Studies */}
+        <div className="mb-16">
+          <h3 className="text-2xl font-bold text-white mb-8">Designed for Your Hospital's Core Roles</h3>
+          <div className="grid md:grid-cols-3 gap-6">
+            <Card className="bg-[#161B22] border-[#21262d]">
+              <CardContent className="p-6">
+                <h4 className="text-lg font-bold text-white mb-3">The Compliance Officer</h4>
+                <p className="text-sm text-slate-400 leading-relaxed">
+                  Streamlined alert workflows reduce the noise from thousands of weekly access events down to a handful of prioritized insider risk warnings.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="bg-[#161B22] border-[#21262d]">
+              <CardContent className="p-6">
+                <h4 className="text-lg font-bold text-white mb-3">The Information Security Officer</h4>
+                <p className="text-sm text-slate-400 leading-relaxed">
+                  Our zero-PHI architecture ensures sensitive patient databases never leave your premises, drastically minimizing your external threat landscape.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="bg-[#161B22] border-[#21262d]">
+              <CardContent className="p-6">
+                <h4 className="text-lg font-bold text-white mb-3">The Privacy Officer</h4>
+                <p className="text-sm text-slate-400 leading-relaxed">
+                  Immediate context. Plain-English alert summaries enable lean teams to investigate and act on potential breaches without requiring dedicated data analysis.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
         <div className="pt-8 border-t border-[#21262d] flex flex-col md:flex-row justify-between items-start gap-4 text-xs text-slate-500">
-          <span>© 2025 SentinelEHR Intelligence. All rights reserved.</span>
+          <span>© 2026 SentinelEHR Intelligence. All rights reserved.</span>
           <span className="text-right max-w-sm">
             HIPAA §164.312(b) Audit Controls Compliant — Zero PHI storage architecture — Read-only Epic Clarity integration
           </span>
