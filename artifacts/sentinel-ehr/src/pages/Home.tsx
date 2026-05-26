@@ -409,7 +409,7 @@ const HowItWorks = () => {
       icon: Network,
       number: "01",
       title: "Connect to Epic Clarity",
-      body: "SentinelEHR connects to your Epic Clarity database in read-only mode using standard SQL access to ACCESS_LOG and CLARITY_EMP. No PHI is ever transmitted outside your network.",
+      body: "SentinelEHR establishes a secure, read-only SQL pipeline inside your firewall, targeting system metadata tables like ACCESS_LOG and CLARITY_EMP. Because it never processes clinical chart payloads, your core database integrity remains completely uncompromised.",
     },
     {
       icon: BarChart2,
@@ -469,7 +469,7 @@ const Why = () => {
     {
       icon: Shield,
       title: "Zero PHI Stored",
-      body: "We analyze behavioral patterns, not patient records. Your data stays in your hospital, guaranteed by our architecture.",
+      body: "Our underlying detection algorithm strips out user data attributes and maps raw behaviors locally. By avoiding data externalization entirely, SentinelEHR drops right into your system infrastructure without expanding your compliance reporting scope.",
     },
     {
       icon: Building2,
@@ -822,7 +822,7 @@ const FAQ = () => {
     },
     {
       q: "How long does setup take?",
-      a: "For a standard Epic Clarity environment, our design partners have been up and running in under one business day. We provide a connection guide specific to your Epic version and work through any firewall or access configuration with your IT team.",
+      a: "Setup takes less than 4 hours of a single database administrator's (DBA) time. Because SentinelEHR connects via read-only SQL to your existing Epic Clarity environment, there's no software installation, no infrastructure changes, and no impact on your clinical systems. We provide a connection guide specific to your Epic version and work through any firewall or access configuration with your IT team.",
     },
     {
       q: "Is SentinelEHR compliant with HIPAA §164.312(b)?",
@@ -963,8 +963,8 @@ const Footer = () => {
           <div>
             <h4 className="text-sm font-semibold text-white mb-5 uppercase tracking-wider">Trust & Legal</h4>
             <ul className="space-y-3 text-sm text-slate-400">
-              <li><a href="#" className="hover:text-[#38BDF8] transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-[#38BDF8] transition-colors">Terms of Service</a></li>
+              <li><a href="/privacy" className="hover:text-[#38BDF8] transition-colors">Privacy Policy</a></li>
+              <li><a href="/terms" className="hover:text-[#38BDF8] transition-colors">Terms of Service</a></li>
               <li><a href="#" className="hover:text-[#38BDF8] transition-colors">Security Architecture</a></li>
             </ul>
           </div>
