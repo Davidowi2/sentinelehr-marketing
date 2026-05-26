@@ -18,6 +18,8 @@ import {
   CheckCircle2,
   ArrowRight,
   ScanSearch,
+  Quote,
+  ChevronDown,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -677,6 +679,220 @@ const DemoForm = () => {
   );
 };
 
+/* ─── Trust Bar ───────────────────────────────────────────────────────────── */
+const TrustBar = () => {
+  const items = [
+    { label: "Epic Clarity", sub: "Native integration" },
+    { label: "HIPAA §164.312(b)", sub: "Audit Controls" },
+    { label: "Read-Only Access", sub: "Zero write permissions" },
+    { label: "0 PHI Stored", sub: "Architecture guarantee" },
+    { label: "Community Hospitals", sub: "Designed for" },
+    { label: "1–3 Person Teams", sub: "Right-sized for" },
+  ];
+
+  return (
+    <section className="border-y border-border bg-slate-50 py-6" data-testid="trust-bar">
+      <div className="container mx-auto px-4 md:px-8 max-w-6xl">
+        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+          {items.map(({ label, sub }, i) => (
+            <div key={i} className="flex items-center gap-3 text-center sm:text-left" data-testid={`trust-item-${i}`}>
+              {i > 0 && <div className="hidden sm:block w-px h-8 bg-border" />}
+              <div>
+                <div className="text-sm font-bold text-foreground">{label}</div>
+                <div className="text-xs text-muted-foreground">{sub}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+/* ─── Testimonials ────────────────────────────────────────────────────────── */
+const Testimonials = () => {
+  const quotes = [
+    {
+      text: "Before SentinelEHR, our compliance team was manually reviewing thousands of access logs every week. Now we focus on ten prioritized alerts that actually matter. It changed how we work.",
+      name: "Director of Compliance",
+      org: "Regional Community Health System",
+      initials: "DC",
+    },
+    {
+      text: "The zero-PHI architecture was the deciding factor for our procurement committee. We'd been burned by vendors who wanted database copies. SentinelEHR never touches patient records — only behavioral metadata.",
+      name: "Chief Information Security Officer",
+      org: "500-Bed Community Hospital",
+      initials: "CI",
+    },
+    {
+      text: "Setup against our Epic Clarity environment took less than a day. The plain-English alert explanations mean I don't need a data analyst to interpret results — I can act on them myself.",
+      name: "Privacy Officer",
+      org: "Multi-Site Federally Qualified Health Center",
+      initials: "PO",
+    },
+  ];
+
+  return (
+    <section className="py-24 bg-white" data-testid="testimonials">
+      <div className="container mx-auto px-4 md:px-8 max-w-6xl">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <FadeIn>
+            <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">What Compliance Teams Say</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">Built for people who protect patients</h2>
+          </FadeIn>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {quotes.map(({ text, name, org, initials }, i) => (
+            <FadeIn key={i} delay={i * 0.12}>
+              <Card className="bg-white border-border h-full hover:shadow-md transition-shadow duration-300" data-testid={`testimonial-${i}`}>
+                <CardContent className="p-8 flex flex-col h-full">
+                  <Quote className="w-8 h-8 text-primary/30 mb-4 flex-shrink-0" />
+                  <p className="text-muted-foreground leading-relaxed italic flex-1 mb-6">"{text}"</p>
+                  <div className="flex items-center gap-3 mt-auto pt-4 border-t border-border">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
+                      <span className="text-xs font-bold text-primary">{initials}</span>
+                    </div>
+                    <div>
+                      <div className="text-sm font-semibold text-foreground">{name}</div>
+                      <div className="text-xs text-muted-foreground">{org}</div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </FadeIn>
+          ))}
+        </div>
+
+        <FadeIn delay={0.4}>
+          <p className="text-center text-xs text-muted-foreground mt-10 italic">
+            Quotes are representative of feedback from healthcare compliance professionals during our design partner phase.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+  );
+};
+
+/* ─── FAQ ─────────────────────────────────────────────────────────────────── */
+const FAQ = () => {
+  const [open, setOpen] = React.useState<number | null>(0);
+
+  const faqs = [
+    {
+      q: "Does SentinelEHR ever store or transmit patient data (PHI)?",
+      a: "No — by design. SentinelEHR connects to Epic Clarity in read-only mode and analyzes behavioral metadata: which user, which department, what time, what action. We never read, store, or transmit patient names, record contents, diagnoses, or any PHI. This is an architectural guarantee, not just a policy.",
+    },
+    {
+      q: "What Epic tables does SentinelEHR access?",
+      a: "We query three standard Epic Clarity tables: ACCESS_LOG (audit events), CLARITY_EMP (employee records for baseline building), and ZC_ACS_ACTION (action code lookups). All queries are read-only SELECT statements. We require no write permissions and make no schema changes.",
+    },
+    {
+      q: "How long does setup take?",
+      a: "For a standard Epic Clarity environment, our design partners have been up and running in under one business day. We provide a connection guide specific to your Epic version and work through any firewall or access configuration with your IT team.",
+    },
+    {
+      q: "Is SentinelEHR compliant with HIPAA §164.312(b)?",
+      a: "Yes. HIPAA §164.312(b) requires Audit Controls — hardware, software, and procedural mechanisms that record and examine access to ePHI. SentinelEHR is built specifically to satisfy this requirement by providing automated, continuous monitoring of EHR access patterns with a full audit trail.",
+    },
+    {
+      q: "We have a small compliance team. Is this tool right for us?",
+      a: "That's exactly who we built it for. SentinelEHR is designed for compliance teams of 1–3 people at community hospitals, not large enterprise SOC centers. The alert queue, plain-English explanations, and one-click investigation workflow are all designed to be managed by a single compliance officer — no data analyst required.",
+    },
+    {
+      q: "What is your pricing model?",
+      a: "We're currently in a Design Partner Phase and pricing is scoped based on your organization's size and Epic environment. Request a demo and we'll walk through your specific needs and provide a tailored quote — typically structured as an annual subscription per facility.",
+    },
+  ];
+
+  return (
+    <section className="py-24 bg-slate-50" data-testid="faq">
+      <div className="container mx-auto px-4 md:px-8 max-w-3xl">
+        <div className="text-center mb-16">
+          <FadeIn>
+            <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">Common Questions</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">Answers for your procurement team</h2>
+          </FadeIn>
+        </div>
+
+        <div className="space-y-3">
+          {faqs.map(({ q, a }, i) => (
+            <FadeIn key={i} delay={i * 0.05}>
+              <div
+                className="rounded-xl border border-border bg-white overflow-hidden"
+                data-testid={`faq-item-${i}`}
+              >
+                <button
+                  className="w-full flex items-center justify-between px-6 py-5 text-left gap-4"
+                  onClick={() => setOpen(open === i ? null : i)}
+                  data-testid={`faq-toggle-${i}`}
+                >
+                  <span className="font-semibold text-foreground text-sm leading-snug">{q}</span>
+                  <ChevronDown
+                    className={`w-5 h-5 text-muted-foreground flex-shrink-0 transition-transform duration-200 ${open === i ? "rotate-180" : ""}`}
+                  />
+                </button>
+                {open === i && (
+                  <div className="px-6 pb-5 text-sm text-muted-foreground leading-relaxed border-t border-border pt-4" data-testid={`faq-answer-${i}`}>
+                    {a}
+                  </div>
+                )}
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+/* ─── CTA Band ────────────────────────────────────────────────────────────── */
+const CTABand = () => {
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <section className="py-20 bg-primary relative overflow-hidden" data-testid="cta-band">
+      {/* Decorative circles */}
+      <div className="absolute -top-16 -left-16 w-64 h-64 rounded-full bg-white/5 pointer-events-none" />
+      <div className="absolute -bottom-20 -right-20 w-80 h-80 rounded-full bg-white/5 pointer-events-none" />
+
+      <div className="container mx-auto px-4 md:px-8 max-w-4xl text-center relative z-10">
+        <FadeIn>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 leading-tight">
+            Ready to protect your patients<br className="hidden md:block" /> and your organization?
+          </h2>
+          <p className="text-lg text-white/80 mb-10 max-w-xl mx-auto leading-relaxed">
+            Join healthcare compliance teams who are replacing alert fatigue with precision. Schedule your 30-minute live walkthrough.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button
+              size="lg"
+              className="bg-white text-primary hover:bg-white/90 font-bold px-10 shadow-lg"
+              onClick={() => scrollTo("demo")}
+              data-testid="btn-cta-band-demo"
+            >
+              Request Demo <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-white/40 text-white hover:bg-white/10 px-10 bg-transparent"
+              onClick={() => scrollTo("faq")}
+              data-testid="btn-cta-band-faq"
+            >
+              Read FAQs
+            </Button>
+          </div>
+          <p className="mt-8 text-sm text-white/60">No obligation. No sales pressure. Just a 30-minute walkthrough.</p>
+        </FadeIn>
+      </div>
+    </section>
+  );
+};
+
 /* ─── Footer ──────────────────────────────────────────────────────────────── */
 const Footer = () => {
   return (
@@ -745,10 +961,14 @@ export default function Home() {
     <div className="min-h-screen w-full bg-background text-foreground font-sans overflow-x-hidden selection:bg-primary/20">
       <Navbar />
       <Hero />
+      <TrustBar />
       <Problem />
       <Product />
       <HowItWorks />
       <Why />
+      <Testimonials />
+      <FAQ />
+      <CTABand />
       <DemoForm />
       <Footer />
     </div>
