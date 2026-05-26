@@ -75,11 +75,12 @@ const Navbar = () => {
       <div className="container mx-auto px-4 md:px-8 h-16 flex items-center justify-between max-w-6xl">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex items-center gap-2"
+          className="flex items-center"
           data-testid="nav-logo"
         >
-          <Shield className="w-6 h-6 text-primary" />
-          <span className="font-bold text-lg tracking-tight text-foreground">SentinelEHR</span>
+          <div className="bg-[#0B1B2E] rounded-xl px-4 py-2">
+            <img src="/logo.png" alt="SentinelEHR" className="h-10 w-auto" />
+          </div>
         </button>
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
           <button onClick={() => scrollTo("platform")} className="hover:text-primary transition-colors" data-testid="nav-platform">Platform</button>
@@ -900,9 +901,8 @@ const Footer = () => {
       <div className="container mx-auto px-4 md:px-8 max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="md:col-span-1">
-            <div className="flex items-center gap-2 mb-5">
-              <Shield className="w-6 h-6 text-[#38BDF8]" />
-              <span className="font-bold text-lg tracking-tight text-white">SentinelEHR</span>
+            <div className="mb-5">
+              <img src="/logo.png" alt="SentinelEHR" className="h-14 w-auto brightness-0 invert" />
             </div>
             <p className="text-sm text-slate-400 leading-relaxed mb-5">
               Insider risk intelligence for community health systems using Epic EHR.
