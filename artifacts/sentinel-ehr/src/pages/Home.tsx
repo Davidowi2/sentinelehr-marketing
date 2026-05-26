@@ -1,4 +1,5 @@
 import React from "react";
+import logoSrc from "@assets/image_1779802547965.png";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -75,12 +76,20 @@ const Navbar = () => {
       <div className="container mx-auto px-4 md:px-8 h-16 flex items-center justify-between max-w-6xl">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex items-center"
+          className="flex items-center gap-2.5"
           data-testid="nav-logo"
         >
-          <div className="bg-[#0B1B2E] rounded-xl px-4 py-2">
-            <img src="/logo.png" alt="SentinelEHR" className="h-10 w-auto" />
+          {/* Circle mark — crop to the brushstroke circle portion with circular mask */}
+          <div className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0">
+            <img
+              src={logoSrc}
+              alt=""
+              aria-hidden="true"
+              className="w-full object-cover object-top"
+              style={{ height: "165%", filter: "brightness(0)" }}
+            />
           </div>
+          <span className="font-extrabold tracking-widest text-sm text-foreground">SENTINELEHR</span>
         </button>
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
           <button onClick={() => scrollTo("platform")} className="hover:text-primary transition-colors" data-testid="nav-platform">Platform</button>
@@ -902,7 +911,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="md:col-span-1">
             <div className="mb-5">
-              <img src="/logo.png" alt="SentinelEHR" className="h-14 w-auto brightness-0 invert" />
+              <img src={logoSrc} alt="SentinelEHR" className="h-16 w-auto" />
             </div>
             <p className="text-sm text-slate-400 leading-relaxed mb-5">
               Insider risk intelligence for community health systems using Epic EHR.
