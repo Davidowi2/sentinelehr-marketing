@@ -894,7 +894,7 @@ const CTABand = () => {
             Ready to protect your patients<br className="hidden md:block" /> and your organization?
           </h2>
           <p className="text-lg text-white/80 mb-10 max-w-xl mx-auto leading-relaxed">
-            Join healthcare compliance teams who are replacing alert fatigue with precision. Schedule your 30-minute live walkthrough.
+            Built for community health centers that need serious monitoring without enterprise complexity. Schedule your 30-minute live walkthrough.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button
@@ -959,8 +959,8 @@ const Footer = () => {
             <h4 className="text-sm font-semibold text-white mb-5 uppercase tracking-wider">Connect</h4>
             <ul className="space-y-3 text-sm text-slate-400">
               <li>
-                <a href="mailto:demo@sentinelehr.com" className="hover:text-[#38BDF8] transition-colors">
-                  demo@sentinelehr.com
+                <a href="mailto:david.sentinelehr@gmail.com" className="hover:text-[#38BDF8] transition-colors">
+                  david.sentinelehr@gmail.com
                 </a>
               </li>
               <li>
