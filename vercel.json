@@ -1,8 +1,13 @@
 {
-  "buildCommand": "pnpm --filter @workspace/sentinel-ehr build",
-  "outputDirectory": "public",
-  "installCommand": "pnpm install --frozen-lockfile",
+  "version": 2,
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/(privacy|terms)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ]
 }
