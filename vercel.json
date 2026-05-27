@@ -1,18 +1,12 @@
 {
   "version": 2,
+  "buildCommand": "cd artifacts/sentinel-ehr && npm run build",
+  "outputDirectory": "artifacts/sentinel-ehr/public",
   "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/privacy",
-      "destination": "/artifacts/sentinel-ehr/public/index.html"
-    },
-    {
-      "source": "/terms",
-      "destination": "/artifacts/sentinel-ehr/public/index.html"
-    },
-    {
       "source": "/(.*)",
-      "destination": "/artifacts/sentinel-ehr/public/index.html"
+      "destination": "/index.html"
     }
   ]
 }
