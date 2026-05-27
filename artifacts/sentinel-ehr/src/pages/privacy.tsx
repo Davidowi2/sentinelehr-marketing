@@ -24,11 +24,6 @@ const FadeIn = ({
 );
 
 const Navbar = () => {
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-border bg-[#0D1117]/95 backdrop-blur-md">
       <div className="container mx-auto px-4 md:px-8 h-16 flex items-center justify-between max-w-6xl">
@@ -68,7 +63,7 @@ export default function PrivacyPage() {
               <h1 className="text-4xl font-bold text-foreground">SentinelEHR Privacy Policy</h1>
             </div>
             
-            <p className="text-sm text-muted-foreground mb-12">Effective Date: May 26, 2026</p>
+            <p className="text-sm text-muted-foreground mb-12">Effective Date: May 27, 2026</p>
 
             <div className="prose prose-slate max-w-none">
               <section className="mb-10">
@@ -87,26 +82,122 @@ export default function PrivacyPage() {
 
               <section className="mb-10">
                 <h2 className="text-2xl font-bold mb-4 text-foreground">3. Information We Collect via This Marketing Website</h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  For visitors utilizing our "Request a Live Demonstration" or contact forms, we collect basic corporate metadata: Name, Professional/Business Email, Organization Name, and Core Role. This information is used strictly to coordinate platform walkthroughs and is never shared, rented, or sold to third-party marketing entities.
+                <p className="text-muted-foreground leading-relaxed mb-3">
+                  For visitors utilizing our "Request a Live Demonstration" or contact forms, we collect basic corporate metadata:
+                </p>
+                <ul className="list-disc pl-6 text-muted-foreground leading-relaxed space-y-1">
+                  <li>Name</li>
+                  <li>Professional/Business Email</li>
+                  <li>Organization Name</li>
+                  <li>Core Role/Title</li>
+                  <li>IP address and browser information (automatically collected)</li>
+                </ul>
+                <p className="text-muted-foreground leading-relaxed mt-3">
+                  This information is used strictly to coordinate platform walkthroughs and is never shared, rented, or sold to third-party marketing entities.
                 </p>
               </section>
 
               <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">4. Regulatory Compliance</h2>
+                <h2 className="text-2xl font-bold mb-4 text-foreground">4. How We Use Your Information</h2>
+                <p className="text-muted-foreground leading-relaxed mb-3">
+                  Information collected through our website is used to:
+                </p>
+                <ul className="list-disc pl-6 text-muted-foreground leading-relaxed space-y-1">
+                  <li>Schedule and conduct product demonstrations</li>
+                  <li>Respond to inquiries and provide customer support</li>
+                  <li>Send relevant product updates and security advisories</li>
+                  <li>Improve our website and service offerings</li>
+                  <li>Comply with legal obligations and enforce our terms</li>
+                </ul>
+              </section>
+
+              <section className="mb-10">
+                <h2 className="text-2xl font-bold mb-4 text-foreground">5. Data Retention</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  Our architecture is meticulously mapped to comply directly with HIPAA §164.312(b) Audit Controls. Because no sensitive patient databases are externalized, utilizing SentinelEHR minimizes your external attack surface and respects institutional BAAs (Business Associate Agreements).
+                  Demonstration request data is retained for 24 months from the date of submission or until you request deletion. Audit logs and security incident records related to platform usage are maintained for a minimum of six years in compliance with HIPAA requirements under 45 CFR §164.316(b)(2)(i). You may request deletion of your contact information at any time by emailing us at the address below.
                 </p>
               </section>
 
               <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">5. Contact Information</h2>
+                <h2 className="text-2xl font-bold mb-4 text-foreground">6. Your Privacy Rights</h2>
+                <p className="text-muted-foreground leading-relaxed mb-3">
+                  You have the following rights regarding your personal information:
+                </p>
+                <ul className="list-disc pl-6 text-muted-foreground leading-relaxed space-y-2">
+                  <li><strong>Access:</strong> Request a copy of the personal information we hold about you</li>
+                  <li><strong>Correction:</strong> Request correction of inaccurate or incomplete information</li>
+                  <li><strong>Deletion:</strong> Request deletion of your personal information (subject to legal retention requirements)</li>
+                  <li><strong>Opt-Out:</strong> Unsubscribe from marketing communications at any time</li>
+                  <li><strong>Data Portability:</strong> Request your data in a structured, machine-readable format</li>
+                </ul>
+                <p className="text-muted-foreground leading-relaxed mt-3">
+                  To exercise these rights, contact us at david.sentinelehr@gmail.com. We will respond to verified requests within 30 days.
+                </p>
+              </section>
+
+              <section className="mb-10">
+                <h2 className="text-2xl font-bold mb-4 text-foreground">7. Cookies and Tracking Technologies</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  For questions regarding data processing frameworks, contact our security administration team at:{" "}
+                  Our website uses essential cookies to ensure proper functionality. We do not use third-party advertising cookies or tracking pixels. Session cookies are automatically deleted when you close your browser. You can configure your browser to refuse cookies, though this may limit website functionality.
+                </p>
+              </section>
+
+              <section className="mb-10">
+                <h2 className="text-2xl font-bold mb-4 text-foreground">8. Third-Party Services</h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  SentinelEHR does not share your information with third-party service providers for marketing purposes. Any third-party services used for essential operations (such as email delivery or hosting infrastructure) are bound by strict data processing agreements and are prohibited from using your data for their own purposes.
+                </p>
+              </section>
+
+              <section className="mb-10">
+                <h2 className="text-2xl font-bold mb-4 text-foreground">9. Security Measures</h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  We implement industry-standard security measures including encryption in transit (TLS 1.3), access controls, regular security audits, and employee training on data protection. However, no method of transmission over the internet is 100% secure. We cannot guarantee absolute security but maintain commercially reasonable safeguards.
+                </p>
+              </section>
+
+              <section className="mb-10">
+                <h2 className="text-2xl font-bold mb-4 text-foreground">10. Breach Notification</h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  In the event of a data breach affecting your personal information, we will notify affected individuals within 72 hours of discovery as required by applicable regulations. Notifications will include the nature of the breach, types of information involved, steps taken to mitigate harm, and recommended actions for affected individuals.
+                </p>
+              </section>
+
+              <section className="mb-10">
+                <h2 className="text-2xl font-bold mb-4 text-foreground">11. Children's Privacy</h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  SentinelEHR services are not directed to individuals under the age of 18. We do not knowingly collect personal information from children. If we become aware that we have inadvertently collected information from a child under 18, we will take steps to delete such information promptly.
+                </p>
+              </section>
+
+              <section className="mb-10">
+                <h2 className="text-2xl font-bold mb-4 text-foreground">12. International Data Transfers</h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  All data processing occurs within your local network infrastructure. Marketing website data is stored on servers located in the United States. By submitting information through our website, you consent to this storage location. We do not transfer data internationally without appropriate safeguards.
+                </p>
+              </section>
+
+              <section className="mb-10">
+                <h2 className="text-2xl font-bold mb-4 text-foreground">13. Regulatory Compliance</h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  Our architecture is meticulously mapped to comply directly with HIPAA §164.312(b) Audit Controls, §164.308(a)(1)(ii)(D) Information System Activity Review, and §164.312(d) Person or Entity Authentication. Because no sensitive patient databases are externalized, utilizing SentinelEHR minimizes your external attack surface and respects institutional BAAs (Business Associate Agreements). We also maintain compliance with applicable state privacy laws including CCPA where relevant.
+                </p>
+              </section>
+
+              <section className="mb-10">
+                <h2 className="text-2xl font-bold mb-4 text-foreground">14. Changes to This Privacy Policy</h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  We may update this Privacy Policy periodically to reflect changes in our practices or legal requirements. Material changes will be communicated via email to registered contacts at least 30 days before taking effect. The "Effective Date" at the top of this page indicates when the policy was last revised. Continued use of our services after changes take effect constitutes acceptance of the updated policy.
+                </p>
+              </section>
+
+              <section className="mb-10">
+                <h2 className="text-2xl font-bold mb-4 text-foreground">15. Contact Information</h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  For questions regarding data processing frameworks, privacy rights requests, or security concerns, contact our security administration team at:{" "}
                   <a href="mailto:david.sentinelehr@gmail.com" className="text-primary hover:underline">
                     david.sentinelehr@gmail.com
                   </a>
-                  .
                 </p>
               </section>
             </div>
