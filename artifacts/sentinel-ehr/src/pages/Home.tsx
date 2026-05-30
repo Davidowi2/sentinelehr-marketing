@@ -891,7 +891,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-sm text-slate-400 leading-relaxed mb-5">
-              Insider risk intelligence for community health systems using Epic EHR. Designed for Your Organization.
+              Insider risk intelligence for community health systems using Epic EHR. Insider risk intelligence built for community hospitals and FQHCs.
             </p>
             <div className="text-xs text-slate-500 leading-relaxed">
               Currently in Design Partner Phase
