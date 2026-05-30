@@ -211,20 +211,6 @@ const Hero = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
           </div>
 
-          {/* Floating badge — top left */}
-          <div
-            className="absolute -left-5 top-8 bg-white rounded-xl shadow-lg border border-border px-4 py-3 flex items-center gap-3 min-w-[180px]"
-            data-testid="floating-badge-hipaa"
-          >
-            <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-              <ShieldCheck className="w-5 h-5 text-primary" />
-            </div>
-            <div>
-              <div className="text-xs font-bold text-foreground">HIPAA §164.312(b)</div>
-              <div className="text-xs text-muted-foreground">Audit Controls</div>
-            </div>
-          </div>
-
           {/* Floating badge — bottom left */}
           <div
             className="absolute -left-5 bottom-12 bg-white rounded-xl shadow-lg border border-border px-4 py-3 flex items-center gap-3 min-w-[180px]"
@@ -507,16 +493,6 @@ const Why = () => {
           <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
             Community health centers and hospitals operate with limited resources but face the same regulatory pressure as large systems. SentinelEHR delivers enterprise-grade detection at a scale and price that works for your organization.
           </p>
-          <Card className="border-l-4 border-l-primary border-y-border border-r-border rounded-l-none bg-slate-50">
-            <CardContent className="p-6">
-              <blockquote className="text-foreground font-medium text-base leading-relaxed italic mb-3" data-testid="blockquote">
-                "Our zero-PHI architecture is the strongest differentiator for procurement departments. We don't just secure your data — we avoid taking it in the first place."
-              </blockquote>
-              <div className="text-xs text-muted-foreground font-bold uppercase tracking-wider">
-                — SentinelEHR Architecture Team
-              </div>
-            </CardContent>
-          </Card>
         </FadeIn>
       </div>
     </section>
@@ -584,7 +560,7 @@ const DemoForm = () => {
                 "30-minute live walkthrough with a product specialist",
                 "Tailored to your Epic Clarity environment",
                 "Zero obligation — no sales pressure",
-                "Includes a HIPAA compliance architecture overview",
+                "Includes a zero PHI storage architecture walkthrough",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3 text-sm text-muted-foreground">
                   <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
@@ -730,7 +706,6 @@ const DemoForm = () => {
 const TrustBar = () => {
   const items = [
     { label: "Epic Clarity", sub: "Native integration" },
-    { label: "HIPAA §164.312(b)", sub: "Audit Controls" },
     { label: "Read-Only Access", sub: "Zero write permissions" },
     { label: "0 PHI Stored", sub: "Architecture guarantee" },
     { label: "Community Hospitals", sub: "Designed for" },
@@ -945,8 +920,8 @@ const Footer = () => {
             <h4 className="text-sm font-semibold text-white mb-5 uppercase tracking-wider">Connect</h4>
             <ul className="space-y-3 text-sm text-slate-400">
               <li>
-                <a href="mailto:david.sentinelehr@gmail.com" className="hover:text-[#38BDF8] transition-colors">
-                  david.sentinelehr@gmail.com
+                <a href="mailto:david@sentinelehr.org" className="hover:text-[#38BDF8] transition-colors">
+                  david@sentinelehr.org
                 </a>
               </li>
               <li>
