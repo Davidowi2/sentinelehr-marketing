@@ -389,7 +389,7 @@ const HowItWorks = () => {
       icon: Network,
       number: "01",
       title: "Connect to Epic Clarity",
-      body: "SentinelEHR establishes a secure, read-only SQL pipeline inside your firewall, targeting system metadata tables like ACCESS_LOG and CLARITY_EMP. Because it never processes clinical chart payloads, your core database integrity remains completely uncompromised.",
+      body: "SentinelEHR establishes a secure, read-only SQL pipeline targeting system metadata tables like ACCESS_LOG and CLARITY_EMP. Because it never processes clinical chart payloads, your core database integrity remains completely uncompromised.",
     },
     {
       icon: BarChart2,
