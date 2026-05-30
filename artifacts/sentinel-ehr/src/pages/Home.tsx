@@ -143,7 +143,7 @@ const Hero = () => {
               data-testid="badge-hipaa"
             >
               <ShieldCheck className="w-3.5 h-3.5" />
-              HIPAA §164.312(b) Compliant
+              Zero PHI Storage Architecture
             </Badge>
             <Badge
               variant="outline"
@@ -680,6 +680,26 @@ const DemoForm = () => {
                         )}
                       />
                     </div>
+                    <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:'16px', marginBottom:'16px'}}>
+                      <div>
+                        <label style={{display:'block', fontSize:'11px', fontWeight:'600', letterSpacing:'0.05em', marginBottom:'6px', color:'#64748b'}}>EHR SYSTEM</label>
+                        <select name='ehr_system' required style={{width:'100%', padding:'12px', border:'1px solid #e2e8f0', borderRadius:'8px', fontSize:'14px', background:'white'}}>
+                          <option value=''>Select EHR</option>
+                          <option value='Epic'>Epic</option>
+                          <option value='Cerner'>Cerner</option>
+                          <option value='Other'>Other</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label style={{display:'block', fontSize:'11px', fontWeight:'600', letterSpacing:'0.05em', marginBottom:'6px', color:'#64748b'}}>COMPLIANCE TEAM SIZE</label>
+                        <select name='team_size' required style={{width:'100%', padding:'12px', border:'1px solid #e2e8f0', borderRadius:'8px', fontSize:'14px', background:'white'}}>
+                          <option value=''>Select size</option>
+                          <option value='1'>Just me</option>
+                          <option value='2-3'>2-3 people</option>
+                          <option value='4+'>4+ people</option>
+                        </select>
+                      </div>
+                    </div>
                     <Button
                       type="submit"
                       className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-5 font-bold"
@@ -689,7 +709,7 @@ const DemoForm = () => {
                       {submitting ? (
                         <>
                           <span className="mr-2">Sending...</span>
-                          <span className="animate-spin">⏳</span>
+                          <span style={{display:'inline-block', width:'14px', height:'14px', border:'2px solid rgba(255,255,255,0.3)', borderTop:'2px solid white', borderRadius:'50%', animation:'spin 0.8s linear infinite', marginLeft:'8px'}} />
                         </>
                       ) : (
                         "Schedule Demo"
@@ -741,27 +761,6 @@ const TrustBar = () => {
 
 /* ─── Testimonials ────────────────────────────────────────────────────────── */
 const Testimonials = () => {
-  const quotes = [
-    {
-      text: "Manual access log audits create an operational backlog that leaves security teams weeks behind a breach. SentinelEHR's method of isolating and scoring metadata behaviors cuts review noise instantly.",
-      name: "Director of Healthcare Compliance",
-      org: "Validation Cohort Feedback",
-      initials: "DC",
-    },
-    {
-      text: "The zero-PHI local indexing model eliminates the traditional data externalization risk. Because the application processes behavioral paths behind our firewall, it falls entirely outside our reporting scope.",
-      name: "Chief Information Security Officer",
-      org: "Technical Architecture Reviewer",
-      initials: "CI",
-    },
-    {
-      text: "Deploying a new audit tool usually disrupts production metadata layers. A read-only integration targeting core log workflows means zero clinical downtime and an immediate path to deployment.",
-      name: "Principal Enterprise Systems Engineer",
-      org: "Epic Clarity Integration Partner",
-      initials: "PE",
-    },
-  ];
-
   return (
     <section className="py-24 bg-white" data-testid="testimonials">
       <div className="container mx-auto px-4 md:px-8 max-w-6xl">
@@ -772,32 +771,15 @@ const Testimonials = () => {
           </FadeIn>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {quotes.map(({ text, name, org, initials }, i) => (
-            <FadeIn key={i} delay={i * 0.12}>
-              <Card className="bg-white border-border h-full hover:shadow-md transition-shadow duration-300" data-testid={`testimonial-${i}`}>
-                <CardContent className="p-8 flex flex-col h-full">
-                  <Quote className="w-8 h-8 text-primary/30 mb-4 flex-shrink-0" />
-                  <p className="text-muted-foreground leading-relaxed italic flex-1 mb-6">"{text}"</p>
-                  <div className="flex items-center gap-3 mt-auto pt-4 border-t border-border">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
-                      <span className="text-xs font-bold text-primary">{initials}</span>
-                    </div>
-                    <div>
-                      <div className="text-sm font-semibold text-foreground">{name}</div>
-                      <div className="text-xs text-muted-foreground">{org}</div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </FadeIn>
-          ))}
-        </div>
-
-        <FadeIn delay={0.4}>
-          <p className="text-center text-xs text-muted-foreground mt-10 italic">
-            Quotes are representative of feedback from healthcare compliance professionals during our design partner phase.
-          </p>
+        <FadeIn delay={0.1}>
+          <div style={{textAlign:'center', padding:'60px 20px', maxWidth:'600px', margin:'0 auto'}}>
+            <p style={{fontSize:'18px', color:'#64748b', lineHeight:'1.7'}}>
+              SentinelEHR is currently in design partner phase — working with community health centers to validate our detection engine against real Epic environments.
+            </p>
+            <p style={{marginTop:'16px', fontSize:'15px', color:'#94a3b8'}}>
+              Interested in joining our design partner cohort? Request a demo below.
+            </p>
+          </div>
         </FadeIn>
       </div>
     </section>
