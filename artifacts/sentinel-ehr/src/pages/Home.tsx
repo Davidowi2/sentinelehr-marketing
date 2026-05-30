@@ -994,6 +994,10 @@ const Footer = () => {
 
         <div className="pt-8 border-t border-[#21262d] flex flex-col md:flex-row justify-between items-start gap-4 text-xs text-slate-500">
           <span>© 2026 SentinelEHR Intelligence. All rights reserved.</span>
+          <div className="flex items-center gap-4">
+            <a href="/privacy" className="hover:text-slate-300 transition-colors">Privacy Policy</a>
+            <a href="/terms" className="hover:text-slate-300 transition-colors">Terms of Service</a>
+          </div>
           <span className="text-right max-w-sm">
             HIPAA §164.312(b) Audit Controls Compliant — Zero PHI storage architecture — Read-only Epic Clarity integration
           </span>
