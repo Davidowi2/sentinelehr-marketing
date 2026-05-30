@@ -891,7 +891,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-sm text-slate-400 leading-relaxed mb-5">
-              Insider risk intelligence for community health systems using Epic EHR. Insider risk intelligence built for community hospitals and FQHCs.
+              Insider risk intelligence built for community hospitals and FQHCs.
             </p>
             <div className="text-xs text-slate-500 leading-relaxed">
               Currently in Design Partner Phase
@@ -925,8 +925,40 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Community Health Case Studies */}
-        <div className="mb-16">
+        {/* Community Health Case Studies — moved to main page content */}
+
+        <div className="pt-8 border-t border-[#21262d] flex flex-col md:flex-row justify-between items-start gap-4 text-xs text-slate-500">
+          <span>© 2026 SentinelEHR Intelligence. All rights reserved.</span>
+          <div className="flex items-center gap-4">
+            <a href="/privacy" className="hover:text-slate-300 transition-colors">Privacy Policy</a>
+            <a href="/terms" className="hover:text-slate-300 transition-colors">Terms of Service</a>
+          </div>
+          <span className="text-right max-w-sm">
+            Zero PHI Storage Architecture — Read-only Epic Clarity integration
+          </span>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+/* ─── Page ────────────────────────────────────────────────────────────────── */
+export default function Home() {
+  return (
+    <div className="min-h-screen w-full bg-background text-foreground font-sans overflow-x-hidden selection:bg-primary/20">
+      <Navbar />
+      <Hero />
+      <TrustBar />
+      <Problem />
+      <Product />
+      <HowItWorks />
+      <Why />
+      <Testimonials />
+      <FAQ />
+      <CTABand />
+      <DemoForm />
+      <section className="py-20 bg-[#0D1117]">
+        <div className="container mx-auto px-4 md:px-8 max-w-6xl">
           <h3 className="text-2xl font-bold text-white mb-8">Designed for Your Hospital's Core Roles</h3>
           <div className="grid md:grid-cols-3 gap-6">
             <Card className="bg-[#161B22] border-[#21262d]">
@@ -955,37 +987,7 @@ const Footer = () => {
             </Card>
           </div>
         </div>
-
-        <div className="pt-8 border-t border-[#21262d] flex flex-col md:flex-row justify-between items-start gap-4 text-xs text-slate-500">
-          <span>© 2026 SentinelEHR Intelligence. All rights reserved.</span>
-          <div className="flex items-center gap-4">
-            <a href="/privacy" className="hover:text-slate-300 transition-colors">Privacy Policy</a>
-            <a href="/terms" className="hover:text-slate-300 transition-colors">Terms of Service</a>
-          </div>
-          <span className="text-right max-w-sm">
-            HIPAA §164.312(b) Audit Controls Compliant — Zero PHI storage architecture — Read-only Epic Clarity integration
-          </span>
-        </div>
-      </div>
-    </footer>
-  );
-};
-
-/* ─── Page ────────────────────────────────────────────────────────────────── */
-export default function Home() {
-  return (
-    <div className="min-h-screen w-full bg-background text-foreground font-sans overflow-x-hidden selection:bg-primary/20">
-      <Navbar />
-      <Hero />
-      <TrustBar />
-      <Problem />
-      <Product />
-      <HowItWorks />
-      <Why />
-      <Testimonials />
-      <FAQ />
-      <CTABand />
-      <DemoForm />
+      </section>
       <Footer />
       <CookieBanner />
     </div>
