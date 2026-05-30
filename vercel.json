@@ -1,7 +1,6 @@
 {
   "version": 2,
   "buildCommand": "pnpm --filter @workspace/sentinel-ehr build",
-  "outputDirectory": "artifacts/sentinel-ehr/dist",
   "cleanUrls": true,
   "rewrites": [
     {
