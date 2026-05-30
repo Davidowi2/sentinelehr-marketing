@@ -449,7 +449,7 @@ const Why = () => {
     {
       icon: Shield,
       title: "Zero PHI Stored",
-      body: "Our underlying detection algorithm strips out user data attributes and maps raw behaviors locally. By avoiding data externalization entirely, SentinelEHR drops right into your system infrastructure without expanding your compliance reporting scope.",
+      body: "SentinelEHR analyzes behavioral metadata only — who accessed what, when, and how often. Patient record content never leaves your environment. Zero PHI stored, ever.",
     },
     {
       icon: Building2,
@@ -919,11 +919,6 @@ const Footer = () => {
               <li>
                 <a href="mailto:david@sentinelehr.org" className="hover:text-[#38BDF8] transition-colors">
                   david@sentinelehr.org
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/sentinelehr" target="_blank" rel="noreferrer" className="hover:text-[#38BDF8] transition-colors">
-                  GitHub Repository
                 </a>
               </li>
             </ul>
