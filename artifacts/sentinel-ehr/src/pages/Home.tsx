@@ -776,8 +776,8 @@ const FAQ = () => {
       a: "Setup takes less than 4 hours of a single database administrator's (DBA) time. Because SentinelEHR connects via read-only SQL to your existing Epic Clarity environment, there's no software installation, no infrastructure changes, and no impact on your clinical systems. We provide a connection guide specific to your Epic version and work through any firewall or access configuration with your IT team.",
     },
     {
-      q: "Is SentinelEHR compliant with HIPAA §164.312(b)?",
-      a: "Yes. HIPAA §164.312(b) requires Audit Controls — hardware, software, and procedural mechanisms that record and examine access to ePHI. SentinelEHR is built specifically to satisfy this requirement by providing automated, continuous monitoring of EHR access patterns with a full audit trail.",
+      q: "How does SentinelEHR support HIPAA audit control requirements?",
+      a: "SentinelEHR is designed to support your organization's compliance with HIPAA audit control requirements by providing automated monitoring of Epic access logs, ranked alerts, and a full investigation audit trail. We do not claim certification — we provide the tooling your compliance team needs to demonstrate control.",
     },
     {
       q: "We have a small compliance team. Is this tool right for us?",
