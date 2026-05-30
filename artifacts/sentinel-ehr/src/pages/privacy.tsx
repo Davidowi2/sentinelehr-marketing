@@ -62,142 +62,66 @@ export default function PrivacyPage() {
               <Shield className="w-8 h-8 text-primary" />
               <h1 className="text-4xl font-bold text-foreground">SentinelEHR Privacy Policy</h1>
             </div>
-            
-            <p className="text-sm text-muted-foreground mb-12">Effective Date: May 27, 2026</p>
+
+            <p className="text-sm text-muted-foreground mb-12">Last updated: May 30, 2026</p>
 
             <div className="prose prose-slate max-w-none">
               <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">1. Scope and Zero-PHI Guarantee</h2>
+                <h2 className="text-2xl font-bold mb-4 text-foreground">Who we are</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  SentinelEHR is built specifically to interface with internal healthcare data systems (specifically Epic Clarity databases) via localized, read-only structures. Our operational architecture enforces a Zero-PHI transmission guarantee. SentinelEHR does not copy, mirror, store, or transmit Protected Health Information (PHI) outside of your local network infrastructure.
+                  SentinelEHR is a healthcare insider risk intelligence platform built for compliance officers at community hospitals and federally qualified health centers. We are currently operating in design partner phase.
                 </p>
               </section>
 
               <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">2. Data Access and Processing</h2>
+                <h2 className="text-2xl font-bold mb-4 text-foreground">What information we collect</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  All behavioral auditing, anomaly detection, and access analysis are performed within your system perimeter. The platform reads raw audit logs (<code className="bg-muted px-2 py-1 rounded">ACCESS_LOG</code>, <code className="bg-muted px-2 py-1 rounded">CLARITY_EMP</code>) solely to compile risk metrics and prioritize alerts. No patient names, medical histories, diagnostic data, or financial details are extracted or archived by our processing pipelines.
+                  When you submit a demo request through our website, we collect your full name, business email address, organization name, job role, EHR system, and compliance team size. We collect only what you voluntarily provide.
+                </p>
+                <p className="text-muted-foreground leading-relaxed mt-4">
+                  We do not collect, store, or process any patient health information. SentinelEHR's architecture is designed so that patient records never leave your organization's environment.
                 </p>
               </section>
 
               <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">3. Information We Collect via This Marketing Website</h2>
-                <p className="text-muted-foreground leading-relaxed mb-3">
-                  For visitors utilizing our "Request a Live Demonstration" or contact forms, we collect basic corporate metadata:
-                </p>
-                <ul className="list-disc pl-6 text-muted-foreground leading-relaxed space-y-1">
-                  <li>Name</li>
-                  <li>Professional/Business Email</li>
-                  <li>Organization Name</li>
-                  <li>Core Role/Title</li>
-                  <li>IP address and browser information (automatically collected)</li>
-                </ul>
-                <p className="text-muted-foreground leading-relaxed mt-3">
-                  This information is used strictly to coordinate platform walkthroughs and is never shared, rented, or sold to third-party marketing entities.
-                </p>
-              </section>
-
-              <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">4. How We Use Your Information</h2>
-                <p className="text-muted-foreground leading-relaxed mb-3">
-                  Information collected through our website is used to:
-                </p>
-                <ul className="list-disc pl-6 text-muted-foreground leading-relaxed space-y-1">
-                  <li>Schedule and conduct product demonstrations</li>
-                  <li>Respond to inquiries and provide customer support</li>
-                  <li>Send relevant product updates and security advisories</li>
-                  <li>Improve our website and service offerings</li>
-                  <li>Comply with legal obligations and enforce our terms</li>
-                </ul>
-              </section>
-
-              <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">5. Data Retention</h2>
+                <h2 className="text-2xl font-bold mb-4 text-foreground">How we use your information</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  Demonstration request data is retained for 24 months from the date of submission or until you request deletion. Audit logs and security incident records related to platform usage are maintained for a minimum of six years in compliance with HIPAA requirements under 45 CFR §164.316(b)(2)(i). You may request deletion of your contact information at any time by emailing us at the address below.
+                  We use your contact information solely to respond to your demo request and schedule a walkthrough of the SentinelEHR platform. We do not use your information for marketing, we do not sell it, and we do not share it with third parties except as described below.
                 </p>
               </section>
 
               <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">6. Your Privacy Rights</h2>
-                <p className="text-muted-foreground leading-relaxed mb-3">
-                  You have the following rights regarding your personal information:
-                </p>
-                <ul className="list-disc pl-6 text-muted-foreground leading-relaxed space-y-2">
-                  <li><strong>Access:</strong> Request a copy of the personal information we hold about you</li>
-                  <li><strong>Correction:</strong> Request correction of inaccurate or incomplete information</li>
-                  <li><strong>Deletion:</strong> Request deletion of your personal information (subject to legal retention requirements)</li>
-                  <li><strong>Opt-Out:</strong> Unsubscribe from marketing communications at any time</li>
-                  <li><strong>Data Portability:</strong> Request your data in a structured, machine-readable format</li>
-                </ul>
-                <p className="text-muted-foreground leading-relaxed mt-3">
-                  To exercise these rights, contact us at david.sentinelehr@gmail.com. We will respond to verified requests within 30 days.
-                </p>
-              </section>
-
-              <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">7. Cookies and Tracking Technologies</h2>
+                <h2 className="text-2xl font-bold mb-4 text-foreground">Third parties</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  Our website uses essential cookies to ensure proper functionality. We do not use third-party advertising cookies or tracking pixels. Session cookies are automatically deleted when you close your browser. You can configure your browser to refuse cookies, though this may limit website functionality.
+                  Demo request forms on this website are processed by Formspree (formspree.io). When you submit a form, your information passes through Formspree's servers before reaching us. Formspree's privacy policy is available at{" "}
+                  <a href="https://formspree.io/legal/privacy-policy" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">formspree.io/legal/privacy-policy</a>.
+                  {" "}We do not use any advertising networks, tracking pixels, or analytics services on this website.
                 </p>
               </section>
 
               <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">8. Third-Party Services</h2>
+                <h2 className="text-2xl font-bold mb-4 text-foreground">Data retention</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  SentinelEHR does not share your information with third-party service providers for marketing purposes. Any third-party services used for essential operations (such as email delivery or hosting infrastructure) are bound by strict data processing agreements and are prohibited from using your data for their own purposes.
+                  We retain your contact information for as long as necessary to conduct our design partner evaluation process. You may request deletion of your information at any time by emailing us and we will remove it within 14 days.
                 </p>
               </section>
 
               <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">9. Security Measures</h2>
+                <h2 className="text-2xl font-bold mb-4 text-foreground">Your rights</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  We implement industry-standard security measures including encryption in transit (TLS 1.3), access controls, regular security audits, and employee training on data protection. However, no method of transmission over the internet is 100% secure. We cannot guarantee absolute security but maintain commercially reasonable safeguards.
+                  You may request access to, correction of, or deletion of your personal information at any time by contacting us directly.
                 </p>
               </section>
 
               <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">10. Breach Notification</h2>
+                <h2 className="text-2xl font-bold mb-4 text-foreground">Contact</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  In the event of a data breach affecting your personal information, we will notify affected individuals within 72 hours of discovery as required by applicable regulations. Notifications will include the nature of the breach, types of information involved, steps taken to mitigate harm, and recommended actions for affected individuals.
-                </p>
-              </section>
-
-              <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">11. Children's Privacy</h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  SentinelEHR services are not directed to individuals under the age of 18. We do not knowingly collect personal information from children. If we become aware that we have inadvertently collected information from a child under 18, we will take steps to delete such information promptly.
-                </p>
-              </section>
-
-              <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">12. International Data Transfers</h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  All data processing occurs within your local network infrastructure. Marketing website data is stored on servers located in the United States. By submitting information through our website, you consent to this storage location. We do not transfer data internationally without appropriate safeguards.
-                </p>
-              </section>
-
-              <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">13. Regulatory Compliance</h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  Our architecture is meticulously mapped to comply directly with HIPAA §164.312(b) Audit Controls, §164.308(a)(1)(ii)(D) Information System Activity Review, and §164.312(d) Person or Entity Authentication. Because no sensitive patient databases are externalized, utilizing SentinelEHR minimizes your external attack surface and respects institutional BAAs (Business Associate Agreements). We also maintain compliance with applicable state privacy laws including CCPA where relevant.
-                </p>
-              </section>
-
-              <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">14. Changes to This Privacy Policy</h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  We may update this Privacy Policy periodically to reflect changes in our practices or legal requirements. Material changes will be communicated via email to registered contacts at least 30 days before taking effect. The "Effective Date" at the top of this page indicates when the policy was last revised. Continued use of our services after changes take effect constitutes acceptance of the updated policy.
-                </p>
-              </section>
-
-              <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">15. Contact Information</h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  For questions regarding data processing frameworks, privacy rights requests, or security concerns, contact our security administration team at:{" "}
                   <a href="mailto:david.sentinelehr@gmail.com" className="text-primary hover:underline">
                     david.sentinelehr@gmail.com
                   </a>
+                </p>
+                <p className="text-muted-foreground leading-relaxed mt-2 text-sm italic">
+                  (This will update to david@sentinelehr.org when our domain is active)
                 </p>
               </section>
             </div>

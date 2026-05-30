@@ -62,106 +62,76 @@ export default function TermsPage() {
               <FileText className="w-8 h-8 text-primary" />
               <h1 className="text-4xl font-bold text-foreground">SentinelEHR Terms of Service</h1>
             </div>
-            
-            <p className="text-sm text-muted-foreground mb-12">Last Updated: May 27, 2026</p>
+
+            <p className="text-sm text-muted-foreground mb-12">Last updated: May 30, 2026</p>
 
             <div className="prose prose-slate max-w-none">
               <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">1. Acceptance of Terms</h2>
+                <h2 className="text-2xl font-bold mb-4 text-foreground">Acceptance</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  By accessing or using the SentinelEHR marketing website, requesting an operational demonstration, or evaluating our pilot workflows, you agree to comply with these standard operating terms. If you do not agree to these terms, you must discontinue use of our services immediately.
+                  By submitting a demo request or accessing the SentinelEHR platform, you agree to these terms. If you do not agree, do not use the platform.
                 </p>
               </section>
 
               <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">2. Nature of Evaluation Platform</h2>
+                <h2 className="text-2xl font-bold mb-4 text-foreground">What SentinelEHR is</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  SentinelEHR provides risk analysis software frameworks. Demonstration environments, pilot systems, and sandbox accounts are intended exclusively for workflow evaluation purposes. Users agree not to connect production clinical databases containing active Protected Health Information (PHI) to non-production evaluation environments.
+                  SentinelEHR is currently in design partner phase. The platform is provided for evaluation purposes. Design partners receive access to the platform at no cost in exchange for feedback on detection accuracy and compliance workflow fit.
                 </p>
               </section>
 
               <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">3. User Responsibilities and Prohibited Uses</h2>
-                <p className="text-muted-foreground leading-relaxed mb-3">
-                  Users of SentinelEHR agree to:
-                </p>
-                <ul className="list-disc pl-6 text-muted-foreground leading-relaxed space-y-2">
-                  <li>Maintain the confidentiality of access credentials and system configurations</li>
-                  <li>Use the platform solely for legitimate healthcare security monitoring purposes</li>
-                  <li>Comply with all applicable federal, state, and local laws including HIPAA regulations</li>
-                  <li>Not attempt to reverse engineer, decompile, or extract source code from our software</li>
-                  <li>Not use the platform to violate patient privacy rights or access unauthorized data</li>
-                  <li>Not interfere with or disrupt the integrity or performance of the platform</li>
-                </ul>
-              </section>
-
-              <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">4. Business Associate Agreement (BAA)</h2>
+                <h2 className="text-2xl font-bold mb-4 text-foreground">No warranties</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  For production deployments involving access to Protected Health Information, a separate HIPAA Business Associate Agreement must be executed. SentinelEHR commits to maintaining appropriate administrative, physical, and technical safeguards as required under 45 CFR §164.308, §164.310, and §164.312.
+                  SentinelEHR is provided as-is. We make no warranties, express or implied, regarding uptime, accuracy of detection, fitness for a particular purpose, or compliance with any regulatory standard. You are responsible for your own compliance obligations.
                 </p>
               </section>
 
               <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">5. Data Retention and Security</h2>
+                <h2 className="text-2xl font-bold mb-4 text-foreground">No PHI processing</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  All audit log analysis and behavioral metrics are processed within your local network infrastructure. SentinelEHR does not retain, archive, or transmit PHI outside your system perimeter. Demonstration request data (name, email, organization) is retained for 24 months or until deletion is requested. Security incident logs are maintained in accordance with HIPAA's minimum six-year retention requirement.
+                  SentinelEHR does not store patient health information. The platform analyzes access behavioral patterns only. You remain responsible for ensuring that any connection to your Epic Clarity environment complies with your organization's policies and your Epic license agreement.
                 </p>
               </section>
 
               <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">6. Disclaimer of Warranties</h2>
+                <h2 className="text-2xl font-bold mb-4 text-foreground">Acceptable use</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  THE SENTINELEHR PLATFORM IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. SentinelEHR does not warrant that the service will be uninterrupted, error-free, or completely secure. Users acknowledge that no security system is impenetrable and that SentinelEHR cannot guarantee prevention of all unauthorized access attempts.
+                  You may not attempt to access data belonging to other organizations. You may not reverse engineer, copy, or redistribute the SentinelEHR platform. You may not use the platform for any purpose other than healthcare compliance monitoring within your own organization.
                 </p>
               </section>
 
               <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">7. Limitation of Liability</h2>
+                <h2 className="text-2xl font-bold mb-4 text-foreground">Termination</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  SentinelEHR acts strictly as a passive behavioral analysis overlay reading system metadata logs. Under no circumstances shall SentinelEHR, its developers, or its team be held liable for any data infrastructure service interruptions, external security vulnerabilities originating from target environments, or regulatory penalties incurred due to pre-existing hospital network configurations. IN NO EVENT SHALL SENTINELEHR'S TOTAL LIABILITY EXCEED THE AMOUNT PAID BY YOU FOR THE SERVICE DURING THE TWELVE MONTHS PRECEDING THE CLAIM.
+                  We reserve the right to terminate access to the platform at any time, for any reason, with reasonable notice where practicable.
                 </p>
               </section>
 
               <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">8. Indemnification</h2>
+                <h2 className="text-2xl font-bold mb-4 text-foreground">Limitation of liability</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  You agree to indemnify, defend, and hold harmless SentinelEHR and its officers, directors, employees, and agents from any claims, damages, losses, liabilities, and expenses (including reasonable attorneys' fees) arising from your use of the platform, violation of these terms, or infringement of any third-party rights.
+                  SentinelEHR shall not be liable for any indirect, incidental, or consequential damages arising from your use of the platform, including but not limited to regulatory penalties, data breaches, or missed detections.
                 </p>
               </section>
 
               <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">9. Termination</h2>
+                <h2 className="text-2xl font-bold mb-4 text-foreground">Governing law</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  Either party may terminate access to evaluation environments at any time with written notice. SentinelEHR reserves the right to immediately suspend or terminate access if we detect unauthorized use, security violations, or breach of these terms. Upon termination, all access credentials will be revoked and any locally cached configuration data should be securely deleted.
+                  These terms are governed by the laws of the State of Texas, United States, without regard to conflict of law principles.
                 </p>
               </section>
 
               <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">10. Intellectual Property</h2>
+                <h2 className="text-2xl font-bold mb-4 text-foreground">Changes</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  The visual assets, custom behavioral isolation monitoring logic schemas, UI design elements, and marketing materials displayed on this site are the exclusive property of SentinelEHR. All trademarks, service marks, and trade names are proprietary to SentinelEHR.
+                  We may update these terms as the platform evolves from design partner phase toward general availability. We will notify active design partners of material changes.
                 </p>
               </section>
 
               <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">11. Governing Law and Dispute Resolution</h2>
+                <h2 className="text-2xl font-bold mb-4 text-foreground">Contact</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  These Terms shall be governed by and construed in accordance with the laws of the United States and applicable state regulations, without regard to conflict of law principles. Any disputes arising from these terms shall first be subject to good-faith negotiation. If unresolved within 30 days, disputes shall be resolved through binding arbitration in accordance with the American Arbitration Association's Commercial Arbitration Rules.
-                </p>
-              </section>
-
-              <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">12. Updates to Terms</h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  We reserve the right to modify these operational terms at any time as our enterprise architecture and integrations evolve. Material changes will be communicated via email to registered demonstration contacts at least 30 days prior to taking effect. Continued inquiry or use of our software signifies acceptance of updated frameworks.
-                </p>
-              </section>
-
-              <section className="mb-10">
-                <h2 className="text-2xl font-bold mb-4 text-foreground">13. Contact Information</h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  For questions regarding these Terms of Service, please contact us at:{" "}
                   <a href="mailto:david.sentinelehr@gmail.com" className="text-primary hover:underline">
                     david.sentinelehr@gmail.com
                   </a>
