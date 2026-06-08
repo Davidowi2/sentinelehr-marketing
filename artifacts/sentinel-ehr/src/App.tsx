@@ -8,6 +8,13 @@ import PrivacyPage from "@/pages/privacy";
 import TermsPage from "@/pages/terms";
 import SecurityPage from "@/pages/Security";
 import ArchitecturePage from "@/pages/Architecture";
+import HealthcareComplianceMonitoringPage from "@/pages/UseCaseHealthcareComplianceMonitoring";
+import HIPAAAuditControlsPage from "@/pages/UseCaseHIPAAAuditControls";
+import InsiderThreatDetectionPage from "@/pages/UseCaseInsiderThreatDetection";
+import EHRAccessMonitoringPage from "@/pages/UseCaseEHRAccessMonitoring";
+import EpicClarityExtractorPage from "@/pages/UseCaseEpicClarityExtractor";
+import SentinelEHRvsProtenusPage from "@/pages/UseCaseSentinelEHRvsProtenus";
+import HIPAABreachNotificationPage from "@/pages/UseCaseHIPAABreachNotification";
 import { useEffect } from "react";
 
 const queryClient = new QueryClient();
@@ -33,6 +40,13 @@ function Router() {
       <Route path="/terms" component={TermsPage} />
       <Route path="/security" component={SecurityPage} />
       <Route path="/architecture" component={ArchitecturePage} />
+      <Route path="/use-cases/healthcare-compliance-monitoring" component={HealthcareComplianceMonitoringPage} />
+      <Route path="/use-cases/HIPAA-audit-controls" component={HIPAAAuditControlsPage} />
+      <Route path="/use-cases/insider-threat-detection" component={InsiderThreatDetectionPage} />
+      <Route path="/use-cases/EHR-access-monitoring" component={EHRAccessMonitoringPage} />
+      <Route path="/use-cases/Epic-Clarity-extractor" component={EpicClarityExtractorPage} />
+      <Route path="/use-cases/SentinelEHR-vs-Protenus" component={SentinelEHRvsProtenusPage} />
+      <Route path="/use-cases/HIPAA-breach-notification" component={HIPAABreachNotificationPage} />
       {/* Catch-all: render Home for any unmatched route to prevent 404 */}
       <Route component={RouteFallback} />
     </Switch>
