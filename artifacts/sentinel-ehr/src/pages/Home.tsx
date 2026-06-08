@@ -201,6 +201,20 @@ const Hero = () => {
             </div>
           </div>
 
+          {/* Floating badge — top right */}
+          <div
+            className="absolute -right-5 top-24 bg-white rounded-xl shadow-lg border border-border px-4 py-3 flex items-center gap-3 min-w-[160px]"
+            data-testid="floating-badge-verified"
+          >
+            <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <ShieldCheck className="w-5 h-5 text-primary" />
+            </div>
+            <div>
+              <div className="text-xs font-bold text-foreground">Verified</div>
+              <div className="text-xs text-muted-foreground">Multi-tenant isolation proven by 17 end-to-end security tests</div>
+            </div>
+          </div>
+
           {/* Decorative glow */}
           <div className="absolute -bottom-8 -right-8 w-48 h-48 rounded-full bg-primary/10 blur-[60px] pointer-events-none" />
         </FadeIn>
