@@ -26,8 +26,6 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 
-const logoSrc = "/logo.png";
-
 const FadeIn = ({
   children,
   delay = 0,
@@ -64,7 +62,9 @@ const Navbar = () => {
           data-testid="nav-logo"
         >
           <div className="flex items-center gap-2">
-            <img src="/sentinelehr-logo.png" style={{height:'32px', objectFit:'contain'}} alt="SentinelEHR logo" />
+            <div style={{backgroundColor:'#0D1117', padding:'4px 8px', borderRadius:'6px', display:'inline-flex', alignItems:'center'}}>
+              <img src="/sentinelehr-logo.png" style={{height:'32px', objectFit:'contain'}} alt="SentinelEHR logo" />
+            </div>
             <span className="text-white font-bold text-lg tracking-wider">SENTINELEHR</span>
           </div>
         </button>
@@ -911,7 +911,9 @@ const Footer = () => {
           <div className="md:col-span-1">
             <div className="mb-5">
               <div className="flex items-center gap-2">
-                <img src="/sentinelehr-logo.png" style={{height:'32px', objectFit:'contain'}} alt="SentinelEHR logo" />
+                <div style={{backgroundColor:'#0D1117', padding:'4px 8px', borderRadius:'6px', display:'inline-flex', alignItems:'center'}}>
+                  <img src="/sentinelehr-logo.png" style={{height:'32px', objectFit:'contain'}} alt="SentinelEHR logo" />
+                </div>
                 <span className="text-white font-bold text-xl tracking-wider">SENTINELEHR</span>
               </div>
             </div>
