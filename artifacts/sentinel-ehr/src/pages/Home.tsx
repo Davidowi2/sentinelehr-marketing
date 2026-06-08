@@ -494,53 +494,229 @@ const Why = () => {
         </FadeIn>
       </div>
     </section>
-  );
-};
-
-/* ─── Demo Form ───────────────────────────────────────────────────────────── */
-const formSchema = z.object({
-  name: z.string().min(2, "Full name is required"),
-  organization: z.string().min(2, "Organization is required"),
+  /* ─── Demo Form ───────────────────────────────────────────────────────────── */
+const step1Schema = z.object({
   email: z.string().email("Valid business email is required"),
-  role: z.string().min(2, "Please select a role"),
+  organization: z.string().min(2, "Organization is required"),
 });
+
+const FORMSPREE_STEP1 = 'https://formspree.io/f/xykvbwwj';
+const FORMSPREE_STEP2 = 'https://formspree.io/f/xykvbwwj'; // same inbox, differentiated by _subject
 
 const DemoForm = () => {
   const { toast } = useToast();
-  const [submitting, setSubmitting] = React.useState(false);
-  const [submitStatus, setSubmitStatus] = React.useState<'idle' | 'success' | 'error'>('idle');
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: { name: "", organization: "", email: "", role: "" },
+  const [step, setStep] = React.useState<1 | 2 | 'done'>(1);
+  const [submitting1, setSubmitting1] = React.useState(false);
+  const [error1, setError1] = React.useState<string | null>(null);
+  const [savedEmail, setSavedEmail] = React.useState('');
+  const [savedOrg, setSavedOrg] = React.useState('');
+
+  const form1 = useForm<z.infer<typeof step1Schema>>({
+    resolver: zodResolver(step1Schema),
+    defaultValues: { email: '', organization: '' },
   });
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    setSubmitting(true);
-    setSubmitStatus('idle');
+  const [submitting2, setSubmitting2] = React.useState(false);
+  const [challenge, setChallenge] = React.useState('');
+  const [tried, setTried] = React.useState('');
+  const [ehr, setEhr] = React.useState('');
+  const [employees, setEmployees] = React.useState('');
+  const [stage, setStage] = React.useState('');
 
+  const onSubmitStep1 = async (values: z.infer<typeof step1Schema>) => {
+    setSubmitting1(true);
+    setError1(null);
     try {
-      const response = await fetch('https://formspree.io/f/xykvbwwj', {
+      const response = await fetch(FORMSPREE_STEP1, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(values),
+        body: JSON.stringify({
+          _subject: `New demo request: ${values.email} from ${values.organization}`,
+          email: values.email,
+          organization: values.organization,
+        }),
       });
-
       if (response.ok) {
-        setSubmitStatus('success');
-        form.reset();
-        toast({ title: "Demo request sent", description: "We'll get back to you within one business day." });
+        setSavedEmail(values.email);
+        setSavedOrg(values.organization);
+        setStep(2);
       } else {
-        setSubmitStatus('error');
-        toast({ title: "Submission failed", description: "Please try again or contact us directly.", variant: "destructive" });
+        setError1('Submission failed. Please try again or contact us directly.');
       }
-    } catch (error) {
-      setSubmitStatus('error');
-      toast({ title: "Submission failed", description: "Please try again or contact us directly.", variant: "destructive" });
+    } catch {
+      setError1('Submission failed. Please try again or contact us directly.');
     } finally {
-      setSubmitting(false);
+      setSubmitting1(false);
     }
   };
+
+  const submitSurvey = async () => {
+    setSubmitting2(true);
+    try {
+      await fetch(FORMSPREE_STEP2, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          _subject: `Demo request follow-up survey: ${savedEmail} from ${savedOrg}`,
+          email: savedEmail,
+          organization: savedOrg,
+          biggest_challenge: challenge || '(skipped)',
+          tried_so_far: tried || '(skipped)',
+          ehr_system: ehr || '(skipped)',
+          employee_count: employees || '(skipped)',
+          evaluation_stage: stage || '(skipped)',
+        }),
+      });
+    } catch {
+      // survey failure is non-blocking
+    } finally {
+      setSubmitting2(false);
+      setStep('done');
+    }
+  };
+
+  const skipSurvey = () => setStep('done');
+
+  const inputStyle = { width: '100%', padding: '10px 12px', border: '1px solid #e2e8f0', borderRadius: '8px', fontSize: '14px', background: 'white', fontFamily: 'inherit' } as React.CSSProperties;
+  const labelStyle = { display: 'block', fontSize: '11px', fontWeight: '600', letterSpacing: '0.05em', marginBottom: '6px', color: '#64748b', textTransform: 'uppercase' } as React.CSSProperties;
+
+  const Step1 = (
+    <Card className="bg-white border-border shadow-lg">
+      <CardContent className="p-8">
+        {error1 && (
+          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+            <p className="text-red-800 text-sm font-medium">✗ {error1}</p>
+          </div>
+        )}
+        <Form {...form1}>
+          <form onSubmit={form1.handleSubmit(onSubmitStep1)} className="space-y-5">
+            <FormField
+              control={form1.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Business Email</FormLabel>
+                  <FormControl>
+                    <Input placeholder="jane@hospital.org" type="email" className="bg-muted border-border" data-testid="input-email" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form1.control}
+              name="organization"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Organization</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Community General Hospital" className="bg-muted border-border" data-testid="input-org" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button
+              type="submit"
+              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-5 font-bold"
+              data-testid="btn-submit-demo"
+              disabled={submitting1}
+            >
+              {submitting1 ? (
+                <>
+                  <span className="mr-2">Sending...</span>
+                  <span style={{display:'inline-block', width:'14px', height:'14px', border:'2px solid rgba(255,255,255,0.3)', borderTop:'2px solid white', borderRadius:'50%', animation:'spin 0.8s linear infinite', marginLeft:'8px'}} />
+                </>
+              ) : (
+                "Request Demo"
+              )}
+            </Button>
+          </form>
+        </Form>
+        <p className="text-xs text-center text-muted-foreground mt-5">
+          We respect your inbox. No marketing spam, ever.
+        </p>
+      </CardContent>
+    </Card>
+  );
+
+  const Step2 = (
+    <Card className="bg-white border-border shadow-lg">
+      <CardContent className="p-8">
+        <h3 className="text-xl font-bold text-foreground mb-2">Thanks. Two quick questions to help us tailor your demo.</h3>
+        <p className="text-sm text-muted-foreground mb-6">These are optional. Skip if you'd rather just wait for us to reach out.</p>
+        <div className="space-y-5">
+          <div>
+            <label style={labelStyle}>What's your biggest compliance challenge right now?</label>
+            <textarea rows={2} value={challenge} onChange={e => setChallenge(e.target.value)} placeholder="e.g. Too many alerts, not enough context" style={{...inputStyle, resize:'vertical'} as React.CSSProperties} />
+          </div>
+          <div>
+            <label style={labelStyle}>What have you tried so far?</label>
+            <textarea rows={2} value={tried} onChange={e => setTried(e.target.value)} placeholder="e.g. Epic's built-in audit logs, manual reviews" style={{...inputStyle, resize:'vertical'} as React.CSSProperties} />
+          </div>
+          <div>
+            <label style={labelStyle}>What EHR system do you use?</label>
+            <select value={ehr} onChange={e => setEhr(e.target.value)} style={inputStyle}>
+              <option value="">Select EHR</option>
+              <option value="Epic">Epic</option>
+              <option value="Cerner">Cerner</option>
+              <option value="Athenahealth">Athenahealth</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div>
+            <label style={labelStyle}>How many employees do you monitor for access?</label>
+            <input type="number" value={employees} onChange={e => setEmployees(e.target.value)} placeholder="e.g. 250" style={inputStyle} />
+          </div>
+          <div>
+            <label style={labelStyle}>Are you evaluating vendors now or just researching?</label>
+            <select value={stage} onChange={e => setStage(e.target.value)} style={inputStyle}>
+              <option value="">Select stage</option>
+              <option value="Researching">Researching</option>
+              <option value="Evaluating">Evaluating</option>
+              <option value="RFP">RFP</option>
+              <option value="Not sure">Not sure</option>
+            </select>
+          </div>
+        </div>
+        <Button
+          onClick={submitSurvey}
+          className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-5 font-bold mt-6"
+          disabled={submitting2}
+        >
+          {submitting2 ? (
+            <>
+              <span className="mr-2">Submitting...</span>
+              <span style={{display:'inline-block', width:'14px', height:'14px', border:'2px solid rgba(255,255,255,0.3)', borderTop:'2px solid white', borderRadius:'50%', animation:'spin 0.8s linear infinite', marginLeft:'8px'}} />
+            </>
+          ) : (
+            "Submit responses"
+          )}
+        </Button>
+        <p className="text-xs text-center mt-4">
+          <button onClick={skipSurvey} className="text-primary hover:underline cursor-pointer">
+            Skip and just send my demo request →
+          </button>
+        </p>
+      </CardContent>
+    </Card>
+  );
+
+  const Done = (
+    <Card className="bg-white border-border shadow-lg">
+      <CardContent className="p-8">
+        <div className="p-4 bg-green-50 border border-green-200 rounded-lg mb-6">
+          <p className="text-green-800 text-sm font-medium">✓ Demo request sent successfully!</p>
+        </div>
+        <p className="text-muted-foreground text-sm leading-relaxed">
+          Thanks! We'll be in touch within 1 business day with sandbox access. In the meantime, explore our{" "}
+          <a href="/security" className="text-primary hover:underline font-medium">security architecture</a>
+          {" "}— most procurement teams start there.
+        </p>
+      </CardContent>
+    </Card>
+  );
 
   return (
     <section id="demo-section" className="py-24 bg-slate-50 border-t border-border">
@@ -568,137 +744,19 @@ const DemoForm = () => {
             </div>
           </FadeIn>
 
-          {/* Right — form */}
+          {/* Right — form steps */}
           <FadeIn delay={0.18}>
-            <Card className="bg-white border-border shadow-lg">
-              <CardContent className="p-8">
-                {submitStatus === 'success' && (
-                  <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-                    <p className="text-green-800 text-sm font-medium">✓ Demo request sent successfully! We'll contact you within one business day.</p>
-                  </div>
-                )}
-                {submitStatus === 'error' && (
-                  <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-                    <p className="text-red-800 text-sm font-medium">✗ Submission failed. Please try again or contact us directly.</p>
-                  </div>
-                )}
-                <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-                    <div className="grid sm:grid-cols-2 gap-5">
-                      <FormField
-                        control={form.control}
-                        name="name"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Full Name</FormLabel>
-                            <FormControl>
-                              <Input placeholder="Jane Doe" className="bg-muted border-border" data-testid="input-name" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="organization"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Organization</FormLabel>
-                            <FormControl>
-                              <Input placeholder="Community General Hospital" className="bg-muted border-border" data-testid="input-org" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    <div className="grid sm:grid-cols-2 gap-5">
-                      <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Business Email</FormLabel>
-                            <FormControl>
-                              <Input placeholder="jane@hospital.org" type="email" className="bg-muted border-border" data-testid="input-email" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="role"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Your Role</FormLabel>
-                            <Select onValueChange={field.onChange} defaultValue={field.value}>
-                              <FormControl>
-                                <SelectTrigger className="bg-muted border-border" data-testid="select-role">
-                                  <SelectValue placeholder="Select a role" />
-                                </SelectTrigger>
-                              </FormControl>
-                              <SelectContent>
-                                <SelectItem value="Compliance Officer">Compliance Officer</SelectItem>
-                                <SelectItem value="Privacy Officer">Privacy Officer</SelectItem>
-                                <SelectItem value="IT Director">IT Director</SelectItem>
-                                <SelectItem value="CISO">CISO</SelectItem>
-                                <SelectItem value="Other">Other</SelectItem>
-                              </SelectContent>
-                            </Select>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:'16px', marginBottom:'16px'}}>
-                      <div>
-                        <label style={{display:'block', fontSize:'11px', fontWeight:'600', letterSpacing:'0.05em', marginBottom:'6px', color:'#64748b'}}>EHR SYSTEM</label>
-                        <select name='ehr_system' required style={{width:'100%', padding:'12px', border:'1px solid #e2e8f0', borderRadius:'8px', fontSize:'14px', background:'white'}}>
-                          <option value=''>Select EHR</option>
-                          <option value='Epic'>Epic</option>
-                          <option value='Cerner'>Cerner</option>
-                          <option value='Other'>Other</option>
-                        </select>
-                      </div>
-                      <div>
-                        <label style={{display:'block', fontSize:'11px', fontWeight:'600', letterSpacing:'0.05em', marginBottom:'6px', color:'#64748b'}}>COMPLIANCE TEAM SIZE</label>
-                        <select name='team_size' required style={{width:'100%', padding:'12px', border:'1px solid #e2e8f0', borderRadius:'8px', fontSize:'14px', background:'white'}}>
-                          <option value=''>Select size</option>
-                          <option value='1'>Just me</option>
-                          <option value='2-3'>2-3 people</option>
-                          <option value='4+'>4+ people</option>
-                        </select>
-                      </div>
-                    </div>
-                    <Button
-                      type="submit"
-                      className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-5 font-bold"
-                      data-testid="btn-submit-demo"
-                      disabled={submitting}
-                    >
-                      {submitting ? (
-                        <>
-                          <span className="mr-2">Sending...</span>
-                          <span style={{display:'inline-block', width:'14px', height:'14px', border:'2px solid rgba(255,255,255,0.3)', borderTop:'2px solid white', borderRadius:'50%', animation:'spin 0.8s linear infinite', marginLeft:'8px'}} />
-                        </>
-                      ) : (
-                        "Schedule Demo"
-                      )}
-                    </Button>
-                  </form>
-                </Form>
-                <p className="text-xs text-center text-muted-foreground mt-5">
-                  We respect your inbox. No marketing spam, ever.
-                </p>
-              </CardContent>
-            </Card>
+            {step === 1 && Step1}
+            {step === 2 && Step2}
+            {step === 'done' && Done}
           </FadeIn>
         </div>
       </div>
     </section>
   );
+
 };
+
 
 /* ─── Trust Bar ───────────────────────────────────────────────────────────── */
 const TrustBar = () => {
