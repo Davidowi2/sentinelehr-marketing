@@ -796,7 +796,7 @@ const FAQ = () => {
     },
     {
       q: "What is your pricing model?",
-      a: "For design partner phase, no cost. Post-design-partner pricing tiers: small clinic $100-500/month, community hospital $10,000-30,000/year, mid-size regional $50,000-100,000/year. Less than the cost of one compliance audit. One caught insider violation that SentinelEHR surfaces can prevent OCR fines starting at $100 per violation per day.",
+      a: "For design partner phase, no cost — we work with you to validate the product against your environment. Post-design-partner pricing varies by hospital size, deployment scale, and support tier. We design our pricing to be accessible to community hospitals and FQHCs, not just large enterprise systems. A typical community hospital deployment is a fraction of the cost of a single HIPAA compliance audit, and a single caught insider violation that SentinelEHR surfaces can prevent OCR fines that begin at $100 per violation per day. Reach out to hello@sentinelehr.org for a conversation about what makes sense for your organization.",
     },
   ];
 
