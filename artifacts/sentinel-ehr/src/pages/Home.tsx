@@ -91,6 +91,7 @@ const Navbar = () => {
           <button onClick={() => scrollTo("intelligence")} className="hover:text-white transition-colors" data-testid="nav-intelligence">Intelligence</button>
           <button onClick={() => scrollTo("compliance")} className="hover:text-white transition-colors" data-testid="nav-compliance">Compliance</button>
           <button onClick={() => scrollTo("demo-section")} className="hover:text-white transition-colors" data-testid="nav-resources">Resources</button>
+          <a href="/security" className="hover:text-white transition-colors" data-testid="nav-security">Security</a>
         </div>
         <div className="flex items-center gap-3">
           <Button
@@ -907,11 +908,18 @@ const Footer = () => {
             <ul className="space-y-3 text-sm text-slate-400">
               <li><a href="/privacy" className="hover:text-[#38BDF8] transition-colors">Privacy Policy</a></li>
               <li><a href="/terms" className="hover:text-[#38BDF8] transition-colors">Terms of Service</a></li>
+              <li><a href="/security" className="hover:text-[#38BDF8] transition-colors">Security Architecture</a></li>
+              <li><a href="/architecture" className="hover:text-[#38BDF8] transition-colors">Zero PHI Architecture</a></li>
             </ul>
           </div>
           <div>
             <h4 className="text-sm font-semibold text-white mb-5 uppercase tracking-wider">Connect</h4>
             <ul className="space-y-3 text-sm text-slate-400">
+              <li>
+                <a href="https://sentinelhr.vercel.app" target="_blank" rel="noreferrer" className="hover:text-[#38BDF8] transition-colors">
+                  Log in
+                </a>
+              </li>
               <li>
                 <a href="mailto:david@sentinelehr.org" className="hover:text-[#38BDF8] transition-colors">
                   david@sentinelehr.org

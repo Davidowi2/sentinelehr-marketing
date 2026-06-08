@@ -6,6 +6,8 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import PrivacyPage from "@/pages/privacy";
 import TermsPage from "@/pages/terms";
+import SecurityPage from "@/pages/Security";
+import ArchitecturePage from "@/pages/Architecture";
 import { useEffect } from "react";
 
 const queryClient = new QueryClient();
@@ -29,6 +31,8 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/privacy" component={PrivacyPage} />
       <Route path="/terms" component={TermsPage} />
+      <Route path="/security" component={SecurityPage} />
+      <Route path="/architecture" component={ArchitecturePage} />
       {/* Catch-all: render Home for any unmatched route to prevent 404 */}
       <Route component={RouteFallback} />
     </Switch>
