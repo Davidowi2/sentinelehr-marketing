@@ -161,7 +161,7 @@ const Hero = () => {
             </Button>
           </div>
 
-          <div className="grid grid-cols-3 gap-6 pt-8 border-t border-border" data-testid="hero-stats">
+          <div className="grid grid-cols-2 gap-6 pt-8 border-t border-border" data-testid="hero-stats">
             <div>
               <div className="text-3xl font-extrabold text-primary mb-1">325K</div>
               <div className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">Events Monitored</div>
@@ -169,10 +169,6 @@ const Hero = () => {
             <div>
               <div className="text-3xl font-extrabold text-primary mb-1">0</div>
               <div className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">PHI Stored</div>
-            </div>
-            <div>
-              <div className="text-3xl font-extrabold text-primary mb-1">86%</div>
-              <div className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">Alert Precision</div>
             </div>
           </div>
         </FadeIn>
@@ -202,20 +198,6 @@ const Hero = () => {
             <div>
               <div className="text-xs font-bold text-foreground">Zero PHI Stored</div>
               <div className="text-xs text-muted-foreground">Read-only access</div>
-            </div>
-          </div>
-
-          {/* Floating badge — top right */}
-          <div
-            className="absolute -right-5 top-24 bg-white rounded-xl shadow-lg border border-border px-4 py-3 flex items-center gap-3 min-w-[160px]"
-            data-testid="floating-badge-precision"
-          >
-            <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-              <BarChart2 className="w-5 h-5 text-primary" />
-            </div>
-            <div>
-              <div className="text-xs font-bold text-foreground">86% Precision</div>
-              <div className="text-xs text-muted-foreground">Alert accuracy</div>
             </div>
           </div>
 
