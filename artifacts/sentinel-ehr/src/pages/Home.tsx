@@ -93,9 +93,6 @@ const Navbar = () => {
           <button onClick={() => scrollTo("demo-section")} className="hover:text-white transition-colors" data-testid="nav-resources">Resources</button>
         </div>
         <div className="flex items-center gap-3">
-          <a href="#demo-section" className="text-slate-300 hover:text-white transition-colors cursor-pointer text-sm font-medium hidden sm:inline-block" data-testid="btn-get-started">
-            Get Started
-          </a>
           <Button
             onClick={() => scrollTo("demo-section")}
             className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm"
@@ -253,17 +250,17 @@ const Problem = () => {
     {
       icon: BellOff,
       title: "Alert Fatigue",
-      body: "Thousands of alerts per day. Most are noise. Real threats hide inside the queue, waiting for the one minute you look away.",
+      body: "Thousands of alerts per week. Most are false positives. Your compliance officer spends hours triaging noise instead of investigating real risk. Alert fatigue is the number one reason insider threats go undetected — the signal is buried in the noise.",
     },
     {
       icon: History,
       title: "Slow Investigations",
-      body: "The average insider breach goes undetected for months. Manual log review takes days per incident, losing critical time.",
+      body: "The average insider breach takes 90 days to detect and another 60 to investigate. By the time you find it, the audit trail is cold, the employee may have left, and OCR notification deadlines are approaching. Speed of investigation is the difference between a caught breach and a reported one.",
     },
     {
       icon: ShieldAlert,
       title: "Sensitive Record Risk",
-      body: "HIV records, behavioral health notes, VIP patients — these require protection beyond what standard monitoring can provide.",
+      body: "HIV records, behavioral health notes, substance abuse treatment — specially protected records under federal and state law. Snooping on these records is a fireable offense and an OCR-reportable event. Standard access logs don't flag it. Behavioral analysis does.",
     },
   ];
 
@@ -449,22 +446,22 @@ const Why = () => {
     {
       icon: Shield,
       title: "Zero PHI Stored",
-      body: "SentinelEHR analyzes behavioral metadata only — who accessed what, when, and how often. Patient record content never leaves your environment. Zero PHI stored, ever.",
+      body: "Patient record content never leaves your organization. Behavioral metadata only — employee IDs, patient IDs, timestamps, and boolean access flags. Zero PHI stored, ever.",
     },
     {
       icon: Building2,
-      title: "Built for Community",
-      body: "Designed for compliance teams of 1–3 people, not enterprise SOC centers with dedicated threat analysts.",
+      title: "Read-Only Access",
+      body: "Zero write permissions to your Epic database. SentinelEHR extracts behavioral metadata. It cannot modify, delete, or alter any patient record. Architecture guarantee, not policy.",
     },
     {
       icon: MessageSquare,
       title: "Explainable Alerts",
-      body: "Every flag includes a plain-English explanation. No black-box risk scores that require a data scientist to interpret.",
+      body: "Every flag includes a plain-English explanation. No black-box risk scores that require a data scientist to interpret. Your CO understands the alert in 5 seconds.",
     },
     {
       icon: Code2,
       title: "Epic-Native",
-      body: "Built against real Epic Clarity table structures. Drop-in compatible with standard Epic environments.",
+      body: "Built against real Epic Clarity table structures. Drop-in compatible with standard Epic environments. No Epic customization required for deployment.",
     },
   ];
 
@@ -551,13 +548,13 @@ const DemoForm = () => {
           {/* Left — copy */}
           <FadeIn>
             <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">Get Started</p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">Request a Live Demonstration</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">Request a Self-Guided Demo</h2>
             <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
-              See how SentinelEHR transforms your compliance workflow in 30 minutes — tailored to your hospital's Epic environment.
+              See how SentinelEHR transforms your compliance workflow in your own time. Tailored to your hospital's Epic environment.
             </p>
             <div className="space-y-4">
               {[
-                "30-minute live walkthrough with a product specialist",
+                "Self-guided sandbox access — explore on your schedule",
                 "Tailored to your Epic Clarity environment",
                 "Zero obligation — no sales pressure",
                 "Includes a zero PHI storage architecture walkthrough",
@@ -764,28 +761,28 @@ const FAQ = () => {
 
   const faqs = [
     {
-      q: "Does SentinelEHR ever store or transmit patient data (PHI)?",
-      a: "No — by design. SentinelEHR connects to Epic Clarity in read-only mode and analyzes behavioral metadata: which user, which department, what time, what action. We never read, store, or transmit patient names, record contents, diagnoses, or any PHI. This is an architectural guarantee, not just a policy.",
+      q: "Does SentinelEHR store or transmit patient data (PHI)?",
+      a: "No. SentinelEHR analyzes behavioral metadata only — who accessed what, when, and how often. Patient record content never leaves your Epic environment. The hospital owns and controls all data; SentinelEHR only sees access patterns. This is the core of our architecture, not a policy promise.",
     },
     {
       q: "What Epic tables does SentinelEHR access?",
-      a: "We query three standard Epic Clarity tables: ACCESS_LOG (audit events), CLARITY_EMP (employee records for baseline building), and ZC_ACS_ACTION (action code lookups). All queries are read-only SELECT statements. We require no write permissions and make no schema changes.",
+      a: "SentinelEHR reads from system metadata tables: CLARITY_EMP (employee reference), PAT_ENC (encounter/provider relationships), and ACCESS_LOG (the Epic audit log). It does not access CLARITY.PATIENT, clinical notes, diagnoses, medications, or any table containing clinical content. Your IT director can verify this by reading the open-source clarity_extractor.py script before deployment.",
     },
     {
       q: "How long does setup take?",
-      a: "Setup takes less than 4 hours of a single database administrator's (DBA) time. Because SentinelEHR connects via read-only SQL to your existing Epic Clarity environment, there's no software installation, no infrastructure changes, and no impact on your clinical systems. We provide a connection guide specific to your Epic version and work through any firewall or access configuration with your IT team.",
+      a: "Initial deployment: 2-4 hours for IT to deploy the extractor script and verify the connection. Calibration period: 7-14 days for the ML model to learn your hospital's specific access patterns. After calibration, full operational use. Rule-based detection (R1-R8) is reliable from day one.",
     },
     {
       q: "How does SentinelEHR support HIPAA audit control requirements?",
-      a: "SentinelEHR is designed to support your organization's compliance with HIPAA audit control requirements by providing automated monitoring of Epic access logs, ranked alerts, and a full investigation audit trail. We do not claim certification — we provide the tooling your compliance team needs to demonstrate control.",
+      a: "SentinelEHR supports HIPAA §164.312(b) audit control workflows through: documented access pattern monitoring, forensically defensible audit trails with actor/timestamp/justification, breach notification clock tracking, and exportable investigation reports. The zero-PHI architecture reduces the HIPAA surface area significantly — there is no PHI to breach.",
     },
     {
       q: "We have a small compliance team. Is this tool right for us?",
-      a: "That's exactly who we built it for. SentinelEHR is designed for compliance teams of 1–3 people at community hospitals, not large enterprise SOC centers. The alert queue, plain-English explanations, and one-click investigation workflow are all designed to be managed by a single compliance officer — no data analyst required.",
+      a: "Yes. SentinelEHR is designed for compliance teams of 1-3 people, not enterprise SOC teams. The Morning Briefing surfaces your top 5 cases for the day. The case file includes pre-built explanations so you don't need a data analyst to interpret alerts. One person can review 30+ alerts per day with this tool — without it, the same person might review 5.",
     },
     {
       q: "What is your pricing model?",
-      a: "We're currently in a Design Partner Phase and pricing is scoped based on your organization's size and Epic environment. Request a demo and we'll walk through your specific needs and provide a tailored quote — typically structured as an annual subscription per facility.",
+      a: "For design partner phase, no cost. Post-design-partner pricing tiers: small clinic $100-500/month, community hospital $10,000-30,000/year, mid-size regional $50,000-100,000/year. Less than the cost of one compliance audit. One caught insider violation that SentinelEHR surfaces can prevent OCR fines starting at $100 per violation per day.",
     },
   ];
 
@@ -849,7 +846,7 @@ const CTABand = () => {
             Ready to protect your patients<br className="hidden md:block" /> and your organization?
           </h2>
           <p className="text-lg text-white/80 mb-10 max-w-xl mx-auto leading-relaxed">
-            Built for community health centers that need serious monitoring without enterprise complexity. Schedule your 30-minute live walkthrough.
+            Built for community health centers that need serious monitoring without enterprise complexity. Currently in design partner phase with community health centers.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button
@@ -870,7 +867,7 @@ const CTABand = () => {
               Read FAQs
             </Button>
           </div>
-          <p className="mt-8 text-sm text-white/60">No obligation. No sales pressure. Just a 30-minute walkthrough.</p>
+          <p className="mt-8 text-sm text-white/60">No obligation. No sales pressure. Currently in design partner phase with community health centers.</p>
         </FadeIn>
       </div>
     </section>
@@ -964,7 +961,7 @@ export default function Home() {
               <CardContent className="p-6">
                 <h4 className="text-lg font-bold text-white mb-3">The Compliance Officer</h4>
                 <p className="text-sm text-slate-400 leading-relaxed">
-                  Streamlined alert workflows reduce the noise from thousands of weekly access events down to a handful of prioritized insider risk warnings.
+                  Streamlined alert workflows reduce the noise from thousands of weekly access events down to a handful of prioritized insider risk warnings. Each alert includes the employee, the records accessed, the reason it was flagged, and a one-click path to investigation. Your morning briefing is your queue — what needs you today, not what exists in the system.
                 </p>
               </CardContent>
             </Card>
@@ -972,7 +969,7 @@ export default function Home() {
               <CardContent className="p-6">
                 <h4 className="text-lg font-bold text-white mb-3">The Information Security Officer</h4>
                 <p className="text-sm text-slate-400 leading-relaxed">
-                  Our zero-PHI architecture ensures sensitive patient databases never leave your premises, drastically minimizing your external threat landscape.
+                  Our zero-PHI architecture ensures sensitive patient databases never leave your premises, drastically minimizing your external threat landscape. SentinelEHR reads only behavioral metadata. It cannot exfiltrate clinical content because clinical content never crosses the boundary. Your HIPAA audit posture is stronger with a monitoring system that provably cannot access PHI.
                 </p>
               </CardContent>
             </Card>
@@ -980,7 +977,7 @@ export default function Home() {
               <CardContent className="p-6">
                 <h4 className="text-lg font-bold text-white mb-3">The Privacy Officer</h4>
                 <p className="text-sm text-slate-400 leading-relaxed">
-                  Immediate context. Plain-English alert summaries enable lean teams to investigate and act on potential breaches without requiring dedicated data analysis.
+                  Immediate context. Plain-English alert summaries enable lean teams to investigate and act on potential breaches without requiring dedicated data analysis. Every investigation is documented with threaded notes, audit trail, and printable HR-ready reports. When OCR asks, you have the evidence.
                 </p>
               </CardContent>
             </Card>
