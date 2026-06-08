@@ -238,7 +238,7 @@ This ensures SPA client-side routing works on direct URL navigation (e.g. visiti
 
 **No HIPAA badge:** The "HIPAA §164.312(b) Compliant" badge was removed. Replaced with "Zero PHI Storage Architecture" — a verifiable architectural claim, not a legal certification claim.
 
-**Footer links:** Privacy Policy, Terms of Service, Security Architecture, Zero PHI Architecture in Trust & Legal column. "Log in" link in Connect column points to `https://sentinelhr.vercel.app` (to be updated to `https://app.sentinelhr.org` when domain is active).
+**Footer links:** Privacy Policy, Terms of Service, Security Architecture, Zero PHI Architecture in Trust & Legal column. "Log in" link in Connect column points to `https://app.sentinelhr.org`.
 
 ---
 
@@ -263,7 +263,7 @@ This ensures SPA client-side routing works on direct URL navigation (e.g. visiti
 
 ## Pending / To Do
 
-- [ ] Update "Log in" footer link from `https://sentinelhr.vercel.app` to `https://app.sentinelhr.org` when domain goes live
+- [x] Update "Log in" footer link from `https://sentinelhr.vercel.app` to `https://app.sentinelhr.org` ✅
 - [ ] Update `hello@sentinelehr.org` contact email in both legal pages when email is active
 - [ ] Update "Last updated" dates in TermsContent.tsx and PrivacyContent.tsx when materially revised
 - [ ] Add `<meta name="description">` tags to use-case pages (currently rendered as visible text only)

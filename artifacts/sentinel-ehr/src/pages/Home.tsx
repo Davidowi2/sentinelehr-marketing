@@ -943,7 +943,7 @@ const Footer = () => {
             <h4 className="text-sm font-semibold text-white mb-5 uppercase tracking-wider">Connect</h4>
             <ul className="space-y-3 text-sm text-slate-400">
               <li>
-                <a href="https://sentinelhr.vercel.app" target="_blank" rel="noreferrer" className="hover:text-[#38BDF8] transition-colors">
+                <a href="https://app.sentinelhr.org" target="_blank" rel="noreferrer" className="hover:text-[#38BDF8] transition-colors">
                   Log in
                 </a>
               </li>
