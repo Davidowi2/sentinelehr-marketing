@@ -1,9 +1,6 @@
 import React from "react";
 import { CookieBanner } from "../components/CookieBanner";
 import { motion } from "framer-motion";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
 import {
   Shield,
   ShieldAlert,
@@ -26,22 +23,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 
 const logoSrc = "/logo.png";
@@ -494,17 +476,12 @@ const Why = () => {
         </FadeIn>
       </div>
     </section>
-  /* ─── Demo Form ───────────────────────────────────────────────────────────── */
-const step1Schema = z.object({
-  email: z.string().email("Valid business email is required"),
-  organization: z.string().min(2, "Organization is required"),
-});
 
+/* ─── Demo Form ──────────────────────────────────────────────────────────────────────────── */
 const FORMSPREE_STEP1 = 'https://formspree.io/f/xykvbwwj';
 const FORMSPREE_STEP2 = 'https://formspree.io/f/xykvbwwj'; // same inbox, differentiated by _subject
 
 const DemoForm = () => {
-  const { toast } = useToast();
 
   const [step, setStep] = React.useState<1 | 2 | 'done'>(1);
   const [submitting1, setSubmitting1] = React.useState(false);
@@ -512,10 +489,8 @@ const DemoForm = () => {
   const [savedEmail, setSavedEmail] = React.useState('');
   const [savedOrg, setSavedOrg] = React.useState('');
 
-  const form1 = useForm<z.infer<typeof step1Schema>>({
-    resolver: zodResolver(step1Schema),
-    defaultValues: { email: '', organization: '' },
-  });
+  const [email1, setEmail1] = React.useState('');
+  const [org1, setOrg1] = React.useState('');
 
   const [submitting2, setSubmitting2] = React.useState(false);
   const [challenge, setChallenge] = React.useState('');
@@ -524,7 +499,8 @@ const DemoForm = () => {
   const [employees, setEmployees] = React.useState('');
   const [stage, setStage] = React.useState('');
 
-  const onSubmitStep1 = async (values: z.infer<typeof step1Schema>) => {
+  const onSubmitStep1 = async (e: React.FormEvent) => {
+    e.preventDefault();
     setSubmitting1(true);
     setError1(null);
     try {
@@ -532,14 +508,14 @@ const DemoForm = () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          _subject: `New demo request: ${values.email} from ${values.organization}`,
-          email: values.email,
-          organization: values.organization,
+          _subject: `New demo request: ${email1} from ${org1}`,
+          email: email1,
+          organization: org1,
         }),
       });
       if (response.ok) {
-        setSavedEmail(values.email);
-        setSavedOrg(values.organization);
+        setSavedEmail(email1);
+        setSavedOrg(org1);
         setStep(2);
       } else {
         setError1('Submission failed. Please try again or contact us directly.');
@@ -589,34 +565,30 @@ const DemoForm = () => {
             <p className="text-red-800 text-sm font-medium">✗ {error1}</p>
           </div>
         )}
-        <Form {...form1}>
-          <form onSubmit={form1.handleSubmit(onSubmitStep1)} className="space-y-5">
-            <FormField
-              control={form1.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Business Email</FormLabel>
-                  <FormControl>
-                    <Input placeholder="jane@hospital.org" type="email" className="bg-muted border-border" data-testid="input-email" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form1.control}
-              name="organization"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Organization</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Community General Hospital" className="bg-muted border-border" data-testid="input-org" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+        <form onSubmit={onSubmitStep1} className="space-y-5">
+            <div>
+              <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-1.5">Business Email</label>
+              <Input
+                placeholder="jane@hospital.org"
+                type="email"
+                required
+                value={email1}
+                onChange={e => setEmail1(e.target.value)}
+                className="bg-muted border-border"
+                data-testid="input-email"
+              />
+            </div>
+            <div>
+              <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-1.5">Organization</label>
+              <Input
+                placeholder="Community General Hospital"
+                required
+                value={org1}
+                onChange={e => setOrg1(e.target.value)}
+                className="bg-muted border-border"
+                data-testid="input-org"
+              />
+            </div>
             <Button
               type="submit"
               className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-5 font-bold"
@@ -633,7 +605,6 @@ const DemoForm = () => {
               )}
             </Button>
           </form>
-        </Form>
         <p className="text-xs text-center text-muted-foreground mt-5">
           We respect your inbox. No marketing spam, ever.
         </p>
