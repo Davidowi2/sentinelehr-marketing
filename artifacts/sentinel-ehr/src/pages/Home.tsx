@@ -476,6 +476,8 @@ const Why = () => {
         </FadeIn>
       </div>
     </section>
+  );
+};
 
 /* ─── Demo Form ──────────────────────────────────────────────────────────────────────────── */
 const FORMSPREE_STEP1 = 'https://formspree.io/f/xykvbwwj';
