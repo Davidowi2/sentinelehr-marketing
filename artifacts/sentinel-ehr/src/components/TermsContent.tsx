@@ -82,8 +82,8 @@ export function TermsContent() {
           <h2 className="text-2xl font-bold mb-4 text-foreground">11. Contact</h2>
           <p className="text-muted-foreground leading-relaxed">
             For questions about these terms, contact{" "}
-            <a href="mailto:hello@sentinelehr.org" className="text-primary hover:underline">
-              hello@sentinelehr.org
+            <a href="mailto:hello@sentinelhr.org" className="text-primary hover:underline">
+              hello@sentinelhr.org
             </a>.
           </p>
         </section>

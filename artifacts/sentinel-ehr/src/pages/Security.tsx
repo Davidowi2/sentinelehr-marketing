@@ -135,7 +135,7 @@ export default function SecurityPage() {
                 <h2 className="text-2xl font-bold mb-4 text-foreground">Vulnerability reporting</h2>
                 <p className="text-muted-foreground leading-relaxed">
                   If you discover a security issue, contact{" "}
-                  <a href="mailto:hello@sentinelehr.org" className="text-primary hover:underline">hello@sentinelehr.org</a>
+                  <a href="mailto:hello@sentinelhr.org" className="text-primary hover:underline">hello@sentinelhr.org</a>
                   {" "}with subject line 'Security inquiry.' We commit to acknowledging within 48 hours and providing a remediation timeline within 5 business days.
                 </p>
               </section>

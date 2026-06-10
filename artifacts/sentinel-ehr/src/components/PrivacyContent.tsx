@@ -12,7 +12,7 @@ export function PrivacyContent() {
           <h2 className="text-2xl font-bold mb-4 text-foreground">1. Who We Are</h2>
           <p className="text-muted-foreground leading-relaxed">
             SentinelEHR is a healthcare insider risk intelligence platform. We are currently operating in design partner phase. Contact:{" "}
-            <a href="mailto:hello@sentinelehr.org" className="text-primary hover:underline">hello@sentinelehr.org</a>.
+            <a href="mailto:hello@sentinelhr.org" className="text-primary hover:underline">hello@sentinelhr.org</a>.
           </p>
         </section>
 
@@ -89,8 +89,8 @@ export function PrivacyContent() {
           <h2 className="text-2xl font-bold mb-4 text-foreground">11. Contact</h2>
           <p className="text-muted-foreground leading-relaxed">
             For questions about this privacy policy, contact{" "}
-            <a href="mailto:hello@sentinelehr.org" className="text-primary hover:underline">
-              hello@sentinelehr.org
+            <a href="mailto:hello@sentinelhr.org" className="text-primary hover:underline">
+              hello@sentinelhr.org
             </a>.
           </p>
         </section>

@@ -810,7 +810,7 @@ const FAQ = () => {
     },
     {
       q: "What is your pricing model?",
-      a: "For design partner phase, no cost — we work with you to validate the product against your environment. Post-design-partner pricing varies by hospital size, deployment scale, and support tier. We design our pricing to be accessible to community hospitals and FQHCs, not just large enterprise systems. A typical community hospital deployment is a fraction of the cost of a single HIPAA compliance audit, and a single caught insider violation that SentinelEHR surfaces can prevent OCR fines that begin at $100 per violation per day. Reach out to hello@sentinelehr.org for a conversation about what makes sense for your organization.",
+      a: "For design partner phase, no cost — we work with you to validate the product against your environment. Post-design-partner pricing varies by hospital size, deployment scale, and support tier. We design our pricing to be accessible to community hospitals and FQHCs, not just large enterprise systems. A typical community hospital deployment is a fraction of the cost of a single HIPAA compliance audit, and a single caught insider violation that SentinelEHR surfaces can prevent OCR fines that begin at $100 per violation per day. Reach out to hello@sentinelhr.org for a conversation about what makes sense for your organization.",
     },
   ];
 
@@ -950,8 +950,8 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="mailto:david@sentinelehr.org" className="hover:text-[#38BDF8] transition-colors">
-                  david@sentinelehr.org
+                <a href="mailto:hello@sentinelhr.org" className="hover:text-[#38BDF8] transition-colors">
+                  hello@sentinelhr.org
                 </a>
               </li>
             </ul>
