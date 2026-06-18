@@ -907,7 +907,7 @@ const Footer = () => {
   return (
     <footer className="dark bg-[#0D1117] pt-20 pb-10 border-t border-[#21262d]">
       <div className="container mx-auto px-4 md:px-8 max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-16">
           <div className="md:col-span-1">
             <div className="mb-5">
               <div className="flex items-center gap-2">
@@ -933,12 +933,18 @@ const Footer = () => {
             </ul>
           </div>
           <div>
+            <h4 className="text-sm font-semibold text-white mb-5 uppercase tracking-wider">Company</h4>
+            <ul className="space-y-3 text-sm text-slate-400">
+              <li><a href="/about" className="hover:text-[#38BDF8] transition-colors">About</a></li>
+            </ul>
+          </div>
+          <div>
             <h4 className="text-sm font-semibold text-white mb-5 uppercase tracking-wider">Trust & Legal</h4>
             <ul className="space-y-3 text-sm text-slate-400">
               <li><a href="/privacy" className="hover:text-[#38BDF8] transition-colors">Privacy Policy</a></li>
               <li><a href="/terms" className="hover:text-[#38BDF8] transition-colors">Terms of Service</a></li>
               <li><a href="/security" className="hover:text-[#38BDF8] transition-colors">Security Architecture</a></li>
-              <li><a href="/architecture" className="hover:text-[#38BDF8] transition-colors">Zero PHI Architecture</a></li>
+              <li><a href="/architecture" className="hover:text-[#38BDF8] transition-colors">Architecture</a></li>
             </ul>
           </div>
           <div>

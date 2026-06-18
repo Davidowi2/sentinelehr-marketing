@@ -40,6 +40,7 @@ function Router() {
       <Route path="/terms" component={TermsPage} />
       <Route path="/security" component={SecurityPage} />
       <Route path="/architecture" component={ArchitecturePage} />
+      <Route path="/about" component={AboutPage} />
       <Route path="/use-cases/healthcare-compliance-monitoring" component={HealthcareComplianceMonitoringPage} />
       <Route path="/use-cases/HIPAA-audit-controls" component={HIPAAAuditControlsPage} />
       <Route path="/use-cases/insider-threat-detection" component={InsiderThreatDetectionPage} />
