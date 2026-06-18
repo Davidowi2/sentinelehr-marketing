@@ -8,6 +8,111 @@
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://sentinelhr.org" />
     <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- Open Graph / Twitter Card -->
+    <meta property="og:title" content="SentinelEHR — Healthcare Insider Risk Intelligence" />
+    <meta property="og:description" content="Detect suspicious EHR access before it becomes a HIPAA breach. Behavioral analytics for Epic Clarity environments. Zero clinical content extraction." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sentinelhr.org" />
+    <meta property="og:image" content="https://sentinelhr.org/opengraph.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SentinelEHR — Healthcare Insider Risk Intelligence" />
+    <meta name="twitter:description" content="Detect suspicious EHR access before it becomes a HIPAA breach." />
+    <meta name="twitter:image" content="https://sentinelhr.org/opengraph.jpg" />
+
+    <!-- JSON-LD: Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "SentinelEHR",
+      "alternateName": "Sentinel EHR",
+      "url": "https://sentinelhr.org",
+      "logo": "https://sentinelhr.org/sentinelehr-logo.png",
+      "description": "Healthcare insider risk intelligence platform. Behavioral analytics for Epic Clarity environments to detect suspicious EHR access before it becomes a HIPAA breach.",
+      "foundingDate": "2026",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "hello@sentinelhr.org",
+        "contactType": "customer support",
+        "availableLanguage": "English"
+      },
+      "sameAs": []
+    }
+    </script>
+
+    <!-- JSON-LD: WebSite -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "SentinelEHR",
+      "url": "https://sentinelhr.org",
+      "description": "Healthcare insider risk intelligence for Epic Clarity environments",
+      "publisher": {
+        "@type": "Organization",
+        "name": "SentinelEHR"
+      }
+    }
+    </script>
+
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does SentinelEHR store or transmit patient data (PHI)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. SentinelEHR analyzes behavioral metadata only — who accessed what, when, and how often. Patient record content never leaves your Epic environment. The hospital owns and controls all data; SentinelEHR only sees access patterns. This is the core of our architecture, not a policy promise."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What Epic tables does SentinelEHR access?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SentinelEHR reads from system metadata tables: CLARITY_EMP (employee reference), PAT_ENC (encounter/provider relationships), and ACCESS_LOG (the Epic audit log). It does not access CLARITY.PATIENT, clinical notes, diagnoses, medications, or any table containing clinical content. Your IT director can verify this by reading the open-source clarity_extractor.py script before deployment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does setup take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Initial deployment: 2-4 hours for IT to deploy the extractor script and verify the connection. Calibration period: 7-14 days for the ML model to learn your hospital's specific access patterns. After calibration, full operational use. Rule-based detection (R1-R8) is reliable from day one."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does SentinelEHR support HIPAA audit control requirements?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SentinelEHR supports HIPAA §164.312(b) audit control workflows through: documented access pattern monitoring, forensically defensible audit trails with actor/timestamp/justification, breach notification clock tracking, and exportable investigation reports. The zero-PHI architecture reduces the HIPAA surface area significantly — there is no PHI to breach."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "We have a small compliance team. Is this tool right for us?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. SentinelEHR is designed for compliance teams of 1-3 people, not enterprise SOC teams. The Morning Briefing surfaces your top 5 cases for the day. The case file includes pre-built explanations so you don't need a data analyst to interpret alerts. One person can review 30+ alerts per day with this tool — without it, the same person might review 5."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is your pricing model?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For design partner phase, no cost — we work with you to validate the product against your environment. Post-design-partner pricing varies by hospital size, deployment scale, and support tier. We design our pricing to be accessible to community hospitals and FQHCs, not just large enterprise systems. A typical community hospital deployment is a fraction of the cost of a single HIPAA compliance audit, and a single caught insider violation that SentinelEHR surfaces can prevent OCR fines that begin at $100 per violation per day. Reach out to hello@sentinelhr.org for a conversation about what makes sense for your organization."
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
