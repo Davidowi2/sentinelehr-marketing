@@ -17,9 +17,12 @@ const Navbar = () => (
         </div>
         <span className="text-white font-bold text-lg tracking-wider">SENTINELEHR</span>
       </a>
-      <div className="flex items-center gap-3">
-        <Button onClick={() => window.location.href = "/#demo-section"} className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm">Request Demo</Button>
-      </div>
+      <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+          <a href="/about" className="hover:text-white transition-colors">About</a>
+        </div>
+        <div className="flex items-center gap-3">
+          <Button onClick={() => window.location.href = "/#demo-section"} className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm">Request Demo</Button>
+        </div>
     </div>
   </nav>
 );
@@ -87,7 +90,7 @@ export default function HIPAAAuditControlsPage() {
               </section>
 
               <section className="mb-10">
-                <p className="text-muted-foreground leading-relaxed">Learn more about SentinelEHR's zero-PHI architecture at <a href="/architecture" className="text-primary hover:underline">/architecture</a>.</p>
+                <p className="text-muted-foreground leading-relaxed">Learn more about SentinelEHR's architecture at <a href="/architecture" className="text-primary hover:underline">/architecture</a>.</p>
               </section>
             </div>
 

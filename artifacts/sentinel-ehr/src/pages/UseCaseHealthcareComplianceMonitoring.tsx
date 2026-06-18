@@ -17,9 +17,12 @@ const Navbar = () => (
         </div>
         <span className="text-white font-bold text-lg tracking-wider">SENTINELEHR</span>
       </a>
-      <div className="flex items-center gap-3">
-        <Button onClick={() => window.location.href = "/#demo-section"} className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm">Request Demo</Button>
-      </div>
+      <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+          <a href="/about" className="hover:text-white transition-colors">About</a>
+        </div>
+        <div className="flex items-center gap-3">
+          <Button onClick={() => window.location.href = "/#demo-section"} className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm">Request Demo</Button>
+        </div>
     </div>
   </nav>
 );
@@ -90,7 +93,7 @@ export default function HealthcareComplianceMonitoringPage() {
 
               <section className="mb-10">
                 <h2 className="text-2xl font-bold mb-4 text-foreground">Summary</h2>
-                <p className="text-muted-foreground leading-relaxed">Healthcare compliance monitoring is a required operational practice under HIPAA, not an optional investment. The challenge for most compliance teams is not access to audit log data — EHR systems produce it abundantly — but the ability to process that data at scale, surface genuine risk, and document investigations in a defensible way. Behavioral analysis and zero-PHI monitoring architectures represent the current state of the art for this problem.</p>
+                <p className="text-muted-foreground leading-relaxed">Healthcare compliance monitoring is a required operational practice under HIPAA, not an optional investment. The challenge for most compliance teams is not access to audit log data — EHR systems produce it abundantly — but the ability to process that data at scale, surface genuine risk, and document investigations in a defensible way. Behavioral analysis and no clinical content extraction monitoring architectures represent the current state of the art for this problem.</p>
               </section>
 
               <section className="mb-10">

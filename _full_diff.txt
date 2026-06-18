@@ -1,0 +1,345 @@
+﻿diff --git a/MARKETING_SITE.md b/MARKETING_SITE.md
+index f736e37..b365581 100644
+--- a/MARKETING_SITE.md
++++ b/MARKETING_SITE.md
+@@ -155,7 +155,7 @@ Legal page content is extracted into reusable components to allow future updates
+ 
+ Both documents:
+ - Last updated: June 8, 2026
+-- Contact: `hello@sentinelehr.org`
++- Contact: `hello@sentinelhr.org`
+ - Governing law: State of Delaware (Terms)
+ - No HIPAA certification claims
+ - No Texas reference
+@@ -264,7 +264,7 @@ This ensures SPA client-side routing works on direct URL navigation (e.g. visiti
+ ## Pending / To Do
+ 
+ - [x] Update "Log in" footer link from `https://sentinelhr.vercel.app` to `https://app.sentinelhr.org` Γ£à
+-- [ ] Update `hello@sentinelehr.org` contact email in both legal pages when email is active
++- [ ] Update contact email in both legal pages when needed
+ - [ ] Update "Last updated" dates in TermsContent.tsx and PrivacyContent.tsx when materially revised
+ - [ ] Add `<meta name="description">` tags to use-case pages (currently rendered as visible text only)
+ - [ ] Consider adding a sitemap.xml for AI crawlers
+diff --git a/artifacts/sentinel-ehr/src/pages/About.tsx b/artifacts/sentinel-ehr/src/pages/About.tsx
+index 2f7cd4c..0552b0c 100644
+--- a/artifacts/sentinel-ehr/src/pages/About.tsx
++++ b/artifacts/sentinel-ehr/src/pages/About.tsx
+@@ -34,6 +34,9 @@ const Navbar = () => {
+           </div>
+           <span className="text-white font-bold text-lg tracking-wider">SENTINELEHR</span>
+         </a>
++        <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
++          <a href="/about" className="hover:text-white transition-colors">About</a>
++        </div>
+         <div className="flex items-center gap-3">
+           <Button
+             onClick={() => window.location.href = "/#demo-section"}
+diff --git a/artifacts/sentinel-ehr/src/pages/Architecture.tsx b/artifacts/sentinel-ehr/src/pages/Architecture.tsx
+index bb95348..6cf6ced 100644
+--- a/artifacts/sentinel-ehr/src/pages/Architecture.tsx
++++ b/artifacts/sentinel-ehr/src/pages/Architecture.tsx
+@@ -33,6 +33,9 @@ const Navbar = () => {
+           </div>
+           <span className="text-white font-bold text-lg tracking-wider">SENTINELEHR</span>
+         </a>
++        <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
++          <a href="/about" className="hover:text-white transition-colors">About</a>
++        </div>
+         <div className="flex items-center gap-3">
+           <Button
+             onClick={() => window.location.href = "/#demo-section"}
+@@ -127,7 +130,7 @@ export default function ArchitecturePage() {
+               <section className="mb-10">
+                 <h2 className="text-2xl font-bold mb-4 text-foreground">Open source</h2>
+                 <p className="text-muted-foreground leading-relaxed">
+-                  The clarity_extractor.py script is provided to the hospital for security review before deployment. Your IT team can read every line, verify what it queries, and confirm the zero-PHI claim. We encourage this. The script is the strongest evidence of our zero-PHI architecture ΓÇö not a whitepaper, not a certification, but the actual code that runs in your network.
++                  The clarity_extractor.py script is provided to the hospital for security review before deployment. Your IT team can read every line, verify what it queries, and confirm the no clinical content extraction claim. We encourage this. The script is the strongest evidence of our architecture ΓÇö not a whitepaper, not a certification, but the actual code that runs in your network.
+                 </p>
+               </section>
+ 
+diff --git a/artifacts/sentinel-ehr/src/pages/Home.tsx b/artifacts/sentinel-ehr/src/pages/Home.tsx
+index 7825a73..e891a99 100644
+--- a/artifacts/sentinel-ehr/src/pages/Home.tsx
++++ b/artifacts/sentinel-ehr/src/pages/Home.tsx
+@@ -74,6 +74,7 @@ const Navbar = () => {
+           <button onClick={() => scrollTo("compliance")} className="hover:text-white transition-colors" data-testid="nav-compliance">Compliance</button>
+           <button onClick={() => scrollTo("demo-section")} className="hover:text-white transition-colors" data-testid="nav-resources">Resources</button>
+           <a href="/security" className="hover:text-white transition-colors" data-testid="nav-security">Security</a>
++          <a href="/about" className="hover:text-white transition-colors" data-testid="nav-about">About</a>
+         </div>
+         <div className="flex items-center gap-3">
+           <Button
+@@ -703,7 +704,7 @@ const DemoForm = () => {
+                 "Self-guided sandbox access ΓÇö explore on your schedule",
+                 "Tailored to your Epic Clarity environment",
+                 "Zero obligation ΓÇö no sales pressure",
+-                "Includes a zero PHI storage architecture walkthrough",
++                "Includes a no clinical content extraction architecture walkthrough",
+               ].map((item) => (
+                 <div key={item} className="flex items-start gap-3 text-sm text-muted-foreground">
+                   <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+@@ -732,7 +733,7 @@ const TrustBar = () => {
+   const items = [
+     { label: "Epic Clarity", sub: "Native integration" },
+     { label: "Read-Only Access", sub: "Zero write permissions" },
+-    { label: "0 PHI Stored", sub: "Architecture guarantee" },
++    { label: "No Clinical Content Extracted", sub: "Architecture guarantee" },
+     { label: "Community Hospitals", sub: "Designed for" },
+     { label: "1ΓÇô3 Person Teams", sub: "Right-sized for" },
+   ];
+@@ -973,7 +974,7 @@ const Footer = () => {
+             <a href="/terms" className="hover:text-slate-300 transition-colors">Terms of Service</a>
+           </div>
+           <span className="text-right max-w-sm">
+-            Zero PHI Storage Architecture ΓÇö Read-only Epic Clarity integration
++            No Clinical Content Extraction ΓÇö Read-only Epic Clarity integration
+           </span>
+         </div>
+       </div>
+diff --git a/artifacts/sentinel-ehr/src/pages/Security.tsx b/artifacts/sentinel-ehr/src/pages/Security.tsx
+index 2d68e99..557e5e6 100644
+--- a/artifacts/sentinel-ehr/src/pages/Security.tsx
++++ b/artifacts/sentinel-ehr/src/pages/Security.tsx
+@@ -33,6 +33,9 @@ const Navbar = () => {
+           </div>
+           <span className="text-white font-bold text-lg tracking-wider">SENTINELEHR</span>
+         </a>
++        <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
++          <a href="/about" className="hover:text-white transition-colors">About</a>
++        </div>
+         <div className="flex items-center gap-3">
+           <Button
+             onClick={() => window.location.href = "/#demo-section"}
+@@ -66,7 +69,7 @@ export default function SecurityPage() {
+             <div className="prose prose-slate max-w-none">
+ 
+               <section className="mb-10">
+-                <h2 className="text-2xl font-bold mb-4 text-foreground">Zero PHI architecture</h2>
++                <h2 className="text-2xl font-bold mb-4 text-foreground">No clinical content extraction</h2>
+                 <p className="text-muted-foreground leading-relaxed">
+                   SentinelEHR stores behavioral metadata only. The fields extracted from your Epic Clarity database are: employee ID (integer), patient ID (integer), action type (1ΓÇô11), access timestamp, department ID, in-panel status (boolean), VIP status (boolean), sensitive record flag (boolean). No patient names. No clinical content. No diagnoses, medications, notes, or financial data. The extractor script (clarity_extractor.py) is open-source and can be reviewed by your IT team before deployment.
+                 </p>
+@@ -114,17 +117,17 @@ export default function SecurityPage() {
+               <section className="mb-10">
+                 <h2 className="text-2xl font-bold mb-4 text-foreground">Hosting and infrastructure</h2>
+                 <p className="text-muted-foreground leading-relaxed">
+-                  Current: Vercel (frontend), Render (backend), Neon (database), all on free tiers. Planned: VPS migration with nginx, gunicorn, PostgreSQL on the server, SSL via Let's Encrypt, UFW firewall, Fail2ban, DNS pointing sentinelhr.org to the server IP. The zero-PHI architecture means our hosting infrastructure handles only behavioral metadata ΓÇö there is no PHI to secure in the traditional sense.
++                  Current: Vercel (frontend), Render (backend), Neon (database), all on free tiers. Planned: VPS migration with nginx, gunicorn, PostgreSQL on the server, SSL via Let's Encrypt, UFW firewall, Fail2ban, DNS pointing sentinelhr.org to the server IP. The no clinical content extraction architecture means our hosting infrastructure handles only behavioral metadata ΓÇö there is no clinical content to secure in the traditional sense.
+                 </p>
+               </section>
+ 
+               <section className="mb-10">
+                 <h2 className="text-2xl font-bold mb-4 text-foreground">Compliance posture and SOC 2</h2>
+                 <p className="text-muted-foreground leading-relaxed">
+-                  SentinelEHR does NOT claim HIPAA certification. The product is designed to support HIPAA ┬º164.312(b) audit control workflows through its zero-PHI architecture. The hospital is responsible for ensuring their Epic Clarity connection complies with their own Epic license agreement.
++                  SentinelEHR does NOT claim HIPAA certification. The product is designed to support HIPAA ┬º164.312(b) audit control workflows through its no clinical content extraction architecture. The hospital is responsible for ensuring their Epic Clarity connection complies with their own Epic license agreement.
+                 </p>
+                 <p className="text-muted-foreground leading-relaxed mt-4">
+-                  For design partner conversations, we provide equivalent security assurances: zero-PHI architecture (no patient data leaves your environment), bcrypt authentication, JWT tokens with 8-hour expiry, full audit log, multi-tenant isolation verified by automated end-to-end test suite, forensically defensible audit trail.
++                  For design partner conversations, we provide equivalent security assurances: no clinical content extraction architecture (no patient clinical content leaves your environment), bcrypt authentication, JWT tokens with 8-hour expiry, full audit log, multi-tenant isolation verified by automated end-to-end test suite, forensically defensible audit trail.
+                 </p>
+                 <p className="text-muted-foreground leading-relaxed mt-4">
+                   SOC 2 Type 2 is on our 12-month roadmap. For a production deployment post-design-partner, SOC 2 Type 2 certification would be a prerequisite.
+diff --git a/artifacts/sentinel-ehr/src/pages/UseCaseEHRAccessMonitoring.tsx b/artifacts/sentinel-ehr/src/pages/UseCaseEHRAccessMonitoring.tsx
+index 4be1aab..b5e9e10 100644
+--- a/artifacts/sentinel-ehr/src/pages/UseCaseEHRAccessMonitoring.tsx
++++ b/artifacts/sentinel-ehr/src/pages/UseCaseEHRAccessMonitoring.tsx
+@@ -17,9 +17,12 @@ const Navbar = () => (
+         </div>
+         <span className="text-white font-bold text-lg tracking-wider">SENTINELEHR</span>
+       </a>
+-      <div className="flex items-center gap-3">
+-        <Button onClick={() => window.location.href = "/#demo-section"} className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm">Request Demo</Button>
+-      </div>
++      <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
++          <a href="/about" className="hover:text-white transition-colors">About</a>
++        </div>
++        <div className="flex items-center gap-3">
++          <Button onClick={() => window.location.href = "/#demo-section"} className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm">Request Demo</Button>
++        </div>
+     </div>
+   </nav>
+ );
+@@ -97,7 +100,7 @@ export default function EHRAccessMonitoringPage() {
+ 
+               <section className="mb-10">
+                 <h2 className="text-2xl font-bold mb-4 text-foreground">SentinelEHR as an EHR access monitoring tool</h2>
+-                <p className="text-muted-foreground leading-relaxed">SentinelEHR is built specifically for compliance teams of 1ΓÇô3 people at community hospitals and FQHCs. It connects to Epic Clarity with read-only credentials, extracts behavioral metadata (not clinical content), and applies behavioral analysis plus rule-based detection to produce a prioritized, plain-English alert queue. Investigations are documented within the platform and exportable as HR-ready reports. The zero-PHI architecture means the monitoring system itself does not create a new PHI repository ΓÇö only behavioral metadata (access patterns, not record content) leaves the hospital's environment.</p>
++                <p className="text-muted-foreground leading-relaxed">SentinelEHR is built specifically for compliance teams of 1ΓÇô3 people at community hospitals and FQHCs. It connects to Epic Clarity with read-only credentials, extracts behavioral metadata (not clinical content), and applies behavioral analysis plus rule-based detection to produce a prioritized, plain-English alert queue. Investigations are documented within the platform and exportable as HR-ready reports. The no clinical content extraction architecture means the monitoring system itself does not create a new PHI repository ΓÇö only behavioral metadata (access patterns, not record content) leaves the hospital's environment.</p>
+               </section>
+ 
+               <section className="mb-10">
+diff --git a/artifacts/sentinel-ehr/src/pages/UseCaseEpicClarityExtractor.tsx b/artifacts/sentinel-ehr/src/pages/UseCaseEpicClarityExtractor.tsx
+index d5b5d67..e22ed12 100644
+--- a/artifacts/sentinel-ehr/src/pages/UseCaseEpicClarityExtractor.tsx
++++ b/artifacts/sentinel-ehr/src/pages/UseCaseEpicClarityExtractor.tsx
+@@ -17,9 +17,12 @@ const Navbar = () => (
+         </div>
+         <span className="text-white font-bold text-lg tracking-wider">SENTINELEHR</span>
+       </a>
+-      <div className="flex items-center gap-3">
+-        <Button onClick={() => window.location.href = "/#demo-section"} className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm">Request Demo</Button>
+-      </div>
++      <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
++          <a href="/about" className="hover:text-white transition-colors">About</a>
++        </div>
++        <div className="flex items-center gap-3">
++          <Button onClick={() => window.location.href = "/#demo-section"} className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm">Request Demo</Button>
++        </div>
+     </div>
+   </nav>
+ );
+@@ -93,7 +96,7 @@ export default function EpicClarityExtractorPage() {
+               <section className="mb-10">
+                 <h2 className="text-2xl font-bold mb-4 text-foreground">Security review and open-source transparency</h2>
+                 <p className="text-muted-foreground leading-relaxed">A legitimate concern for hospital IT departments is: what does the extractor actually do, and how can we verify it? The best answer to this question is open-source code. If the extractor script is published and readable, the IT team can verify every SQL query, every field extracted, and every data transmission before deployment. This is a stronger assurance than any contractual representation or third-party audit.</p>
+-                <p className="text-muted-foreground leading-relaxed mt-4">SentinelEHR's clarity_extractor.py script is provided to hospitals for security review before any deployment decision. The IT director or DBA can read every line, verify what it queries, and confirm that no clinical content is extracted. This transparency is the foundation of the zero-PHI architecture claim ΓÇö not a policy promise, but verifiable code.</p>
++                <p className="text-muted-foreground leading-relaxed mt-4">SentinelEHR's clarity_extractor.py script is provided to hospitals for security review before any deployment decision. The IT director or DBA can read every line, verify what it queries, and confirm that no clinical content is extracted. This transparency is the foundation of our architecture claim ΓÇö not a policy promise, but verifiable code.</p>
+               </section>
+ 
+               <section className="mb-10">
+diff --git a/artifacts/sentinel-ehr/src/pages/UseCaseHIPAAAuditControls.tsx b/artifacts/sentinel-ehr/src/pages/UseCaseHIPAAAuditControls.tsx
+index 2ee2992..cf140b7 100644
+--- a/artifacts/sentinel-ehr/src/pages/UseCaseHIPAAAuditControls.tsx
++++ b/artifacts/sentinel-ehr/src/pages/UseCaseHIPAAAuditControls.tsx
+@@ -17,9 +17,12 @@ const Navbar = () => (
+         </div>
+         <span className="text-white font-bold text-lg tracking-wider">SENTINELEHR</span>
+       </a>
+-      <div className="flex items-center gap-3">
+-        <Button onClick={() => window.location.href = "/#demo-section"} className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm">Request Demo</Button>
+-      </div>
++      <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
++          <a href="/about" className="hover:text-white transition-colors">About</a>
++        </div>
++        <div className="flex items-center gap-3">
++          <Button onClick={() => window.location.href = "/#demo-section"} className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm">Request Demo</Button>
++        </div>
+     </div>
+   </nav>
+ );
+@@ -87,7 +90,7 @@ export default function HIPAAAuditControlsPage() {
+               </section>
+ 
+               <section className="mb-10">
+-                <p className="text-muted-foreground leading-relaxed">Learn more about SentinelEHR's zero-PHI architecture at <a href="/architecture" className="text-primary hover:underline">/architecture</a>.</p>
++                <p className="text-muted-foreground leading-relaxed">Learn more about SentinelEHR's architecture at <a href="/architecture" className="text-primary hover:underline">/architecture</a>.</p>
+               </section>
+             </div>
+ 
+diff --git a/artifacts/sentinel-ehr/src/pages/UseCaseHIPAABreachNotification.tsx b/artifacts/sentinel-ehr/src/pages/UseCaseHIPAABreachNotification.tsx
+index 5dd195c..db06876 100644
+--- a/artifacts/sentinel-ehr/src/pages/UseCaseHIPAABreachNotification.tsx
++++ b/artifacts/sentinel-ehr/src/pages/UseCaseHIPAABreachNotification.tsx
+@@ -17,9 +17,12 @@ const Navbar = () => (
+         </div>
+         <span className="text-white font-bold text-lg tracking-wider">SENTINELEHR</span>
+       </a>
+-      <div className="flex items-center gap-3">
+-        <Button onClick={() => window.location.href = "/#demo-section"} className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm">Request Demo</Button>
+-      </div>
++      <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
++          <a href="/about" className="hover:text-white transition-colors">About</a>
++        </div>
++        <div className="flex items-center gap-3">
++          <Button onClick={() => window.location.href = "/#demo-section"} className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm">Request Demo</Button>
++        </div>
+     </div>
+   </nav>
+ );
+@@ -88,7 +91,7 @@ export default function HIPAABreachNotificationPage() {
+               <section className="mb-10">
+                 <h2 className="text-2xl font-bold mb-4 text-foreground">Zero-PHI monitoring and the breach surface</h2>
+                 <p className="text-muted-foreground leading-relaxed">A monitoring system that stores behavioral metadata rather than PHI creates a significantly smaller breach surface than one that stores clinical content. If SentinelEHR's infrastructure were compromised, the data exposed would be access patterns ΓÇö employee IDs, patient IDs as integers, timestamps, action codes ΓÇö not medical records. While any unauthorized access to personal information is serious, the breach notification analysis for a behavioral metadata exposure is different from a clinical record exposure.</p>
+-                <p className="text-muted-foreground leading-relaxed mt-4">This is one of the practical arguments for zero-PHI monitoring architecture: it supports HIPAA audit controls and breach notification workflows without creating an additional PHI repository that itself represents a breach risk and requires its own safeguards under the HIPAA Security Rule.</p>
++                <p className="text-muted-foreground leading-relaxed mt-4">This is one of the practical arguments for no clinical content extraction monitoring architecture: it supports HIPAA audit controls and breach notification workflows without creating an additional clinical content repository that itself represents a breach risk and requires its own safeguards under the HIPAA Security Rule.</p>
+               </section>
+ 
+               <section className="mb-10">
+diff --git a/artifacts/sentinel-ehr/src/pages/UseCaseHealthcareComplianceMonitoring.tsx b/artifacts/sentinel-ehr/src/pages/UseCaseHealthcareComplianceMonitoring.tsx
+index d22e5fc..455a3e8 100644
+--- a/artifacts/sentinel-ehr/src/pages/UseCaseHealthcareComplianceMonitoring.tsx
++++ b/artifacts/sentinel-ehr/src/pages/UseCaseHealthcareComplianceMonitoring.tsx
+@@ -17,9 +17,12 @@ const Navbar = () => (
+         </div>
+         <span className="text-white font-bold text-lg tracking-wider">SENTINELEHR</span>
+       </a>
+-      <div className="flex items-center gap-3">
+-        <Button onClick={() => window.location.href = "/#demo-section"} className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm">Request Demo</Button>
+-      </div>
++      <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
++          <a href="/about" className="hover:text-white transition-colors">About</a>
++        </div>
++        <div className="flex items-center gap-3">
++          <Button onClick={() => window.location.href = "/#demo-section"} className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm">Request Demo</Button>
++        </div>
+     </div>
+   </nav>
+ );
+@@ -90,7 +93,7 @@ export default function HealthcareComplianceMonitoringPage() {
+ 
+               <section className="mb-10">
+                 <h2 className="text-2xl font-bold mb-4 text-foreground">Summary</h2>
+-                <p className="text-muted-foreground leading-relaxed">Healthcare compliance monitoring is a required operational practice under HIPAA, not an optional investment. The challenge for most compliance teams is not access to audit log data ΓÇö EHR systems produce it abundantly ΓÇö but the ability to process that data at scale, surface genuine risk, and document investigations in a defensible way. Behavioral analysis and zero-PHI monitoring architectures represent the current state of the art for this problem.</p>
++                <p className="text-muted-foreground leading-relaxed">Healthcare compliance monitoring is a required operational practice under HIPAA, not an optional investment. The challenge for most compliance teams is not access to audit log data ΓÇö EHR systems produce it abundantly ΓÇö but the ability to process that data at scale, surface genuine risk, and document investigations in a defensible way. Behavioral analysis and no clinical content extraction monitoring architectures represent the current state of the art for this problem.</p>
+               </section>
+ 
+               <section className="mb-10">
+diff --git a/artifacts/sentinel-ehr/src/pages/UseCaseInsiderThreatDetection.tsx b/artifacts/sentinel-ehr/src/pages/UseCaseInsiderThreatDetection.tsx
+index ce01570..f033d1b 100644
+--- a/artifacts/sentinel-ehr/src/pages/UseCaseInsiderThreatDetection.tsx
++++ b/artifacts/sentinel-ehr/src/pages/UseCaseInsiderThreatDetection.tsx
+@@ -17,9 +17,12 @@ const Navbar = () => (
+         </div>
+         <span className="text-white font-bold text-lg tracking-wider">SENTINELEHR</span>
+       </a>
+-      <div className="flex items-center gap-3">
+-        <Button onClick={() => window.location.href = "/#demo-section"} className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm">Request Demo</Button>
+-      </div>
++      <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
++          <a href="/about" className="hover:text-white transition-colors">About</a>
++        </div>
++        <div className="flex items-center gap-3">
++          <Button onClick={() => window.location.href = "/#demo-section"} className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm">Request Demo</Button>
++        </div>
+     </div>
+   </nav>
+ );
+@@ -90,7 +93,7 @@ export default function InsiderThreatDetectionPage() {
+               </section>
+ 
+               <section className="mb-10">
+-                <p className="text-muted-foreground leading-relaxed">Learn more about SentinelEHR's zero-PHI architecture at <a href="/architecture" className="text-primary hover:underline">/architecture</a>.</p>
++                <p className="text-muted-foreground leading-relaxed">Learn more about SentinelEHR's architecture at <a href="/architecture" className="text-primary hover:underline">/architecture</a>.</p>
+               </section>
+             </div>
+ 
+diff --git a/artifacts/sentinel-ehr/src/pages/UseCaseSentinelEHRvsProtenus.tsx b/artifacts/sentinel-ehr/src/pages/UseCaseSentinelEHRvsProtenus.tsx
+index b0fbc80..cf904bc 100644
+--- a/artifacts/sentinel-ehr/src/pages/UseCaseSentinelEHRvsProtenus.tsx
++++ b/artifacts/sentinel-ehr/src/pages/UseCaseSentinelEHRvsProtenus.tsx
+@@ -17,9 +17,12 @@ const Navbar = () => (
+         </div>
+         <span className="text-white font-bold text-lg tracking-wider">SENTINELEHR</span>
+       </a>
+-      <div className="flex items-center gap-3">
+-        <Button onClick={() => window.location.href = "/#demo-section"} className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm">Request Demo</Button>
+-      </div>
++      <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
++          <a href="/about" className="hover:text-white transition-colors">About</a>
++        </div>
++        <div className="flex items-center gap-3">
++          <Button onClick={() => window.location.href = "/#demo-section"} className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm">Request Demo</Button>
++        </div>
+     </div>
+   </nav>
+ );
+@@ -76,7 +79,7 @@ export default function SentinelEHRvsProtenusPage() {
+               <section className="mb-10">
+                 <h2 className="text-2xl font-bold mb-4 text-foreground">Which is right for your organization?</h2>
+                 <p className="text-muted-foreground leading-relaxed">If you are a large health system with multiple facilities, dedicated compliance analytics staff, and a budget for enterprise software, Protenus and similar enterprise platforms (Imprivata, FairWarning) are appropriate to evaluate. They provide deep integration, rich analytics, and the scale required for complex multi-facility environments.</p>
+-                <p className="text-muted-foreground leading-relaxed mt-4">If you are a community hospital, critical access hospital, or FQHC with a small compliance team, limited IT resources, and a genuine need for HIPAA audit control documentation that you cannot currently achieve, SentinelEHR is designed for you. The zero-PHI architecture makes procurement simpler. The plain-English alert queue is designed for a single compliance officer, not an analytics team. And the pricing is designed to be accessible without a capital budget.</p>
++                <p className="text-muted-foreground leading-relaxed mt-4">If you are a community hospital, critical access hospital, or FQHC with a small compliance team, limited IT resources, and a genuine need for HIPAA audit control documentation that you cannot currently achieve, SentinelEHR is designed for you. The no clinical content extraction architecture makes procurement simpler. The plain-English alert queue is designed for a single compliance officer, not an analytics team. And the pricing is designed to be accessible without a capital budget.</p>
+                 <p className="text-muted-foreground leading-relaxed mt-4">The honest answer is that the market Protenus serves and the market SentinelEHR serves have very limited overlap. The question is not which enterprise platform to choose ΓÇö it is whether your organization has access to any systematic compliance monitoring at all.</p>
+               </section>
+ 

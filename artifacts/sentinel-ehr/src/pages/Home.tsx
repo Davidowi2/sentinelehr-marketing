@@ -74,6 +74,7 @@ const Navbar = () => {
           <button onClick={() => scrollTo("compliance")} className="hover:text-white transition-colors" data-testid="nav-compliance">Compliance</button>
           <button onClick={() => scrollTo("demo-section")} className="hover:text-white transition-colors" data-testid="nav-resources">Resources</button>
           <a href="/security" className="hover:text-white transition-colors" data-testid="nav-security">Security</a>
+          <a href="/about" className="hover:text-white transition-colors" data-testid="nav-about">About</a>
         </div>
         <div className="flex items-center gap-3">
           <Button
@@ -703,7 +704,7 @@ const DemoForm = () => {
                 "Self-guided sandbox access — explore on your schedule",
                 "Tailored to your Epic Clarity environment",
                 "Zero obligation — no sales pressure",
-                "Includes a zero PHI storage architecture walkthrough",
+                "Includes a no clinical content extraction architecture walkthrough",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3 text-sm text-muted-foreground">
                   <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
@@ -732,7 +733,7 @@ const TrustBar = () => {
   const items = [
     { label: "Epic Clarity", sub: "Native integration" },
     { label: "Read-Only Access", sub: "Zero write permissions" },
-    { label: "0 PHI Stored", sub: "Architecture guarantee" },
+    { label: "No Clinical Content Extracted", sub: "Architecture guarantee" },
     { label: "Community Hospitals", sub: "Designed for" },
     { label: "1–3 Person Teams", sub: "Right-sized for" },
   ];
@@ -973,7 +974,7 @@ const Footer = () => {
             <a href="/terms" className="hover:text-slate-300 transition-colors">Terms of Service</a>
           </div>
           <span className="text-right max-w-sm">
-            Zero PHI Storage Architecture — Read-only Epic Clarity integration
+            No Clinical Content Extraction — Read-only Epic Clarity integration
           </span>
         </div>
       </div>

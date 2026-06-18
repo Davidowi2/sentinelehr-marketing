@@ -17,9 +17,12 @@ const Navbar = () => (
         </div>
         <span className="text-white font-bold text-lg tracking-wider">SENTINELEHR</span>
       </a>
-      <div className="flex items-center gap-3">
-        <Button onClick={() => window.location.href = "/#demo-section"} className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm">Request Demo</Button>
-      </div>
+      <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+          <a href="/about" className="hover:text-white transition-colors">About</a>
+        </div>
+        <div className="flex items-center gap-3">
+          <Button onClick={() => window.location.href = "/#demo-section"} className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm">Request Demo</Button>
+        </div>
     </div>
   </nav>
 );
@@ -88,7 +91,7 @@ export default function HIPAABreachNotificationPage() {
               <section className="mb-10">
                 <h2 className="text-2xl font-bold mb-4 text-foreground">Zero-PHI monitoring and the breach surface</h2>
                 <p className="text-muted-foreground leading-relaxed">A monitoring system that stores behavioral metadata rather than PHI creates a significantly smaller breach surface than one that stores clinical content. If SentinelEHR's infrastructure were compromised, the data exposed would be access patterns — employee IDs, patient IDs as integers, timestamps, action codes — not medical records. While any unauthorized access to personal information is serious, the breach notification analysis for a behavioral metadata exposure is different from a clinical record exposure.</p>
-                <p className="text-muted-foreground leading-relaxed mt-4">This is one of the practical arguments for zero-PHI monitoring architecture: it supports HIPAA audit controls and breach notification workflows without creating an additional PHI repository that itself represents a breach risk and requires its own safeguards under the HIPAA Security Rule.</p>
+                <p className="text-muted-foreground leading-relaxed mt-4">This is one of the practical arguments for no clinical content extraction monitoring architecture: it supports HIPAA audit controls and breach notification workflows without creating an additional clinical content repository that itself represents a breach risk and requires its own safeguards under the HIPAA Security Rule.</p>
               </section>
 
               <section className="mb-10">

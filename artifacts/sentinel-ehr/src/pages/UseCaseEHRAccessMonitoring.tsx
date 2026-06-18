@@ -17,9 +17,12 @@ const Navbar = () => (
         </div>
         <span className="text-white font-bold text-lg tracking-wider">SENTINELEHR</span>
       </a>
-      <div className="flex items-center gap-3">
-        <Button onClick={() => window.location.href = "/#demo-section"} className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm">Request Demo</Button>
-      </div>
+      <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+          <a href="/about" className="hover:text-white transition-colors">About</a>
+        </div>
+        <div className="flex items-center gap-3">
+          <Button onClick={() => window.location.href = "/#demo-section"} className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm">Request Demo</Button>
+        </div>
     </div>
   </nav>
 );
@@ -97,7 +100,7 @@ export default function EHRAccessMonitoringPage() {
 
               <section className="mb-10">
                 <h2 className="text-2xl font-bold mb-4 text-foreground">SentinelEHR as an EHR access monitoring tool</h2>
-                <p className="text-muted-foreground leading-relaxed">SentinelEHR is built specifically for compliance teams of 1–3 people at community hospitals and FQHCs. It connects to Epic Clarity with read-only credentials, extracts behavioral metadata (not clinical content), and applies behavioral analysis plus rule-based detection to produce a prioritized, plain-English alert queue. Investigations are documented within the platform and exportable as HR-ready reports. The zero-PHI architecture means the monitoring system itself does not create a new PHI repository — only behavioral metadata (access patterns, not record content) leaves the hospital's environment.</p>
+                <p className="text-muted-foreground leading-relaxed">SentinelEHR is built specifically for compliance teams of 1–3 people at community hospitals and FQHCs. It connects to Epic Clarity with read-only credentials, extracts behavioral metadata (not clinical content), and applies behavioral analysis plus rule-based detection to produce a prioritized, plain-English alert queue. Investigations are documented within the platform and exportable as HR-ready reports. The no clinical content extraction architecture means the monitoring system itself does not create a new PHI repository — only behavioral metadata (access patterns, not record content) leaves the hospital's environment.</p>
               </section>
 
               <section className="mb-10">

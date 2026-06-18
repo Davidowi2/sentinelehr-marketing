@@ -17,9 +17,12 @@ const Navbar = () => (
         </div>
         <span className="text-white font-bold text-lg tracking-wider">SENTINELEHR</span>
       </a>
-      <div className="flex items-center gap-3">
-        <Button onClick={() => window.location.href = "/#demo-section"} className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm">Request Demo</Button>
-      </div>
+      <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+          <a href="/about" className="hover:text-white transition-colors">About</a>
+        </div>
+        <div className="flex items-center gap-3">
+          <Button onClick={() => window.location.href = "/#demo-section"} className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm">Request Demo</Button>
+        </div>
     </div>
   </nav>
 );
@@ -93,7 +96,7 @@ export default function EpicClarityExtractorPage() {
               <section className="mb-10">
                 <h2 className="text-2xl font-bold mb-4 text-foreground">Security review and open-source transparency</h2>
                 <p className="text-muted-foreground leading-relaxed">A legitimate concern for hospital IT departments is: what does the extractor actually do, and how can we verify it? The best answer to this question is open-source code. If the extractor script is published and readable, the IT team can verify every SQL query, every field extracted, and every data transmission before deployment. This is a stronger assurance than any contractual representation or third-party audit.</p>
-                <p className="text-muted-foreground leading-relaxed mt-4">SentinelEHR's clarity_extractor.py script is provided to hospitals for security review before any deployment decision. The IT director or DBA can read every line, verify what it queries, and confirm that no clinical content is extracted. This transparency is the foundation of the zero-PHI architecture claim — not a policy promise, but verifiable code.</p>
+                <p className="text-muted-foreground leading-relaxed mt-4">SentinelEHR's clarity_extractor.py script is provided to hospitals for security review before any deployment decision. The IT director or DBA can read every line, verify what it queries, and confirm that no clinical content is extracted. This transparency is the foundation of our architecture claim — not a policy promise, but verifiable code.</p>
               </section>
 
               <section className="mb-10">

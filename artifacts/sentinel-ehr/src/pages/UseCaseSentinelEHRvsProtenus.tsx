@@ -17,9 +17,12 @@ const Navbar = () => (
         </div>
         <span className="text-white font-bold text-lg tracking-wider">SENTINELEHR</span>
       </a>
-      <div className="flex items-center gap-3">
-        <Button onClick={() => window.location.href = "/#demo-section"} className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm">Request Demo</Button>
-      </div>
+      <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+          <a href="/about" className="hover:text-white transition-colors">About</a>
+        </div>
+        <div className="flex items-center gap-3">
+          <Button onClick={() => window.location.href = "/#demo-section"} className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm">Request Demo</Button>
+        </div>
     </div>
   </nav>
 );
@@ -76,7 +79,7 @@ export default function SentinelEHRvsProtenusPage() {
               <section className="mb-10">
                 <h2 className="text-2xl font-bold mb-4 text-foreground">Which is right for your organization?</h2>
                 <p className="text-muted-foreground leading-relaxed">If you are a large health system with multiple facilities, dedicated compliance analytics staff, and a budget for enterprise software, Protenus and similar enterprise platforms (Imprivata, FairWarning) are appropriate to evaluate. They provide deep integration, rich analytics, and the scale required for complex multi-facility environments.</p>
-                <p className="text-muted-foreground leading-relaxed mt-4">If you are a community hospital, critical access hospital, or FQHC with a small compliance team, limited IT resources, and a genuine need for HIPAA audit control documentation that you cannot currently achieve, SentinelEHR is designed for you. The zero-PHI architecture makes procurement simpler. The plain-English alert queue is designed for a single compliance officer, not an analytics team. And the pricing is designed to be accessible without a capital budget.</p>
+                <p className="text-muted-foreground leading-relaxed mt-4">If you are a community hospital, critical access hospital, or FQHC with a small compliance team, limited IT resources, and a genuine need for HIPAA audit control documentation that you cannot currently achieve, SentinelEHR is designed for you. The no clinical content extraction architecture makes procurement simpler. The plain-English alert queue is designed for a single compliance officer, not an analytics team. And the pricing is designed to be accessible without a capital budget.</p>
                 <p className="text-muted-foreground leading-relaxed mt-4">The honest answer is that the market Protenus serves and the market SentinelEHR serves have very limited overlap. The question is not which enterprise platform to choose — it is whether your organization has access to any systematic compliance monitoring at all.</p>
               </section>
 

@@ -33,6 +33,9 @@ const Navbar = () => {
           </div>
           <span className="text-white font-bold text-lg tracking-wider">SENTINELEHR</span>
         </a>
+        <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+          <a href="/about" className="hover:text-white transition-colors">About</a>
+        </div>
         <div className="flex items-center gap-3">
           <Button
             onClick={() => window.location.href = "/#demo-section"}
@@ -127,7 +130,7 @@ export default function ArchitecturePage() {
               <section className="mb-10">
                 <h2 className="text-2xl font-bold mb-4 text-foreground">Open source</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  The clarity_extractor.py script is provided to the hospital for security review before deployment. Your IT team can read every line, verify what it queries, and confirm the zero-PHI claim. We encourage this. The script is the strongest evidence of our zero-PHI architecture — not a whitepaper, not a certification, but the actual code that runs in your network.
+                  The clarity_extractor.py script is provided to the hospital for security review before deployment. Your IT team can read every line, verify what it queries, and confirm the no clinical content extraction claim. We encourage this. The script is the strongest evidence of our architecture — not a whitepaper, not a certification, but the actual code that runs in your network.
                 </p>
               </section>
 

@@ -1,0 +1,44 @@
+﻿diff --git a/artifacts/sentinel-ehr/src/pages/Security.tsx b/artifacts/sentinel-ehr/src/pages/Security.tsx
+index 2d68e99..557e5e6 100644
+--- a/artifacts/sentinel-ehr/src/pages/Security.tsx
++++ b/artifacts/sentinel-ehr/src/pages/Security.tsx
+@@ -33,6 +33,9 @@ const Navbar = () => {
+           </div>
+           <span className="text-white font-bold text-lg tracking-wider">SENTINELEHR</span>
+         </a>
++        <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
++          <a href="/about" className="hover:text-white transition-colors">About</a>
++        </div>
+         <div className="flex items-center gap-3">
+           <Button
+             onClick={() => window.location.href = "/#demo-section"}
+@@ -66,7 +69,7 @@ export default function SecurityPage() {
+             <div className="prose prose-slate max-w-none">
+ 
+               <section className="mb-10">
+-                <h2 className="text-2xl font-bold mb-4 text-foreground">Zero PHI architecture</h2>
++                <h2 className="text-2xl font-bold mb-4 text-foreground">No clinical content extraction</h2>
+                 <p className="text-muted-foreground leading-relaxed">
+                   SentinelEHR stores behavioral metadata only. The fields extracted from your Epic Clarity database are: employee ID (integer), patient ID (integer), action type (1ΓÇô11), access timestamp, department ID, in-panel status (boolean), VIP status (boolean), sensitive record flag (boolean). No patient names. No clinical content. No diagnoses, medications, notes, or financial data. The extractor script (clarity_extractor.py) is open-source and can be reviewed by your IT team before deployment.
+                 </p>
+@@ -114,17 +117,17 @@ export default function SecurityPage() {
+               <section className="mb-10">
+                 <h2 className="text-2xl font-bold mb-4 text-foreground">Hosting and infrastructure</h2>
+                 <p className="text-muted-foreground leading-relaxed">
+-                  Current: Vercel (frontend), Render (backend), Neon (database), all on free tiers. Planned: VPS migration with nginx, gunicorn, PostgreSQL on the server, SSL via Let's Encrypt, UFW firewall, Fail2ban, DNS pointing sentinelhr.org to the server IP. The zero-PHI architecture means our hosting infrastructure handles only behavioral metadata ΓÇö there is no PHI to secure in the traditional sense.
++                  Current: Vercel (frontend), Render (backend), Neon (database), all on free tiers. Planned: VPS migration with nginx, gunicorn, PostgreSQL on the server, SSL via Let's Encrypt, UFW firewall, Fail2ban, DNS pointing sentinelhr.org to the server IP. The no clinical content extraction architecture means our hosting infrastructure handles only behavioral metadata ΓÇö there is no clinical content to secure in the traditional sense.
+                 </p>
+               </section>
+ 
+               <section className="mb-10">
+                 <h2 className="text-2xl font-bold mb-4 text-foreground">Compliance posture and SOC 2</h2>
+                 <p className="text-muted-foreground leading-relaxed">
+-                  SentinelEHR does NOT claim HIPAA certification. The product is designed to support HIPAA ┬º164.312(b) audit control workflows through its zero-PHI architecture. The hospital is responsible for ensuring their Epic Clarity connection complies with their own Epic license agreement.
++                  SentinelEHR does NOT claim HIPAA certification. The product is designed to support HIPAA ┬º164.312(b) audit control workflows through its no clinical content extraction architecture. The hospital is responsible for ensuring their Epic Clarity connection complies with their own Epic license agreement.
+                 </p>
+                 <p className="text-muted-foreground leading-relaxed mt-4">
+-                  For design partner conversations, we provide equivalent security assurances: zero-PHI architecture (no patient data leaves your environment), bcrypt authentication, JWT tokens with 8-hour expiry, full audit log, multi-tenant isolation verified by automated end-to-end test suite, forensically defensible audit trail.
++                  For design partner conversations, we provide equivalent security assurances: no clinical content extraction architecture (no patient clinical content leaves your environment), bcrypt authentication, JWT tokens with 8-hour expiry, full audit log, multi-tenant isolation verified by automated end-to-end test suite, forensically defensible audit trail.
+                 </p>
+                 <p className="text-muted-foreground leading-relaxed mt-4">
+                   SOC 2 Type 2 is on our 12-month roadmap. For a production deployment post-design-partner, SOC 2 Type 2 certification would be a prerequisite.

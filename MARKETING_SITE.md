@@ -155,7 +155,7 @@ Legal page content is extracted into reusable components to allow future updates
 
 Both documents:
 - Last updated: June 8, 2026
-- Contact: `hello@sentinelehr.org`
+- Contact: `hello@sentinelhr.org`
 - Governing law: State of Delaware (Terms)
 - No HIPAA certification claims
 - No Texas reference
@@ -264,7 +264,7 @@ This ensures SPA client-side routing works on direct URL navigation (e.g. visiti
 ## Pending / To Do
 
 - [x] Update "Log in" footer link from `https://sentinelhr.vercel.app` to `https://app.sentinelhr.org` ✅
-- [ ] Update `hello@sentinelehr.org` contact email in both legal pages when email is active
+- [ ] Update contact email in both legal pages when needed
 - [ ] Update "Last updated" dates in TermsContent.tsx and PrivacyContent.tsx when materially revised
 - [ ] Add `<meta name="description">` tags to use-case pages (currently rendered as visible text only)
 - [ ] Consider adding a sitemap.xml for AI crawlers

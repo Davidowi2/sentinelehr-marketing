@@ -34,6 +34,9 @@ const Navbar = () => {
           </div>
           <span className="text-white font-bold text-lg tracking-wider">SENTINELEHR</span>
         </a>
+        <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+          <a href="/about" className="hover:text-white transition-colors">About</a>
+        </div>
         <div className="flex items-center gap-3">
           <Button
             onClick={() => window.location.href = "/#demo-section"}
