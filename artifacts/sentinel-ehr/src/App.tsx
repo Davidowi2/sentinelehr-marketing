@@ -15,6 +15,7 @@ import EHRAccessMonitoringPage from "@/pages/UseCaseEHRAccessMonitoring";
 import EpicClarityExtractorPage from "@/pages/UseCaseEpicClarityExtractor";
 import SentinelEHRvsProtenusPage from "@/pages/UseCaseSentinelEHRvsProtenus";
 import HIPAABreachNotificationPage from "@/pages/UseCaseHIPAABreachNotification";
+import AboutPage from "@/pages/About";
 import { useEffect } from "react";
 
 const queryClient = new QueryClient();
