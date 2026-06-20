@@ -25,6 +25,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
+import { useCanonical } from "@/lib/useCanonical";
 
 const FadeIn = ({
   children,
@@ -984,6 +985,7 @@ const Footer = () => {
 
 /* ─── Page ────────────────────────────────────────────────────────────────── */
 export default function Home() {
+  useCanonical("/");
   return (
     <div className="min-h-screen w-full bg-background text-foreground font-sans overflow-x-hidden selection:bg-primary/20">
       <Navbar />

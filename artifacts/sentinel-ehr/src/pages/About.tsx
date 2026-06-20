@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Users, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { useCanonical } from "@/lib/useCanonical";
 
 const FadeIn = ({
   children,
@@ -80,6 +81,7 @@ const TeamMember = ({
 );
 
 export default function AboutPage() {
+  useCanonical("/about");
   const teamMembers = [
     {
       initials: "DO",

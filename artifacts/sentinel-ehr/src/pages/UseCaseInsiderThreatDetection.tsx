@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { useCanonical } from "@/lib/useCanonical";
 
 const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => (
   <motion.div initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}>
@@ -28,6 +29,7 @@ const Navbar = () => (
 );
 
 export default function InsiderThreatDetectionPage() {
+  useCanonical("/use-cases/insider-threat-detection");
   return (
     <div className="min-h-screen w-full bg-background text-foreground font-sans">
       <Navbar />

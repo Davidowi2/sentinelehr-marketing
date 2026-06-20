@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Database } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useCanonical } from "@/lib/useCanonical";
 
 const FadeIn = ({
   children,
@@ -50,6 +51,7 @@ const Navbar = () => {
 };
 
 export default function ArchitecturePage() {
+  useCanonical("/architecture");
   return (
     <div className="min-h-screen w-full bg-background text-foreground font-sans">
       <Navbar />

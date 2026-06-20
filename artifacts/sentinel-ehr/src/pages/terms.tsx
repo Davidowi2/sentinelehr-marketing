@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { TermsContent } from "../components/TermsContent";
+import { useCanonical } from "../lib/useCanonical";
 
 const FadeIn = ({
   children,
@@ -47,6 +48,7 @@ const Navbar = () => {
 };
 
 export default function TermsPage() {
+  useCanonical("/terms");
   return (
     <div className="min-h-screen w-full bg-background text-foreground font-sans">
       <Navbar />
