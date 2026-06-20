@@ -29,9 +29,7 @@ const Navbar = () => {
     <nav className="sticky top-0 z-50 w-full border-b border-border bg-[#0D1117]/95 backdrop-blur-md">
       <div className="container mx-auto px-4 md:px-8 h-16 flex items-center justify-between max-w-6xl">
         <a href="/" className="flex items-center gap-2">
-          <div style={{backgroundColor:'#0D1117', padding:'4px 8px', borderRadius:'6px', display:'inline-flex', alignItems:'center'}}>
-            <img src="/sentinelehr-logo.png" style={{height:'32px', objectFit:'contain'}} alt="SentinelEHR logo" />
-          </div>
+          <img src="/sentinelehr-logo.png" style={{height:'36px', objectFit:'contain'}} alt="SentinelEHR logo" />
           <span className="text-white font-bold text-lg tracking-wider">SENTINELEHR</span>
         </a>
         <div className="flex items-center gap-3">

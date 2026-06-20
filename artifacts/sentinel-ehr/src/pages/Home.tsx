@@ -63,9 +63,7 @@ const Navbar = () => {
           data-testid="nav-logo"
         >
           <div className="flex items-center gap-2">
-            <div style={{backgroundColor:'#0D1117', padding:'4px 8px', borderRadius:'6px', display:'inline-flex', alignItems:'center'}}>
-              <img src="/sentinelehr-logo.png" style={{height:'32px', objectFit:'contain'}} alt="SentinelEHR logo" />
-            </div>
+            <img src="/sentinelehr-logo.png" style={{height:'36px', objectFit:'contain'}} alt="SentinelEHR logo" />
             <span className="text-white font-bold text-lg tracking-wider">SENTINELEHR</span>
           </div>
         </button>
@@ -134,7 +132,7 @@ const Hero = () => {
           </div>
 
           <h1
-            className="text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-foreground mb-6 leading-[1.12]"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-4 leading-[1.15]"
             data-testid="hero-heading"
           >
             Detect suspicious EHR access before it becomes a HIPAA breach.
@@ -251,7 +249,7 @@ const Problem = () => {
         <div className="text-center max-w-2xl mx-auto mb-16">
           <FadeIn>
             <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">The Problem</p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Your compliance team is drowning in alerts</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">Your compliance team is drowning in alerts</h2>
             <p className="text-lg text-muted-foreground">
               Legacy monitoring generates noise, not insight. SentinelEHR cuts through the volume to protect what matters most.
             </p>
@@ -325,7 +323,7 @@ const Product = () => {
         <div className="text-center max-w-2xl mx-auto mb-16">
           <FadeIn>
             <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">The Platform</p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">SentinelEHR surfaces what matters</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">SentinelEHR surfaces what matters</h2>
             <p className="text-lg text-muted-foreground">
               Precision detection, clear context, and a streamlined workflow — so a one-person compliance team can operate at enterprise scale.
             </p>
@@ -389,7 +387,7 @@ const HowItWorks = () => {
         <div className="text-center max-w-2xl mx-auto mb-20">
           <FadeIn>
             <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">How It Works</p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Three steps to total visibility</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">Three steps to total visibility</h2>
             <p className="text-lg text-muted-foreground">
               A frictionless deployment designed specifically for Epic Clarity environments.
             </p>
@@ -465,7 +463,7 @@ const Why = () => {
 
         <FadeIn delay={0.18}>
           <p className="text-xs font-bold uppercase tracking-widest text-primary mb-4">Why SentinelEHR</p>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
+          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-foreground">
             Privacy-first security for mission-driven healthcare
           </h2>
           <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
@@ -696,7 +694,7 @@ const DemoForm = () => {
           {/* Left — copy */}
           <FadeIn>
             <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">Get Started</p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">Request a Self-Guided Demo</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 text-foreground">Request a Self-Guided Demo</h2>
             <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
               See how SentinelEHR transforms your compliance workflow in your own time. Tailored to your hospital's Epic environment.
             </p>
@@ -766,7 +764,7 @@ const Testimonials = () => {
         <div className="text-center max-w-2xl mx-auto mb-16">
           <FadeIn>
             <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">What Compliance Teams Say</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">Built for people who protect patients</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground">Built for people who protect patients</h2>
           </FadeIn>
         </div>
 
@@ -822,7 +820,7 @@ const FAQ = () => {
         <div className="text-center mb-16">
           <FadeIn>
             <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">Common Questions</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">Answers for your procurement team</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground">Answers for your procurement team</h2>
           </FadeIn>
         </div>
 
@@ -913,9 +911,7 @@ const Footer = () => {
           <div className="md:col-span-1">
             <div className="mb-5">
               <div className="flex items-center gap-2">
-                <div style={{backgroundColor:'#0D1117', padding:'4px 8px', borderRadius:'6px', display:'inline-flex', alignItems:'center'}}>
-                  <img src="/sentinelehr-logo.png" style={{height:'32px', objectFit:'contain'}} alt="SentinelEHR logo" />
-                </div>
+                <img src="/sentinelehr-logo.png" style={{height:'36px', objectFit:'contain'}} alt="SentinelEHR logo" />
                 <span className="text-white font-bold text-xl tracking-wider">SENTINELEHR</span>
               </div>
             </div>
