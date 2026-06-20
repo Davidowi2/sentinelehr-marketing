@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Lock } from "lucide-react";
+import { Lock, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCanonical } from "@/lib/useCanonical";
 
@@ -25,25 +25,48 @@ const FadeIn = ({
 );
 
 const Navbar = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-border bg-[#0D1117]/95 backdrop-blur-md">
+    <nav className="sticky top-0 z-50 w-full border-b border-border bg-[#0D1117]/95 backdrop-blur-md relative">
       <div className="container mx-auto px-4 md:px-8 h-16 flex items-center justify-between max-w-6xl">
         <a href="/" className="flex items-center gap-2">
           <img src="/sentinelehr-logo.png" style={{height:'36px', objectFit:'contain'}} alt="SentinelEHR logo" />
           <span className="text-white font-bold text-lg tracking-wider">SENTINELEHR</span>
         </a>
         <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+          <a href="/" className="hover:text-white transition-colors">Home</a>
+          <a href="/security" className="hover:text-white transition-colors">Security</a>
+          <a href="/architecture" className="hover:text-white transition-colors">Architecture</a>
           <a href="/about" className="hover:text-white transition-colors">About</a>
         </div>
         <div className="flex items-center gap-3">
           <Button
             onClick={() => window.location.href = "/#demo-section"}
-            className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm"
+            className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm hidden md:inline-flex"
           >
             Request Demo
           </Button>
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 text-white hover:text-primary transition-colors"
+            aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
       </div>
+      {isMobileMenuOpen && (
+        <div className="md:hidden absolute top-16 left-0 right-0 bg-[#0D1117] border-t border-slate-800 shadow-lg z-50">
+          <div className="flex flex-col p-4 gap-1">
+            <a href="/" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-lg transition-colors">Home</a>
+            <a href="/security" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-lg transition-colors">Security</a>
+            <a href="/architecture" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-lg transition-colors">Architecture</a>
+            <a href="/about" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-lg transition-colors">About</a>
+            <a href="/#demo-section" onClick={() => setIsMobileMenuOpen(false)} className="mt-2 bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-center font-medium px-4 py-3 rounded-lg transition-colors">Request Demo</a>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

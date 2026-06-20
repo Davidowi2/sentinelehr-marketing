@@ -18,6 +18,8 @@ import {
   ScanSearch,
   Quote,
   ChevronDown,
+  Menu,
+  X,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -53,9 +55,10 @@ const Navbar = () => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-border bg-[#0D1117]/95 backdrop-blur-md">
+    <nav className="sticky top-0 z-50 w-full border-b border-border bg-[#0D1117]/95 backdrop-blur-md relative">
       <div className="container mx-auto px-4 md:px-8 h-16 flex items-center justify-between max-w-6xl">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -78,13 +81,34 @@ const Navbar = () => {
         <div className="flex items-center gap-3">
           <Button
             onClick={() => scrollTo("demo-section")}
-            className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm"
+            className="bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-sm hidden md:inline-flex"
             data-testid="btn-request-demo-nav"
           >
             Request Demo
           </Button>
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 text-white hover:text-primary transition-colors"
+            aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
       </div>
+      {isMobileMenuOpen && (
+        <div className="md:hidden absolute top-16 left-0 right-0 bg-[#0D1117] border-t border-slate-800 shadow-lg z-50">
+          <div className="flex flex-col p-4 gap-1">
+            <button onClick={() => { scrollTo("platform"); setIsMobileMenuOpen(false); }} className="text-left px-4 py-3 text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-lg transition-colors">Platform</button>
+            <button onClick={() => { scrollTo("intelligence"); setIsMobileMenuOpen(false); }} className="text-left px-4 py-3 text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-lg transition-colors">Intelligence</button>
+            <button onClick={() => { scrollTo("compliance"); setIsMobileMenuOpen(false); }} className="text-left px-4 py-3 text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-lg transition-colors">Compliance</button>
+            <button onClick={() => { scrollTo("demo-section"); setIsMobileMenuOpen(false); }} className="text-left px-4 py-3 text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-lg transition-colors">Resources</button>
+            <a href="/security" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-lg transition-colors">Security</a>
+            <a href="/about" onClick={() => setIsMobileMenuOpen(false)} className="px-4 py-3 text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-lg transition-colors">About</a>
+            <button onClick={() => { scrollTo("demo-section"); setIsMobileMenuOpen(false); }} className="mt-2 bg-[#38BDF8] text-white hover:bg-[#38BDF8]/90 text-center font-medium px-4 py-3 rounded-lg transition-colors">Request Demo</button>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
